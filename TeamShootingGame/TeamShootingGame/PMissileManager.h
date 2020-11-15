@@ -1,0 +1,21 @@
+#pragma once
+#include "GameNode.h"
+#include <vector>
+
+class PMissile;
+class PMissileManager
+{
+private:
+	int missileCount;
+	vector<PMissile*> vecMissiles;
+	vector<PMissile*>::iterator itMissiles;
+
+public:
+	HRESULT Init();
+	void Release();
+	void Update();
+	void Render(HDC hdc);
+
+	void Fire();
+};
+
