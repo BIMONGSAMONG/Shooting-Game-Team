@@ -10,8 +10,8 @@ using namespace std;
 #include "ImageManager.h"
 #include "TimerManager.h"
 
-#define WINSIZE_X	800
-#define WINSIZE_Y	800
+#define WINSIZE_X	1025
+#define WINSIZE_Y	770
 #define PI			3.141592f
 #define DegreeToRadian(x)	(x * PI / 180.0f)
 #define RadianToDegree(x)	(x * 180.0f / PI)

@@ -2,6 +2,8 @@
 
 HRESULT Player::Init()
 {
+	pos = { WINSIZE_X / 2, WINSIZE_Y - 100 };
+	size = 10;
 	return E_NOTIMPL;
 }
 
