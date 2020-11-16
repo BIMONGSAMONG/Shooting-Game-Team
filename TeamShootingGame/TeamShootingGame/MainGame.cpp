@@ -11,7 +11,16 @@ HRESULT MainGame::Init()
 
 	hdc = GetDC(g_hWnd);
 
-	ImageManager::GetSingleton()->AddImage("분노", "Image/EasyMode/Character/Anger.bmp", 64 * 3, 32 * 3, 2, 1, true, RGB(255, 0, 255));
+	//ImageManager::GetSingleton()->AddImage("분노", "Image/EasyMode/Character/Anger.bmp", 64 * 3, 32 * 3, 2, 1, true, RGB(255, 0, 255));
+	ImageManager::GetSingleton()->AddImage("혼란", "Image/EasyMode/Character/Confusion.bmp", 16 * 3, 16 * 3, true, RGB(255, 0, 255));
+	ImageManager::GetSingleton()->AddImage("정신적고통", "Image/EasyMode/Character/Distress.bmp", 16 * 3, 16 * 3, true, RGB(255, 0, 255));
+	ImageManager::GetSingleton()->AddImage("허무", "Image/EasyMode/Character/Emptieness.bmp", 16 * 3, 16 * 3, true, RGB(255, 0, 255));
+	ImageManager::GetSingleton()->AddImage("공포", "Image/EasyMode/Character/Fear.bmp", 16 * 3, 16 * 3, true, RGB(255, 0, 255));
+	ImageManager::GetSingleton()->AddImage("좌절", "Image/EasyMode/Character/Frustration.bmp", 16 * 3, 16 * 3, true, RGB(255, 0, 255));
+	ImageManager::GetSingleton()->AddImage("죄책감", "Image/EasyMode/Character/Gulit.bmp", 16 * 3, 16 * 3, true, RGB(255, 0, 255));
+	ImageManager::GetSingleton()->AddImage("정신적고통", "Image/EasyMode/Character/Distress.bmp", 16 * 3, 16 * 3, true, RGB(255, 0, 255));
+	ImageManager::GetSingleton()->AddImage("정신적고통", "Image/EasyMode/Character/Distress.bmp", 16 * 3, 16 * 3, true, RGB(255, 0, 255));
+	ImageManager::GetSingleton()->AddImage("정신적고통", "Image/EasyMode/Character/Distress.bmp", 16 * 3, 16 * 3, true, RGB(255, 0, 255));
 
 	backBuffer = new Image();
 	backBuffer->Init(WINSIZE_X, WINSIZE_Y);

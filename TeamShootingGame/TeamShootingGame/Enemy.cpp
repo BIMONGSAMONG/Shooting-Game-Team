@@ -8,7 +8,8 @@ HRESULT Enemy::Init()
 	life = 50;
 	currFrameX = 0;
 	currFrameY = 0;
-	img = ImageManager::GetSingleton()->FindImage("분노");
+	img = ImageManager::GetSingleton()->FindImage("E분노");
+	img = ImageManager::GetSingleton()->FindImage("E혼란");
 
 	return S_OK;
 }
@@ -25,7 +26,7 @@ void Enemy::Update()
 		currFrameX++;
 		if (currFrameX >= img->GetMaxFrameX())
 		{
-			//Move();
+			Move();
 			currFrameX = 0;
 		}
 		animationTime = 0;
@@ -36,19 +37,23 @@ void Enemy::Render(HDC hdc)
 {
 	if (img)
 	{
-		img->FrameRender(hdc, pos.x, pos.y, currFrameX, currFrameY);
+		img->FrameRender(hdc, pos.x - (size / 2), pos.y - (size / 2), currFrameX, currFrameY);
+	}
+	if (img)
+	{
+		img->Render(hdc, pos.x - (size / 2), pos.y - (size / 2));
 	}
 }
 
 void Enemy::Move()
 {
 	pos.y += movePosY;
-	if (pos.y <= 100)
+	if (pos.y <= 150)
 	{
-		movePosY = 2;
+		movePosY = 4;
 	}
-	else if (pos.y >= 120)
+	else if (pos.y >= 162)
 	{
-		movePosY = -2;
+		movePosY = -4;
 	}
 }
