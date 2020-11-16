@@ -12,23 +12,41 @@ HRESULT MainGame::Init()
 
 	hdc = GetDC(g_hWnd);
 
-	ImageManager::GetSingleton()->AddImage(EnemyName::Irritation, "Image/EasyMode/Character/Irrietation.bmp", 16 * 3, 16 * 3, true, RGB(255, 0, 255));
-	ImageManager::GetSingleton()->AddImage(EnemyName::Pressure, "Image/EasyMode/Character/Pressure.bmp", 16 * 3, 16 * 3, true, RGB(255, 0, 255));
-	ImageManager::GetSingleton()->AddImage(EnemyName::Loneliness, "Image/EasyMode/Character/Loneliness.bmp", 16 * 3, 16 * 3, true, RGB(255, 0, 255));
-	ImageManager::GetSingleton()->AddImage(EnemyName::Distress, "Image/EasyMode/Character/Distress.bmp", 16 * 3, 16 * 3, true, RGB(255, 0, 255));
-	ImageManager::GetSingleton()->AddImage(EnemyName::Fear, "Image/EasyMode/Character/Fear.bmp", 16 * 3, 16 * 3, true, RGB(255, 0, 255));
-	ImageManager::GetSingleton()->AddImage(EnemyName::Hatred, "Image/EasyMode/Character/Hatred.bmp", 16 * 3, 16 * 3, true, RGB(255, 0, 255));
-	ImageManager::GetSingleton()->AddImage(EnemyName::Guilt, "Image/EasyMode/Character/Guilt.bmp", 16 * 3, 16 * 3, true, RGB(255, 0, 255));
-	ImageManager::GetSingleton()->AddImage(EnemyName::Confusion, "Image/EasyMode/Character/Confusion.bmp", 16 * 3, 16 * 3, true, RGB(255, 0, 255));
-	ImageManager::GetSingleton()->AddImage(EnemyName::Emptiness, "Image/EasyMode/Character/Emptieness.bmp", 16 * 3, 16 * 3, true, RGB(255, 0, 255));
-	ImageManager::GetSingleton()->AddImage(EnemyName::Shame, "Image/EasyMode/Character/Shame.bmp", 16 * 3, 16 * 3, true, RGB(255, 0, 255));
-	ImageManager::GetSingleton()->AddImage(EnemyName::Frustration, "Image/EasyMode/Character/Frustration.bmp", 16 * 3, 16 * 3, true, RGB(255, 0, 255));
-	ImageManager::GetSingleton()->AddImage(EnemyName::Jealousy, "Image/EasyMode/Character/Jealousy.bmp", 16 * 3, 16 * 3, true, RGB(255, 0, 255));
-	ImageManager::GetSingleton()->AddImage(EnemyName::Hoplessness, "Image/EasyMode/Character/Hopelessness.bmp", 16 * 3, 16 * 3, true, RGB(255, 0, 255));
-	ImageManager::GetSingleton()->AddImage(EnemyName::Anger, "Image/EasyMode/Character/Anger.bmp", 64 * 3, 32 * 3, 2, 1, true, RGB(255, 0, 255));
-	ImageManager::GetSingleton()->AddImage(EnemyName::Anxiety, "Image/EasyMode/Character/Anxiety.bmp", 64 * 3, 32 * 3, 2, 1, true, RGB(255, 0, 255));
-	ImageManager::GetSingleton()->AddImage(EnemyName::Sadness, "Image/EasyMode/Character/Sadness.bmp", 64 * 3, 32 * 3, 2, 1, true, RGB(255, 0, 255));
-	ImageManager::GetSingleton()->AddImage(EnemyName::Panic, "Image/EasyMode/Character/Panic.bmp", 64 * 3, 32 * 3, 2, 1, true, RGB(255, 0, 255));
+	//ImageManager::GetSingleton()->AddImage(EnemyName::Irritation, "Image/EasyMode/Character/Irrietation.bmp", 16 * 3, 16 * 3, true, RGB(255, 0, 255));
+	//ImageManager::GetSingleton()->AddImage(EnemyName::Pressure, "Image/EasyMode/Character/Pressure.bmp", 16 * 3, 16 * 3, true, RGB(255, 0, 255));
+	//ImageManager::GetSingleton()->AddImage(EnemyName::Loneliness, "Image/EasyMode/Character/Loneliness.bmp", 16 * 3, 16 * 3, true, RGB(255, 0, 255));
+	//ImageManager::GetSingleton()->AddImage(EnemyName::Distress, "Image/EasyMode/Character/Distress.bmp", 16 * 3, 16 * 3, true, RGB(255, 0, 255));
+	//ImageManager::GetSingleton()->AddImage(EnemyName::Fear, "Image/EasyMode/Character/Fear.bmp", 16 * 3, 16 * 3, true, RGB(255, 0, 255));
+	//ImageManager::GetSingleton()->AddImage(EnemyName::Hatred, "Image/EasyMode/Character/Hatred.bmp", 16 * 3, 16 * 3, true, RGB(255, 0, 255));
+	//ImageManager::GetSingleton()->AddImage(EnemyName::Guilt, "Image/EasyMode/Character/Guilt.bmp", 16 * 3, 16 * 3, true, RGB(255, 0, 255));
+	//ImageManager::GetSingleton()->AddImage(EnemyName::Confusion, "Image/EasyMode/Character/Confusion.bmp", 16 * 3, 16 * 3, true, RGB(255, 0, 255));
+	//ImageManager::GetSingleton()->AddImage(EnemyName::Emptiness, "Image/EasyMode/Character/Emptieness.bmp", 16 * 3, 16 * 3, true, RGB(255, 0, 255));
+	//ImageManager::GetSingleton()->AddImage(EnemyName::Shame, "Image/EasyMode/Character/Shame.bmp", 16 * 3, 16 * 3, true, RGB(255, 0, 255));
+	//ImageManager::GetSingleton()->AddImage(EnemyName::Frustration, "Image/EasyMode/Character/Frustration.bmp", 16 * 3, 16 * 3, true, RGB(255, 0, 255));
+	//ImageManager::GetSingleton()->AddImage(EnemyName::Jealousy, "Image/EasyMode/Character/Jealousy.bmp", 16 * 3, 16 * 3, true, RGB(255, 0, 255));
+	//ImageManager::GetSingleton()->AddImage(EnemyName::Hoplessness, "Image/EasyMode/Character/Hopelessness.bmp", 16 * 3, 16 * 3, true, RGB(255, 0, 255));
+	//ImageManager::GetSingleton()->AddImage(EnemyName::Anger, "Image/EasyMode/Character/Anger.bmp", 64 * 3, 32 * 3, 2, 1, true, RGB(255, 0, 255));
+	//ImageManager::GetSingleton()->AddImage(EnemyName::Anxiety, "Image/EasyMode/Character/Anxiety.bmp", 64 * 3, 32 * 3, 2, 1, true, RGB(255, 0, 255));
+	//ImageManager::GetSingleton()->AddImage(EnemyName::Sadness, "Image/EasyMode/Character/Sadness.bmp", 64 * 3, 32 * 3, 2, 1, true, RGB(255, 0, 255));
+	//ImageManager::GetSingleton()->AddImage(EnemyName::Panic, "Image/EasyMode/Character/Panic.bmp", 64 * 3, 32 * 3, 2, 1, true, RGB(255, 0, 255));
+
+	ImageManager::GetSingleton()->AddImage(EnemyName::Irritation, "Image/EasyMode/Tile/Irrietation.bmp", 32 * 3, 32 * 3);
+	ImageManager::GetSingleton()->AddImage(EnemyName::Pressure, "Image/EasyMode/Tile/Pressure.bmp", 32 * 3, 32 * 3);
+	ImageManager::GetSingleton()->AddImage(EnemyName::Loneliness, "Image/EasyMode/Tile/Loneliness.bmp", 32 * 3, 32 * 3);
+	ImageManager::GetSingleton()->AddImage(EnemyName::Distress, "Image/EasyMode/Tile/Distress.bmp", 32 * 3, 32 * 3);
+	ImageManager::GetSingleton()->AddImage(EnemyName::Fear, "Image/EasyMode/Tile/Fear.bmp", 32 * 3, 32 * 3);
+	ImageManager::GetSingleton()->AddImage(EnemyName::Hatred, "Image/EasyMode/Tile/Hatred.bmp", 32 * 3, 32 * 3);
+	ImageManager::GetSingleton()->AddImage(EnemyName::Guilt, "Image/EasyMode/Tile/Guilt.bmp", 32 * 3, 32 * 3);
+	ImageManager::GetSingleton()->AddImage(EnemyName::Confusion, "Image/EasyMode/Tile/Confusion.bmp", 32 * 3, 32 * 3);
+	//ImageManager::GetSingleton()->AddImage(EnemyName::Emptiness, "Image/EasyMode/Tile/Emptieness.bmp", 32 * 3, 32 * 3, true, RGB(255, 0, 255));
+	//ImageManager::GetSingleton()->AddImage(EnemyName::Shame, "Image/EasyMode/Tile/Shame.bmp", 32 * 3, 32 * 3, true, RGB(255, 0, 255));
+	//ImageManager::GetSingleton()->AddImage(EnemyName::Frustration, "Image/EasyMode/Tile/Frustration.bmp", 32 * 3, 32 * 3, true, RGB(255, 0, 255));
+	//ImageManager::GetSingleton()->AddImage(EnemyName::Jealousy, "Image/EasyMode/Tile/Jealousy.bmp", 32 * 3, 32 * 3, true, RGB(255, 0, 255));
+	//ImageManager::GetSingleton()->AddImage(EnemyName::Hoplessness, "Image/EasyMode/Tile/Hopelessness.bmp", 32 * 3, 32 * 3, true, RGB(255, 0, 255));
+	//ImageManager::GetSingleton()->AddImage(EnemyName::Anger, "Image/EasyMode/Tile/Anger.bmp", 32 * 3, 32 * 3, true, RGB(255, 0, 255));
+	//ImageManager::GetSingleton()->AddImage(EnemyName::Anxiety, "Image/EasyMode/Tile/Anxiety.bmp", 32 * 3, 32 * 3, true, RGB(255, 0, 255));
+	//ImageManager::GetSingleton()->AddImage(EnemyName::Sadness, "Image/EasyMode/Tile/Sadness.bmp", 32 * 3, 32 * 3, true, RGB(255, 0, 255));
+	//ImageManager::GetSingleton()->AddImage(EnemyName::Panic, "Image/EasyMode/Tile/Panic.bmp", 32 * 3, 32 * 3, true, RGB(255, 0, 255));
 
 	backBuffer = new Image();
 	backBuffer->Init(WINSIZE_X, WINSIZE_Y);
@@ -39,8 +57,8 @@ HRESULT MainGame::Init()
 	player = new Player();
 	player->Init();
 
-	enemyMng = new EnemyManager();
-	enemyMng->Init();
+	//enemyMng = new EnemyManager();
+	//enemyMng->Init();
 
 	backGround = new Image();
 	if (FAILED(backGround->Init("Image/background.bmp", WINSIZE_X, WINSIZE_Y)))

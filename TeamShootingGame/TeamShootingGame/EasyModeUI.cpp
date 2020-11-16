@@ -7,6 +7,7 @@ HRESULT EasyModeUI::Init()
 	pos = { 200.f, 150.f };
 	for (int i = 0; i < 18; i++)
 	{
+		tile[i].img = ImageManager::GetSingleton()->FindImage(i);
 		if (i < 5)
 		{
 			tile[i].pos = { pos.x+ i * 150.0f, pos.y };
@@ -23,9 +24,10 @@ HRESULT EasyModeUI::Init()
 		{
 			tile[i].pos = { pos.x + (i-13) * 150.0f, pos.y + 450.f };
 		}
-		
 		tile[i].isClear = false;
+
 	}
+
 	return S_OK;
 }
 
@@ -39,10 +41,13 @@ void EasyModeUI::Update()
 
 void EasyModeUI::Render(HDC hdc)
 {
-	for (int i = 0; i < EnemyName::NUM; i++)
-	{
-		Rectangle(hdc, tile[i].pos.x - (size / 2), tile[i].pos.y - (size / 2), tile[i].pos.x + (size / 2), tile[i].pos.y + (size / 2));
-	}
+		for (int i = 0; i < EnemyName::NUM; i++)
+		{
+			if (tile[i].img)
+			{
+				tile[i].img->Render(hdc, tile[i].pos.x, tile[i].pos.y);
+			}
+		}
 }
 
 void EasyModeUI::UpMouseCurser()
@@ -57,6 +62,6 @@ void EasyModeUI::MouseLButtonClick()
 //{
 //	if (tile[name].isClear == true)
 //	{
-//		tile[name].img->
+//		
 //	}
 //}

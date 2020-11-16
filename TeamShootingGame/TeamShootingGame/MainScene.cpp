@@ -7,7 +7,7 @@ HRESULT MainScene::Init()
 	easy = new EasyModeUI();
 	easy->Init();
 	pos = { 0, 0 };
-	return E_NOTIMPL;
+	return S_OK;
 }
 
 void MainScene::Release()
