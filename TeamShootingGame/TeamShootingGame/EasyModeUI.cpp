@@ -4,16 +4,26 @@
 HRESULT EasyModeUI::Init()
 {
 	size = 96;
+	pos = { 200.f, 150.f };
 	for (int i = 0; i < 18; i++)
 	{
-		if (i / 5 == 2 || i / 5 == 3)
+		if (i < 5)
 		{
-			tile[i].pos = { 200.0f + (i % 4) * 100.0f, 50.0f + (i / 5) * 100.0f };
+			tile[i].pos = { pos.x+ i * 150.0f, pos.y };
 		}
-		else
+		else if (i >= 5 && i < 9)
 		{
-			tile[i].pos = { 200.0f + (i % 5) * 100.0f, 50.0f + (i / 5) * 100.0f };
+			tile[i].pos = { pos.x + (i-5) * 150.0f, pos.y + 150.f };
 		}
+		else if (i >= 9 && i < 13)
+		{
+			tile[i].pos = { pos.x + (i - 9) * 150.0f, pos.y + 300.f };
+		}
+		if (i >= 13)
+		{
+			tile[i].pos = { pos.x + (i-13) * 150.0f, pos.y + 450.f };
+		}
+		
 		tile[i].isClear = false;
 	}
 	return S_OK;
@@ -31,7 +41,7 @@ void EasyModeUI::Render(HDC hdc)
 {
 	for (int i = 0; i < EnemyName::NUM; i++)
 	{
-		Rectangle(hdc, tile[i].pos.x - (size / 2), tile[i].pos.y - (size / 2), tile[i].pos.x + (size / 2), tile[i].pos.y) + (size / 2);
+		Rectangle(hdc, tile[i].pos.x - (size / 2), tile[i].pos.y - (size / 2), tile[i].pos.x + (size / 2), tile[i].pos.y + (size / 2));
 	}
 }
 

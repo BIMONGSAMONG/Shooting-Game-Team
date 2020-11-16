@@ -18,6 +18,7 @@ private:
 
 	Tile tile[18];
 	int size;
+	FPOINT pos;
 
 public:
 	HRESULT Init();
