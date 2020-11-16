@@ -8,6 +8,7 @@ class EMissileManager :public GameNode
 private:
 	vector<EMissile*> vecMissiles;
 	vector<EMissile*>::iterator itMissiles;
+	int enemyMissileCount;
 
 public:
 	HRESULT Init();

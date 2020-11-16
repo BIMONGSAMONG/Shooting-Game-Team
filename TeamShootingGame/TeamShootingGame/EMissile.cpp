@@ -2,6 +2,9 @@
 
 HRESULT EMissile::Init()
 {
+	pos = { 0,0 };
+	size = 14;
+	angle = -PI / 2;
 	return E_NOTIMPL;
 }
 
