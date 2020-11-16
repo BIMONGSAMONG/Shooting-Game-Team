@@ -13,9 +13,10 @@ private:
 	int currFrameX, currFrameY;
 	float animationTime;
 	float movePosY;
+	int name;
 	
 	EMissileManager* missileMgr;
-	Image* img;
+	Image* img[EnemyName::NUM];
 
 public:
 	HRESULT Init();

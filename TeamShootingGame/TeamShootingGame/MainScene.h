@@ -9,6 +9,10 @@ class MainScene:public GameNode
 private:
 	EasyModeUI* easy;
 	HardModeUI* hard;
+	Image* img;
+	FPOINT pos;
+	int size;
+
 
 public:
 	HRESULT Init();

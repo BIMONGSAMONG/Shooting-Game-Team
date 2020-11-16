@@ -10,7 +10,7 @@ void ImageManager::Release()
 {
 }
 
-void ImageManager::AddImage(string strKey, const char* fileName, int width, int height, bool isTrans, COLORREF transColor)
+void ImageManager::AddImage(int strKey, const char* fileName, int width, int height, bool isTrans, COLORREF transColor)
 {
 	// 맵에 키에 해당하는 데이터가 있는지 확인해서
 	// 있으면 추가 없이 리턴
@@ -32,7 +32,7 @@ void ImageManager::AddImage(string strKey, const char* fileName, int width, int 
 	mapImageDatas.insert(make_pair(strKey, image));
 }
 
-void ImageManager::AddImage(string strKey, const char* fileName, int width, int height, int maxFrameX, int maxFrameY, bool isTrans, COLORREF transColor)
+void ImageManager::AddImage(int strKey, const char* fileName, int width, int height, int maxFrameX, int maxFrameY, bool isTrans, COLORREF transColor)
 {
 	if (FindImage(strKey))
 	{
@@ -52,9 +52,9 @@ void ImageManager::AddImage(string strKey, const char* fileName, int width, int 
 	mapImageDatas.insert(make_pair(strKey, image));
 }
 
-void ImageManager::DeleteImage(string strKey)
+void ImageManager::DeleteImage(int strKey)
 {
-	map<string, Image*>::iterator it = mapImageDatas.find(strKey);
+	map<int, Image*>::iterator it = mapImageDatas.find(strKey);
 	if (it != mapImageDatas.end())
 	{
 		(it->second)->Release();
@@ -64,9 +64,9 @@ void ImageManager::DeleteImage(string strKey)
 	}
 }
 
-Image* ImageManager::FindImage(string strKey)
+Image* ImageManager::FindImage(int strKey)
 {
-	map<string, Image*>::iterator it = mapImageDatas.find(strKey);
+	map<int, Image*>::iterator it = mapImageDatas.find(strKey);
 	if (it != mapImageDatas.end())
 	{
 		return it->second;

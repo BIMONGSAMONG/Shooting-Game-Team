@@ -2,6 +2,7 @@
 #include "Image.h"
 #include "Player.h"
 #include "EnemyManager.h"
+#include "MainScene.h"
 
 HRESULT MainGame::Init()
 {
@@ -11,19 +12,29 @@ HRESULT MainGame::Init()
 
 	hdc = GetDC(g_hWnd);
 
-	//ImageManager::GetSingleton()->AddImage("분노", "Image/EasyMode/Character/Anger.bmp", 64 * 3, 32 * 3, 2, 1, true, RGB(255, 0, 255));
-	ImageManager::GetSingleton()->AddImage("혼란", "Image/EasyMode/Character/Confusion.bmp", 16 * 3, 16 * 3, true, RGB(255, 0, 255));
-	ImageManager::GetSingleton()->AddImage("정신적고통", "Image/EasyMode/Character/Distress.bmp", 16 * 3, 16 * 3, true, RGB(255, 0, 255));
-	ImageManager::GetSingleton()->AddImage("허무", "Image/EasyMode/Character/Emptieness.bmp", 16 * 3, 16 * 3, true, RGB(255, 0, 255));
-	ImageManager::GetSingleton()->AddImage("공포", "Image/EasyMode/Character/Fear.bmp", 16 * 3, 16 * 3, true, RGB(255, 0, 255));
-	ImageManager::GetSingleton()->AddImage("좌절", "Image/EasyMode/Character/Frustration.bmp", 16 * 3, 16 * 3, true, RGB(255, 0, 255));
-	ImageManager::GetSingleton()->AddImage("죄책감", "Image/EasyMode/Character/Gulit.bmp", 16 * 3, 16 * 3, true, RGB(255, 0, 255));
-	ImageManager::GetSingleton()->AddImage("정신적고통", "Image/EasyMode/Character/Distress.bmp", 16 * 3, 16 * 3, true, RGB(255, 0, 255));
-	ImageManager::GetSingleton()->AddImage("정신적고통", "Image/EasyMode/Character/Distress.bmp", 16 * 3, 16 * 3, true, RGB(255, 0, 255));
-	ImageManager::GetSingleton()->AddImage("정신적고통", "Image/EasyMode/Character/Distress.bmp", 16 * 3, 16 * 3, true, RGB(255, 0, 255));
+	ImageManager::GetSingleton()->AddImage(EnemyName::Irritation, "Image/EasyMode/Character/Irrietation.bmp", 16 * 3, 16 * 3, true, RGB(255, 0, 255));
+	ImageManager::GetSingleton()->AddImage(EnemyName::Pressure, "Image/EasyMode/Character/Pressure.bmp", 16 * 3, 16 * 3, true, RGB(255, 0, 255));
+	ImageManager::GetSingleton()->AddImage(EnemyName::Loneliness, "Image/EasyMode/Character/Loneliness.bmp", 16 * 3, 16 * 3, true, RGB(255, 0, 255));
+	ImageManager::GetSingleton()->AddImage(EnemyName::Distress, "Image/EasyMode/Character/Distress.bmp", 16 * 3, 16 * 3, true, RGB(255, 0, 255));
+	ImageManager::GetSingleton()->AddImage(EnemyName::Fear, "Image/EasyMode/Character/Fear.bmp", 16 * 3, 16 * 3, true, RGB(255, 0, 255));
+	ImageManager::GetSingleton()->AddImage(EnemyName::Hatred, "Image/EasyMode/Character/Hatred.bmp", 16 * 3, 16 * 3, true, RGB(255, 0, 255));
+	ImageManager::GetSingleton()->AddImage(EnemyName::Guilt, "Image/EasyMode/Character/Guilt.bmp", 16 * 3, 16 * 3, true, RGB(255, 0, 255));
+	ImageManager::GetSingleton()->AddImage(EnemyName::Confusion, "Image/EasyMode/Character/Confusion.bmp", 16 * 3, 16 * 3, true, RGB(255, 0, 255));
+	ImageManager::GetSingleton()->AddImage(EnemyName::Emptiness, "Image/EasyMode/Character/Emptieness.bmp", 16 * 3, 16 * 3, true, RGB(255, 0, 255));
+	ImageManager::GetSingleton()->AddImage(EnemyName::Shame, "Image/EasyMode/Character/Shame.bmp", 16 * 3, 16 * 3, true, RGB(255, 0, 255));
+	ImageManager::GetSingleton()->AddImage(EnemyName::Frustration, "Image/EasyMode/Character/Frustration.bmp", 16 * 3, 16 * 3, true, RGB(255, 0, 255));
+	ImageManager::GetSingleton()->AddImage(EnemyName::Jealousy, "Image/EasyMode/Character/Jealousy.bmp", 16 * 3, 16 * 3, true, RGB(255, 0, 255));
+	ImageManager::GetSingleton()->AddImage(EnemyName::Hoplessness, "Image/EasyMode/Character/Hopelessness.bmp", 16 * 3, 16 * 3, true, RGB(255, 0, 255));
+	ImageManager::GetSingleton()->AddImage(EnemyName::Anger, "Image/EasyMode/Character/Anger.bmp", 64 * 3, 32 * 3, 2, 1, true, RGB(255, 0, 255));
+	ImageManager::GetSingleton()->AddImage(EnemyName::Anxiety, "Image/EasyMode/Character/Anxiety.bmp", 64 * 3, 32 * 3, 2, 1, true, RGB(255, 0, 255));
+	ImageManager::GetSingleton()->AddImage(EnemyName::Sadness, "Image/EasyMode/Character/Sadness.bmp", 64 * 3, 32 * 3, 2, 1, true, RGB(255, 0, 255));
+	ImageManager::GetSingleton()->AddImage(EnemyName::Panic, "Image/EasyMode/Character/Panic.bmp", 64 * 3, 32 * 3, 2, 1, true, RGB(255, 0, 255));
 
 	backBuffer = new Image();
 	backBuffer->Init(WINSIZE_X, WINSIZE_Y);
+
+	mainScene = new MainScene();
+	mainScene->Init();
 
 	player = new Player();
 	player->Init();
@@ -49,6 +60,9 @@ void MainGame::Release()
 	backBuffer->Release();
 	delete backBuffer;
 
+	mainScene->Release();
+	delete mainScene;
+
 	player->Release();
 	delete player;
 
@@ -70,6 +84,8 @@ void MainGame::Update()
 	if (player) player->Update();
 	
 	if (enemyMng) enemyMng->Update();
+
+	if (mainScene) mainScene->Update();
 	
 
 	InvalidateRect(g_hWnd, NULL, false);
@@ -80,8 +96,10 @@ void MainGame::Render()
 	HDC backDC = backBuffer->GetMemDC();
 	backGround->Render(backDC, 0, 0);
 
-	if (player) player->Render(backDC);
-	if (enemyMng) enemyMng->Render(backDC);
+	if (mainScene) mainScene->Render(backDC);
+
+	//if (player) player->Render(backDC);
+	//if (enemyMng) enemyMng->Render(backDC);
 
 	backBuffer->Render(hdc, 0, 0);
 }

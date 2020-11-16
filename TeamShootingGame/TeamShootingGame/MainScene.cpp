@@ -4,6 +4,9 @@
 
 HRESULT MainScene::Init()
 {
+	easy = new EasyModeUI();
+	easy->Init();
+	pos = { 0, 0 };
 	return E_NOTIMPL;
 }
 
@@ -17,4 +20,5 @@ void MainScene::Update()
 
 void MainScene::Render(HDC hdc)
 {
+	if (easy) easy->Render(hdc);
 }

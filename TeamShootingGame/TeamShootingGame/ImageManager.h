@@ -7,20 +7,20 @@ class Image;
 class ImageManager : public Singleton<ImageManager>
 {
 private:
-	map<string, Image*> mapImageDatas;
+	map<int, Image*> mapImageDatas;
 
 public:
 	HRESULT Init();
 	void Release();
 
-	void AddImage(string strKey, const char* fileName, int width, int height,
+	void AddImage(int strKey, const char* fileName, int width, int height,
 		bool isTrans = FALSE, COLORREF transColor = FALSE);
 
-	void AddImage(string strKey, const char* fileName, int width, int height,
+	void AddImage(int strKey, const char* fileName, int width, int height,
 		int maxFrameX, int maxFrameY,
 		bool isTrans = FALSE, COLORREF transColor = FALSE);
 
-	void DeleteImage(string strKey);
-	Image* FindImage(string strKey);
+	void DeleteImage(int strKey);
+	Image* FindImage(int strKey);
 };
 

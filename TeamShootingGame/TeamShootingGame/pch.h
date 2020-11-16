@@ -71,5 +71,6 @@ enum EnemyName { // Àû Á¾·ù
 	Anxiety,
 	Sadness,
 	Panic,
-	Despiar
+	Despiar,
+	NUM
 };

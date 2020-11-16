@@ -5,6 +5,7 @@
 class Image;
 class Player;
 class EnemyManager;
+class MainScene;
 class MainGame : public GameNode
 {
 private:
@@ -16,6 +17,7 @@ private:
 	Image* img;
 	Player* player;
 	EnemyManager* enemyMng;
+	MainScene* mainScene;
 
 public:
 	HRESULT Init();				// 멤버 변수 초기화, 메모리 할당

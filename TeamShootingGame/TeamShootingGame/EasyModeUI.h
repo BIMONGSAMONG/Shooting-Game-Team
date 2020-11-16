@@ -9,6 +9,16 @@ private:
 	Image* enemyTile;
 	Image* script;
 
+	struct Tile
+	{
+		bool isClear;
+		FPOINT pos;
+		Image* img;
+	};
+
+	Tile tile[18];
+	int size;
+
 public:
 	HRESULT Init();
 	void Release();
@@ -17,5 +27,7 @@ public:
 
 	void UpMouseCurser();
 	void MouseLButtonClick();
+	
+	//void ImageRender(HDC hdc, int name);
 };
 
