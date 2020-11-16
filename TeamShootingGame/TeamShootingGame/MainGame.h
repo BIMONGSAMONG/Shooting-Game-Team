@@ -3,8 +3,6 @@
 #include "GameNode.h"
 
 class Image;
-class Player;
-class EnemyManager;
 class MainGame : public GameNode
 {
 private:
@@ -12,10 +10,6 @@ private:
 	bool isInit;
 
 	Image* backBuffer;
-	Image* backGround;
-	Image* img;
-	Player* player;
-	EnemyManager* enemyMng;
 
 public:
 	HRESULT Init();				// 멤버 변수 초기화, 메모리 할당

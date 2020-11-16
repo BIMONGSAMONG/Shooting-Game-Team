@@ -8,7 +8,6 @@ class EnemyManager
 private:
 	vector<Enemy*>	vecEnemys;
 	vector<Enemy*>::iterator itEnemys;
-	int enemyCount;
 
 public:
 	HRESULT Init();

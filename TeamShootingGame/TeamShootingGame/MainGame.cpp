@@ -1,7 +1,6 @@
 #include "MainGame.h"
 #include "Image.h"
-#include "Player.h"
-#include "EnemyManager.h"
+
 
 HRESULT MainGame::Init()
 {
@@ -11,23 +10,8 @@ HRESULT MainGame::Init()
 
 	hdc = GetDC(g_hWnd);
 
-	ImageManager::GetSingleton()->AddImage("분노", "Image/EasyMode/Character/Anger.bmp", 64 * 3, 32 * 3, 2, 1, true, RGB(255, 0, 255));
-
 	backBuffer = new Image();
 	backBuffer->Init(WINSIZE_X, WINSIZE_Y);
-
-	player = new Player();
-	player->Init();
-
-	enemyMng = new EnemyManager();
-	enemyMng->Init();
-
-	backGround = new Image();
-	if (FAILED(backGround->Init("Image/background.bmp", WINSIZE_X, WINSIZE_Y)))
-	{
-		// 예외처리
-		MessageBox(g_hWnd, "빈 비트맵 생성에 실패했습니다.", "실패", MB_OK);
-	}
 
 	isInit = true;
 
@@ -40,15 +24,6 @@ void MainGame::Release()
 	backBuffer->Release();
 	delete backBuffer;
 
-	player->Release();
-	delete player;
-
-	enemyMng->Release();
-	delete enemyMng;
-
-	backGround->Release();
-	delete backGround;
-
 	TimerManager::GetSingleton()->Release();
 	KeyManager::GetSingleton()->Release();
 	ImageManager::GetSingleton()->Release();
@@ -58,10 +33,6 @@ void MainGame::Release()
 
 void MainGame::Update()
 {
-	if (player) player->Update();
-	
-	if (enemyMng) enemyMng->Update();
-	
 
 	InvalidateRect(g_hWnd, NULL, false);
 }
@@ -69,11 +40,8 @@ void MainGame::Update()
 void MainGame::Render()
 {
 	HDC backDC = backBuffer->GetMemDC();
-	backGround->Render(backDC, 0, 0);
 
-	if (player) player->Render(backDC);
-	if (enemyMng) enemyMng->Render(backDC);
-
+	
 	backBuffer->Render(hdc, 0, 0);
 }
 

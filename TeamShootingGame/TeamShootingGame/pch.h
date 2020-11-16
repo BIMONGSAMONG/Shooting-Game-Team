@@ -60,7 +60,6 @@ enum EnemyName { // 적 종류
 	Distress,
 	Fear,
 	Hatred,
-	Guilt,
 	Confusion,
 	Emptiness,
 	Shame,
@@ -68,8 +67,5 @@ enum EnemyName { // 적 종류
 	Jealousy,
 	Hoplessness,
 	Anger,
-	Anxiety,
-	Sadness,
-	Panic,
-	Despiar
+	Anxiety
 };
