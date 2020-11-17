@@ -4,14 +4,12 @@
 HRESULT Enemy::Init()
 {
 	pos = { WINSIZE_X / 2, 150 };
-	size = 40;
+	size = 48;
 	life = 50;
 	currFrameX = 0;
 	currFrameY = 0;
-	for (int i = 0; i < EnemyName::END_NUM; i++)
-	{
-		img[i] = ImageManager::GetSingleton()->FindImage(i);
-	}
+
+	img = ImageManager::GetSingleton()->FindImage("Easy_Boss");
 
 	return S_OK;
 }
@@ -25,12 +23,12 @@ void Enemy::Update(EnemyName name)
 	animationTime += TimerManager::GetSingleton()->GetElapsedTime();
 	if (animationTime >= 0.4f)
 	{
-		currFrameX++;
-		if (currFrameX >= img[name]->GetMaxFrameX())
-		{
+		//currFrameX++;
+		//if (currFrameX >= img->GetMaxFrameX())
+		//{
 			Move();
 			currFrameX = 0;
-		}
+		//}
 		animationTime = 0;
 	}
 }
@@ -39,14 +37,8 @@ void Enemy::Render(HDC hdc, EnemyName name)
 {
 	if (img)
 	{
-		if (img[name]->GetMaxFrameX() >= 2)
-		{
-			img[name]->FrameRender(hdc, pos.x - (size / 2), pos.y - (size / 2), currFrameX, currFrameY);
-		}
-		else
-		{
-			img[name]->Render(hdc, pos.x - (size / 2), pos.y - (size / 2));
-		}
+		img->FrameRender(hdc, pos.x - (size / 2), pos.y - (size / 2), name, 0);
+		//img->Render(hdc, pos.x - (size / 2), pos.y - (size / 2));
 	}
 }
 

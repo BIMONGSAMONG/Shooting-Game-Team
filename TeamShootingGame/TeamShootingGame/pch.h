@@ -72,26 +72,6 @@ enum EnemyName { // Àû Á¾·ù
 	Sadness,
 	Panic,
 	Despair,
-	END_NUM,
-	Tile_Start,
-	Tile_Irritation,
-	Tile_Pressure,
-	Tile_Loneliness,
-	Tile_Distress,
-	Tile_Fear,
-	Tile_Hatred,
-	Tile_Guilt,
-	Tile_Confusion,
-	Tile_Emptiness,
-	Tile_Shame,
-	Tile_Frustration,
-	Tile_Jealousy,
-	Tile_Hoplessness,
-	Tile_Anger,
-	Tile_Anxiety,
-	Tile_Sadness,
-	Tile_Panic,
-	Tile_Despair,
-	TILE_END_NUM
+	END_NUM
 };
 

@@ -17,7 +17,7 @@ private:
 
 	Image* img;
 
-	Tile tile[EnemyName::TILE_END_NUM];
+	Tile tile[18];
 	int size;
 	FPOINT pos;
 	FPOINT tilePos[18];
