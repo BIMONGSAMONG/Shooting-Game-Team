@@ -8,8 +8,7 @@ HRESULT Enemy::Init()
 	life = 50;
 	currFrameX = 0;
 	currFrameY = 0;
-	
-	for (int i = 0; i < EnemyName::NUM; i++)
+	for (int i = 0; i < EnemyName::END_NUM; i++)
 	{
 		img[i] = ImageManager::GetSingleton()->FindImage(i);
 	}
@@ -21,13 +20,13 @@ void Enemy::Release()
 {
 }
 
-void Enemy::Update()
+void Enemy::Update(EnemyName name)
 {
 	animationTime += TimerManager::GetSingleton()->GetElapsedTime();
 	if (animationTime >= 0.4f)
 	{
 		currFrameX++;
-		if (currFrameX >= img[EnemyName::Fear]->GetMaxFrameX())
+		if (currFrameX >= img[name]->GetMaxFrameX())
 		{
 			Move();
 			currFrameX = 0;
@@ -36,17 +35,17 @@ void Enemy::Update()
 	}
 }
 
-void Enemy::Render(HDC hdc)
+void Enemy::Render(HDC hdc, EnemyName name)
 {
 	if (img)
 	{
-		if (img[EnemyName::Fear]->GetMaxFrameX() >= 2)
+		if (img[name]->GetMaxFrameX() >= 2)
 		{
-			img[EnemyName::Fear]->FrameRender(hdc, pos.x - (size / 2), pos.y - (size / 2), currFrameX, currFrameY);
+			img[name]->FrameRender(hdc, pos.x - (size / 2), pos.y - (size / 2), currFrameX, currFrameY);
 		}
 		else
 		{
-			img[EnemyName::Fear]->Render(hdc, pos.x - (size / 2), pos.y - (size / 2));
+			img[name]->Render(hdc, pos.x - (size / 2), pos.y - (size / 2));
 		}
 	}
 }

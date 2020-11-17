@@ -21,7 +21,7 @@ using namespace std;
 
 #define MOUSE_LBUTTON 0x01	// 마우스 왼쪽버튼
 
-#define KEY_Z		0x90	// 총알 쏘는 키
+#define KEY_Z		0x5A	// 총알 쏘는 키
 #define KEY_R		0x82	// 리스타트
 #define KEY_Q		0x81	// 메인으로 나가기
 
@@ -71,6 +71,27 @@ enum EnemyName { // 적 종류
 	Anxiety,
 	Sadness,
 	Panic,
-	Despiar,
-	NUM
+	Despair,
+	END_NUM,
+	Tile_Start,
+	Tile_Irritation,
+	Tile_Pressure,
+	Tile_Loneliness,
+	Tile_Distress,
+	Tile_Fear,
+	Tile_Hatred,
+	Tile_Guilt,
+	Tile_Confusion,
+	Tile_Emptiness,
+	Tile_Shame,
+	Tile_Frustration,
+	Tile_Jealousy,
+	Tile_Hoplessness,
+	Tile_Anger,
+	Tile_Anxiety,
+	Tile_Sadness,
+	Tile_Panic,
+	Tile_Despair,
+	TILE_END_NUM
 };
+

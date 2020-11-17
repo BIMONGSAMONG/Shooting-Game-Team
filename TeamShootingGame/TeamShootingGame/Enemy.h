@@ -16,13 +16,14 @@ private:
 	int name;
 	
 	EMissileManager* missileMgr;
-	Image* img[EnemyName::NUM];
+	Image* img[EnemyName::END_NUM];
+
 
 public:
 	HRESULT Init();
 	void Release();
-	void Update();
-	void Render(HDC hdc);
+	void Update(EnemyName name);
+	void Render(HDC hdc, EnemyName name);
 
 	void Move();
 

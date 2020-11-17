@@ -4,6 +4,7 @@
 
 HRESULT MainScene::Init()
 {
+	enemyChoice = false;
 	easy = new EasyModeUI();
 	easy->Init();
 	pos = { 0, 0 };
@@ -16,6 +17,7 @@ void MainScene::Release()
 
 void MainScene::Update()
 {
+	if (easy) easy->Update();
 }
 
 void MainScene::Render(HDC hdc)

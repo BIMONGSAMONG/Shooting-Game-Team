@@ -19,6 +19,14 @@ private:
 	EnemyManager* enemyMng;
 	MainScene* mainScene;
 
+	struct MOUSE_DATA  //마우스 실시간 좌표 // 마우스 클릭 좌표
+	{
+		int mousePosX, mousePosY;
+		int clickedPosX, clickedPosY;
+	};
+
+	MOUSE_DATA mouseData;
+
 public:
 	HRESULT Init();				// 멤버 변수 초기화, 메모리 할당
 	void Release();				// 메모리 해제
@@ -28,6 +36,9 @@ public:
 	LRESULT MainProc(HWND hWnd, UINT iMessage,
 		WPARAM wParam, LPARAM lParam);
 
+
+	bool IsInRect(FPOINT pos, MOUSE_DATA mouseData, int size);
+	
 	MainGame();
 	~MainGame();
 };

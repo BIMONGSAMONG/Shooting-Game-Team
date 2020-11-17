@@ -27,7 +27,7 @@ void EnemyManager::Update()
 {
 	for (itEnemys = vecEnemys.begin(); itEnemys != vecEnemys.end(); itEnemys++)
 	{
-		(*itEnemys)->Update();
+		(*itEnemys)->Update(name);
 	}
 }
 
@@ -35,6 +35,6 @@ void EnemyManager::Render(HDC hdc)
 {
 	for (itEnemys = vecEnemys.begin(); itEnemys != vecEnemys.end(); itEnemys++)
 	{
-		(*itEnemys)->Render(hdc);
+		(*itEnemys)->Render(hdc, name);
 	}
 }

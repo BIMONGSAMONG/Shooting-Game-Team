@@ -16,9 +16,12 @@ private:
 		Image* img;
 	};
 
-	Tile tile[18];
+	Tile tile[EnemyName::TILE_END_NUM];
 	int size;
 	FPOINT pos;
+	FPOINT tilePos[18];
+	EnemyName TileNum[18];
+	int count;
 
 public:
 	HRESULT Init();
@@ -28,7 +31,9 @@ public:
 
 	void UpMouseCurser();
 	void MouseLButtonClick();
+	int GetSize() { return this->size; }
+	FPOINT GetTilePos();
+	EnemyName GetTileNum();
 	
-	//void ImageRender(HDC hdc, int name);
 };
 
