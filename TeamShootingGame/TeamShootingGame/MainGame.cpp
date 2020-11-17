@@ -37,6 +37,7 @@ HRESULT MainGame::Init()
 
 	/////// 타일 이미지
 	ImageManager::GetSingleton()->AddImage("Easy_Tile", "Image/EasyMode/Tile_sheet.bmp", 576 * 3, 64 * 3, 18, 2, true, RGB(255, 0, 255));
+	ImageManager::GetSingleton()->AddImage("Hard_Tile", "Image/HardMode/Tile_sheet.bmp", 576 * 3, 64 * 3, 18, 2, true, RGB(255, 0, 255));
 	
 	/////// 플레이어 이미지
 	ImageManager::GetSingleton()->AddImage("Player_White", "Image/Player.bmp", 4 * 3, 11 * 3, true, RGB(255, 0, 255));
@@ -44,6 +45,8 @@ HRESULT MainGame::Init()
 
 	////// 플레이어 총알 이미지
 	ImageManager::GetSingleton()->AddImage("Player_Bullet", "Image/player_bullet.bmp", 3 * 3, 11 * 3, true, RGB(255, 0, 255));
+	ImageManager::GetSingleton()->AddImage("Player_Bullet_Black", "Image/player_bullet_Black.bmp", 3 * 3, 11 * 3, true, RGB(255, 0, 255));
+
 	
 	////// 화살표 이미지
 	ImageManager::GetSingleton()->AddImage("왼쪽화살표", "Image/left.bmp", 12 * 3, 24 * 3, 18, 2, true, RGB(255, 0, 255));
@@ -138,17 +141,20 @@ void MainGame::Update()
 		mainScene->SetEnemyChoice(false);
 	}
 
-	if (IsInRect2(mainScene->GetRightPos(), mouseData, 36, 72))
+	if (mainScene->GetEnemyChoice() == false)
 	{
-		mainScene->SetIsEasy(false);
-		mouseData.clickedPosX = NULL; //클릭 좌표가 클릭시 고정되어있으니 초기화해서 다시 안들어오게 해줌
-		mouseData.clickedPosY = NULL;
-	}
-	if (IsInRect2(mainScene->GetLeftPos(), mouseData, 36, 72))
-	{
-		mainScene->SetIsEasy(true);
-		mouseData.clickedPosX = NULL; //클릭 좌표가 클릭시 고정되어있으니 초기화해서 다시 안들어오게 해줌
-		mouseData.clickedPosY = NULL;
+		if (IsInRect2(mainScene->GetRightPos(), mouseData, 36, 72))
+		{
+			mainScene->SetIsEasy(false);
+			mouseData.clickedPosX = NULL; //클릭 좌표가 클릭시 고정되어있으니 초기화해서 다시 안들어오게 해줌
+			mouseData.clickedPosY = NULL;
+		}
+		if (IsInRect2(mainScene->GetLeftPos(), mouseData, 36, 72))
+		{
+			mainScene->SetIsEasy(true);
+			mouseData.clickedPosX = NULL; //클릭 좌표가 클릭시 고정되어있으니 초기화해서 다시 안들어오게 해줌
+			mouseData.clickedPosY = NULL;
+		}
 	}
 
 	

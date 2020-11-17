@@ -6,8 +6,8 @@ HRESULT HardModeUi::Init()
 	size = 96;
 	pos = { 800.f, 150.f };
 	count = 0;
-
-	img = ImageManager::GetSingleton()->FindImage("Easy_Tile");
+	
+	img = ImageManager::GetSingleton()->FindImage("Hard_Tile");
 
 	for (int i = 0; i < 18; i++)
 	{
