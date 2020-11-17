@@ -4,28 +4,28 @@
 HRESULT HardModeUi::Init()
 {
 	size = 96;
-	pos = { 200.f, 150.f };
+	pos = { 800.f, 150.f };
 	count = 0;
 
 	img = ImageManager::GetSingleton()->FindImage("Easy_Tile");
 
 	for (int i = 0; i < 18; i++)
 	{
-		if (i < 6)
+		if (i < 5)
 		{
-			tile[i].pos = { pos.x + i * 150.0f, pos.y };
+			tile[i].pos = { pos.x - i * 150.0f, pos.y };
 		}
 		else if (i >= 5 && i < 9)
 		{
-			tile[i].pos = { pos.x + (i - 5) *  150.0f, pos.y + 150.f };
+			tile[i].pos = { pos.x - (i - 5) *  150.0f, pos.y + 150.f };
 		}
 		else if (i >= 9 && i < 13)
 		{
-			tile[i].pos = { pos.x + (i - 9) *  150.0f, pos.y + 300.f };
+			tile[i].pos = { pos.x - (i - 9) *  150.0f, pos.y + 300.f };
 		}
 		if (i >= 13)
 		{
-			tile[i].pos = { pos.x + (i - 13) * 150.0f, pos.y + 450.f };
+			tile[i].pos = { pos.x - (i - 13) * 150.0f, pos.y + 450.f };
 		}
 		tile[i].isClear = false;
 	}
