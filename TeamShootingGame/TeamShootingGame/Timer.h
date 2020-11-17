@@ -18,6 +18,6 @@ private:
 public:
 	HRESULT Init();
 	void Tick();
-
+	unsigned long GetFps() { return this->fps; }
 	float GetElapsedTime() { return timeElapsed; }
 };

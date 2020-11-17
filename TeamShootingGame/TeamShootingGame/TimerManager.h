@@ -7,7 +7,7 @@ class TimerManager : public Singleton<TimerManager>
 {
 private:
 	Timer* timer;
-
+	char szText[256];
 public:
 	HRESULT Init();
 	void Release();

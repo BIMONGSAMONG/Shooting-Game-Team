@@ -122,6 +122,16 @@ void MainGame::Update()
 				mouseData.clickedPosY = NULL;
 			}
 		}
+		else
+		{
+			if (IsInRect(mainScene->GetHardPos(), mouseData, mainScene->GetHardSize()))
+			{
+				mainScene->SetEnemyChoice(true);
+				enemyMng->SetEnemyName(mainScene->GetHardTileNum());
+				mouseData.clickedPosX = NULL; //클릭 좌표가 클릭시 고정되어있으니 초기화해서 다시 안들어오게 해줌
+				mouseData.clickedPosY = NULL;
+			}
+		}
 	}
 	if (KeyManager::GetSingleton()->IsOnceKeyDown('Q'))
 	{
@@ -168,7 +178,7 @@ void MainGame::Render()
 		if (player) player->Render(backDC);
 		if (enemyMng) enemyMng->Render(backDC);
 	}
-
+	TimerManager::GetSingleton()->Render(backDC);
 	backBuffer->Render(hdc, 0, 0);
 }
 
