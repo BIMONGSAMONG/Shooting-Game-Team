@@ -2,17 +2,20 @@
 #include "pch.h"
 #include "GameNode.h"
 #include "EasyModeUI.h"
+#include "HardModeUi.h"
+
 class EasyModeUI;
-class HardModeUI;
-class MainScene:public GameNode
+class HardModeUi;
+class MainScene :public GameNode
 {
 private:
 	EasyModeUI* easy;
-	HardModeUI* hard;
-	Image* img;
-	FPOINT pos;
+	HardModeUi* hard;
+	Image* img[2];
+	FPOINT pos[2];
 	int size;
 	bool enemyChoice;
+	bool isEasy;
 
 public:
 	HRESULT Init();
@@ -25,5 +28,9 @@ public:
 	FPOINT GetEasyPos() { return this->easy->GetTilePos(); }
 	int GetEasySize() { return this->easy->GetSize(); }
 	EnemyName GetEasyTileNum() { return this->easy->GetTileNum(); }
+	FPOINT GetLeftPos() { return this->pos[0]; }
+	FPOINT GetRightPos() { return this->pos[1]; }
+	void SetIsEasy(bool isEasy) { this->isEasy = isEasy; }
+	bool GetIsEasy() { return  this->isEasy; }
 };
 

@@ -38,7 +38,7 @@ public:
 
 
 	bool IsInRect(FPOINT pos, MOUSE_DATA mouseData, int size);
-	
+	bool IsInRect2(FPOINT pos, MOUSE_DATA mouseData, int sizeX, int sizeY);
 	MainGame();
 	~MainGame();
 };

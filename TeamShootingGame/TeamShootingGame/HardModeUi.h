@@ -23,7 +23,7 @@ private:
 	FPOINT tilePos[18];
 	EnemyName TileNum[18];
 	int count;
-	
+
 public:
 	HRESULT Init();
 	void Release();

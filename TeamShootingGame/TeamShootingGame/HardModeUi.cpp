@@ -11,7 +11,7 @@ HRESULT HardModeUi::Init()
 
 	for (int i = 0; i < 18; i++)
 	{
-		if (i < 5)
+		if (i < 6)
 		{
 			tile[i].pos = { pos.x + i * 150.0f, pos.y };
 		}

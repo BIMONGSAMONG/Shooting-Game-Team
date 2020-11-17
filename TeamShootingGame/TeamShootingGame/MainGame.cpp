@@ -45,6 +45,9 @@ HRESULT MainGame::Init()
 	////// 플레이어 총알 이미지
 	ImageManager::GetSingleton()->AddImage("Player_Bullet", "Image/player_bullet.bmp", 3 * 3, 11 * 3, true, RGB(255, 0, 255));
 	
+	////// 화살표 이미지
+	ImageManager::GetSingleton()->AddImage("왼쪽화살표", "Image/left.bmp", 12 * 3, 24 * 3, 18, 2, true, RGB(255, 0, 255));
+	ImageManager::GetSingleton()->AddImage("오른쪽화살표", "Image/right.bmp", 12 * 3, 24 * 3, 18, 2, true, RGB(255, 0, 255));
 												
 
 	backBuffer = new Image();
@@ -101,6 +104,7 @@ void MainGame::Update()
 	if (mainScene->GetEnemyChoice())
 	{
 		if (player) player->Update();
+
 		if (enemyMng) enemyMng->Update();
 	}
 
@@ -108,19 +112,34 @@ void MainGame::Update()
 
 	if (mainScene->GetEnemyChoice() == false)
 	{
-		if (IsInRect(mainScene->GetEasyPos(), mouseData, mainScene->GetEasySize()))
+		if (mainScene->GetIsEasy())  //이지모드일때만
 		{
-			mainScene->SetEnemyChoice(true);
-			enemyMng->SetEnemyName(mainScene->GetEasyTileNum());
-			mouseData.clickedPosX = NULL; //클릭 좌표가 클릭시 고정되어있으니 초기화해서 다시 안들어오게 해줌
-			mouseData.clickedPosY = NULL;
+			if (IsInRect(mainScene->GetEasyPos(), mouseData, mainScene->GetEasySize()))
+			{
+				mainScene->SetEnemyChoice(true);
+				enemyMng->SetEnemyName(mainScene->GetEasyTileNum());
+				mouseData.clickedPosX = NULL; //클릭 좌표가 클릭시 고정되어있으니 초기화해서 다시 안들어오게 해줌
+				mouseData.clickedPosY = NULL;
+			}
 		}
 	}
 	if (KeyManager::GetSingleton()->IsOnceKeyDown('Q'))
 	{
 		mainScene->SetEnemyChoice(false);
 	}
-	
+
+	if (IsInRect2(mainScene->GetRightPos(), mouseData, 36, 72))
+	{
+		mainScene->SetIsEasy(false);
+		mouseData.clickedPosX = NULL; //클릭 좌표가 클릭시 고정되어있으니 초기화해서 다시 안들어오게 해줌
+		mouseData.clickedPosY = NULL;
+	}
+	if (IsInRect2(mainScene->GetLeftPos(), mouseData, 36, 72))
+	{
+		mainScene->SetIsEasy(true);
+		mouseData.clickedPosX = NULL; //클릭 좌표가 클릭시 고정되어있으니 초기화해서 다시 안들어오게 해줌
+		mouseData.clickedPosY = NULL;
+	}
 
 	
 	InvalidateRect(g_hWnd, NULL, false);
@@ -199,6 +218,16 @@ bool MainGame::IsInRect(FPOINT pos, MOUSE_DATA mouseData , int size) //마우스가 
 {
 	if (pos.x - (size / 2)  <= mouseData.clickedPosX && mouseData.clickedPosX <= pos.x + (size / 2)
 		&& pos.y - (size / 2) <= mouseData.clickedPosY && mouseData.clickedPosY <= pos.y + (size / 2))
+	{
+		return true;
+	}
+	return false;
+}
+
+bool MainGame::IsInRect2(FPOINT pos, MOUSE_DATA mouseData, int sizeX, int sizeY) //마우스가 왼쪽버튼 클릭시 해당 좌표 네모안에 있는지
+{
+	if (pos.x <= mouseData.clickedPosX && mouseData.clickedPosX <= pos.x + sizeX
+		&& pos.y <= mouseData.clickedPosY && mouseData.clickedPosY <= pos.y + sizeY)
 	{
 		return true;
 	}
