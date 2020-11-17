@@ -8,6 +8,7 @@ class Player : public GameNode
 private:
 	FPOINT pos;
 	int size;
+	float timer;
 
 	PMissileManager* missileMgr;
 

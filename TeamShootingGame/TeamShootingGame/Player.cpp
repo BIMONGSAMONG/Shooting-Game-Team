@@ -20,7 +20,13 @@ void Player::Release()
 void Player::Update()
 {
 	Move();
-	Fire();
+	timer += TimerManager::GetSingleton()->GetElapsedTime();
+	if (timer >= 0.3f)
+	{
+		Fire();
+		timer = 0.0f;
+	}
+	
 	if (missileMgr)
 	{
 		missileMgr->Update();
@@ -59,7 +65,7 @@ void Player::Move()
 
 void Player::Fire()
 {
-	if (KeyManager::GetSingleton()->IsOnceKeyDown(KEY_Z))
+	if (KeyManager::GetSingleton()->IsStayKeyDown(KEY_Z))
 	{
 		if (missileMgr)
 		{

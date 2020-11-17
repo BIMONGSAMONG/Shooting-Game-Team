@@ -33,6 +33,7 @@ public:
 
 	void UpMouseCurser();
 	void MouseLButtonClick();
+
 	int GetSize() { return this->size; }
 	FPOINT GetTilePos();
 	EnemyName GetTileNum();

@@ -56,8 +56,7 @@ void EasyModeUI::Render(HDC hdc)
 	{
 		if (img)
 		{
-			img->FrameRender(hdc, tile[i].pos.x, tile[i].pos.y, i, 0);
-			//Rectangle(hdc, tile[i].pos.x , tile[i].pos.y , tile[i].pos.x + size , tile[i].pos.y + size);
+			img->FrameRender(hdc, tile[i].pos.x, tile[i].pos.y, i, tile[i].isClear);
 		}
 	}
 }
@@ -79,11 +78,3 @@ EnemyName EasyModeUI::GetTileNum()
 {
 	return TileNum[this->count];
 }
-
-//void EasyModeUI::ImageRender(HDC hdc, int name)
-//{
-//	if (tile[name].isClear == true)
-//	{
-//		
-//	}
-//}

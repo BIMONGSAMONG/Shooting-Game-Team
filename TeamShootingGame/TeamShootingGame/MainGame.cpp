@@ -36,7 +36,7 @@ HRESULT MainGame::Init()
 
 
 	/////// 타일 이미지
-	ImageManager::GetSingleton()->AddImage("Easy_Tile", "Image/EasyMode/Tile/Tile_sheet.bmp", 576 * 3, 32 * 3, 18, 1, true, RGB(255, 0, 255));
+	ImageManager::GetSingleton()->AddImage("Easy_Tile", "Image/EasyMode/Tile_sheet.bmp", 576 * 3, 64 * 3, 18, 2, true, RGB(255, 0, 255));
 	
 												
 
