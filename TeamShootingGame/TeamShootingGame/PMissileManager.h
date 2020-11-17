@@ -16,6 +16,6 @@ public:
 	void Update();
 	void Render(HDC hdc);
 
-	void Fire();
+	void Fire(FPOINT pos);
 };
 

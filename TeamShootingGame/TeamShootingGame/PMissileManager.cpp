@@ -39,6 +39,15 @@ void PMissileManager::Render(HDC hdc)
 	}
 }
 
-void PMissileManager::Fire()
+void PMissileManager::Fire(FPOINT pos)
 {
+	for (itMissiles = vecMissiles.begin(); itMissiles != vecMissiles.end(); itMissiles++)
+	{
+		if ((*itMissiles)->GetIsFire() == false)
+		{
+			(*itMissiles)->SetPos(pos);
+			(*itMissiles)->SetIsFire(true);
+			break;
+		}
+	}
 }

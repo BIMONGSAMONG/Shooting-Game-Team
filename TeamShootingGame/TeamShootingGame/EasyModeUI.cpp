@@ -4,17 +4,18 @@
 HRESULT EasyModeUI::Init()
 {
 	size = 96;
-	pos = { 200.f, 150.f };
-	for (int i = 0; i < 18; i++)
+	pos = { 150.0f, 100.f };
+	for (int i = 0; i < EnemyName::NUM; i++)
 	{
+		tile[i].isClear = false;
 		tile[i].img = ImageManager::GetSingleton()->FindImage(i);
 		if (i < 5)
 		{
-			tile[i].pos = { pos.x+ i * 150.0f, pos.y };
+			tile[i].pos = { pos.x + i * 150.0f, pos.y };
 		}
 		else if (i >= 5 && i < 9)
 		{
-			tile[i].pos = { pos.x + (i-5) * 150.0f, pos.y + 150.f };
+			tile[i].pos = { pos.x + (i - 5) * 150.0f, pos.y + 150.f };
 		}
 		else if (i >= 9 && i < 13)
 		{
@@ -22,10 +23,8 @@ HRESULT EasyModeUI::Init()
 		}
 		if (i >= 13)
 		{
-			tile[i].pos = { pos.x + (i-13) * 150.0f, pos.y + 450.f };
+			tile[i].pos = { pos.x + (i - 13) * 150.0f, pos.y + 450.f };
 		}
-		tile[i].isClear = false;
-
 	}
 
 	return S_OK;

@@ -19,5 +19,7 @@ public:
 
 	void Move();
 	void Fire();
+
+	FPOINT GetPos() { return pos; }
 };
 
