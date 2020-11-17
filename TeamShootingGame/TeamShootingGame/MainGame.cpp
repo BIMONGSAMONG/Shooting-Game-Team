@@ -36,24 +36,8 @@ HRESULT MainGame::Init()
 
 
 	/////// 타일 이미지
-	ImageManager::GetSingleton()->AddImage(EnemyName::Tile_Irritation, "Image/EasyMode/Tile/Irrietation.bmp", 32 * 3, 32 * 3);
-	ImageManager::GetSingleton()->AddImage(EnemyName::Tile_Pressure, "Image/EasyMode/Tile/Pressure.bmp", 32 * 3, 32 * 3);
-	ImageManager::GetSingleton()->AddImage(EnemyName::Tile_Loneliness, "Image/EasyMode/Tile/Loneliness.bmp", 32 * 3, 32 * 3);
-	ImageManager::GetSingleton()->AddImage(EnemyName::Tile_Distress, "Image/EasyMode/Tile/Distress.bmp", 32 * 3, 32 * 3);
-	ImageManager::GetSingleton()->AddImage(EnemyName::Tile_Fear, "Image/EasyMode/Tile/Fear.bmp", 32 * 3, 32 * 3);
-	ImageManager::GetSingleton()->AddImage(EnemyName::Tile_Hatred, "Image/EasyMode/Tile/Hatred.bmp", 32 * 3, 32 * 3);
-	ImageManager::GetSingleton()->AddImage(EnemyName::Tile_Guilt, "Image/EasyMode/Tile/Guilt.bmp", 32 * 3, 32 * 3);
-	ImageManager::GetSingleton()->AddImage(EnemyName::Tile_Confusion, "Image/EasyMode/Tile/Confusion.bmp", 32 * 3, 32 * 3);
-	ImageManager::GetSingleton()->AddImage(EnemyName::Tile_Emptiness, "Image/EasyMode/Tile/Emptieness.bmp", 32 * 3, 32 * 3);
-	ImageManager::GetSingleton()->AddImage(EnemyName::Tile_Shame, "Image/EasyMode/Tile/Shame.bmp", 32 * 3, 32 * 3);
-	ImageManager::GetSingleton()->AddImage(EnemyName::Tile_Frustration, "Image/EasyMode/Tile/Frustration.bmp", 32 * 3, 32 * 3);
-	ImageManager::GetSingleton()->AddImage(EnemyName::Tile_Jealousy, "Image/EasyMode/Tile/Jealousy.bmp", 32 * 3, 32 * 3);
-	ImageManager::GetSingleton()->AddImage(EnemyName::Tile_Hoplessness, "Image/EasyMode/Tile/Hopelessness.bmp", 32 * 3, 32 * 3);
-	ImageManager::GetSingleton()->AddImage(EnemyName::Tile_Anger, "Image/EasyMode/Tile/Anger.bmp", 32 * 3, 32 * 3);
-	ImageManager::GetSingleton()->AddImage(EnemyName::Tile_Anxiety, "Image/EasyMode/Tile/Anxiety.bmp", 32 * 3, 32 * 3);
-	ImageManager::GetSingleton()->AddImage(EnemyName::Tile_Sadness, "Image/EasyMode/Tile/Sadness.bmp", 32 * 3, 32 * 3);
-	ImageManager::GetSingleton()->AddImage(EnemyName::Tile_Panic, "Image/EasyMode/Tile/Panic.bmp", 32 * 3, 32 * 3);
-	ImageManager::GetSingleton()->AddImage(EnemyName::Tile_Despair, "Image/EasyMode/Tile/Despair.bmp", 32 * 3, 32 * 3);
+	ImageManager::GetSingleton()->AddImage("Easy_Tile", "Image/EasyMode/Tile/Tile_sheet.bmp", 576 * 3, 32 * 3, 18, 1, true, RGB(255, 0, 255));
+	
 												
 
 	backBuffer = new Image();
@@ -207,8 +191,8 @@ LRESULT MainGame::MainProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lPara
 
 bool MainGame::IsInRect(FPOINT pos, MOUSE_DATA mouseData , int size) //마우스가 왼쪽버튼 클릭시 해당 좌표 네모안에 있는지
 {
-	if (pos.x  <= mouseData.clickedPosX && mouseData.clickedPosX <= pos.x+ size 
-		&& pos.y  <= mouseData.clickedPosY && mouseData.clickedPosY <= pos.y + size )
+	if (pos.x - (size / 2)  <= mouseData.clickedPosX && mouseData.clickedPosX <= pos.x + (size / 2)
+		&& pos.y - (size / 2) <= mouseData.clickedPosY && mouseData.clickedPosY <= pos.y + (size / 2))
 	{
 		return true;
 	}

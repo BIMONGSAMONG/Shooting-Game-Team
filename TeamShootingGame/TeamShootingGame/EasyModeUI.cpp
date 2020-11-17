@@ -4,36 +4,35 @@
 HRESULT EasyModeUI::Init()
 {
 	size = 96;
-	pos = { 100.f, 50.f };
+	pos = { 200.f, 150.f };
 	count = 0;
 
-
-	for (int i = EnemyName::Tile_Start + 1; i < EnemyName::TILE_END_NUM; i++)
+	img = ImageManager::GetSingleton()->FindImage("Easy_Tile");
+	for (int i = 0; i < 18; i++)
 	{
-		if ((i - 20) < 5)
+		if (i < 5)
 		{
-			tile[i].pos = { pos.x + (i - 20) * 175.0f, pos.y };
+			tile[i].pos = { pos.x + i* 150.0f, pos.y };
 		}
-		else if ((i - 20) >= 5 && (i - 20) < 9)
+		else if (i >= 5 && i < 9)
 		{
-			tile[i].pos = { pos.x + (i - 25) *  175.0f, pos.y + 150.f };
+			tile[i].pos = { pos.x + (i - 5) *  150.0f, pos.y + 150.f };
 		}
-		else if ((i - 20) >= 9 && (i - 20) < 13)
+		else if (i >= 9 && i < 13)
 		{
-			tile[i].pos = { pos.x + (i - 29) *  175.0f, pos.y + 300.f };
+			tile[i].pos = { pos.x + (i - 9) *  150.0f, pos.y + 300.f };
 		}
-		if ((i - 20) >= 13)
+		if (i >= 13)
 		{
-			tile[i].pos = { pos.x + (i - 33) * 175.0f, pos.y + 450.f };
+			tile[i].pos = { pos.x + (i - 13) * 150.0f, pos.y + 450.f };
 		}
 		tile[i].isClear = false;
-		tile[i].img = ImageManager::GetSingleton()->FindImage(i);
 	}
 
-	for (int i = EnemyName::Tile_Start + 1; i < EnemyName::TILE_END_NUM-1/*마지막보스없어서*/; i++)
+	for (int i = 0; i < 18/*마지막보스없어서*/; i++)
 	{
-		tilePos[i-20] = tile[i].pos;
-		TileNum[i-20] = EnemyName(i - 20);
+		tilePos[i] = tile[i].pos;
+		TileNum[i] = EnemyName(i);
 	}
 	return S_OK;
 }
@@ -53,11 +52,11 @@ void EasyModeUI::Update()
 
 void EasyModeUI::Render(HDC hdc)
 {
-	for (int i = EnemyName::Tile_Start + 1; i < EnemyName::TILE_END_NUM; i++)
+	for (int i = 0; i < 18; i++)
 	{
-		if (tile[i].img)
+		if (img)
 		{
-			tile[i].img->Render(hdc, tile[i].pos.x, tile[i].pos.y);
+			img->FrameRender(hdc, tile[i].pos.x, tile[i].pos.y, i, 0);
 			//Rectangle(hdc, tile[i].pos.x , tile[i].pos.y , tile[i].pos.x + size , tile[i].pos.y + size);
 		}
 	}

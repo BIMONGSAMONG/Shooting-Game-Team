@@ -13,8 +13,10 @@ private:
 	{
 		bool isClear;
 		FPOINT pos;
-		Image* img;
 	};
+
+
+	Image* img;
 
 	Tile tile[EnemyName::TILE_END_NUM];
 	int size;
