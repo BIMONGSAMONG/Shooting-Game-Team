@@ -38,6 +38,13 @@ HRESULT MainGame::Init()
 	/////// 타일 이미지
 	ImageManager::GetSingleton()->AddImage("Easy_Tile", "Image/EasyMode/Tile_sheet.bmp", 576 * 3, 64 * 3, 18, 2, true, RGB(255, 0, 255));
 	
+	/////// 플레이어 이미지
+	ImageManager::GetSingleton()->AddImage("Player_White", "Image/Player.bmp", 4 * 3, 11 * 3, true, RGB(255, 0, 255));
+	ImageManager::GetSingleton()->AddImage("Player_Black", "Image/Player_black.bmp", 4 * 3, 11 * 3, true, RGB(255, 0, 255));
+
+	////// 플레이어 총알 이미지
+	ImageManager::GetSingleton()->AddImage("Player_Bullet", "Image/player_bullet.bmp", 3 * 3, 11 * 3, true, RGB(255, 0, 255));
+	
 												
 
 	backBuffer = new Image();
@@ -94,7 +101,6 @@ void MainGame::Update()
 	if (mainScene->GetEnemyChoice())
 	{
 		if (player) player->Update();
-
 		if (enemyMng) enemyMng->Update();
 	}
 

@@ -1,4 +1,5 @@
 #include "PMissile.h"
+#include "Image.h"
 
 HRESULT PMissile::Init()
 {
@@ -7,6 +8,9 @@ HRESULT PMissile::Init()
 	angle = PI / 2;
 	pos = { 0, 0 };
 	speed = 2.0f;
+
+	img = ImageManager::GetSingleton()->FindImage("Player_Bullet");
+
 	return S_OK;
 }
 
@@ -31,6 +35,9 @@ void PMissile::Render(HDC hdc)
 {
 	if (isFire)
 	{
-		Rectangle(hdc, pos.x - (size / 2), pos.y - (size * 3), pos.x + (size / 2), pos.y - (size * 2));
+		if (img)
+		{
+			img->Render(hdc, pos.x, pos.y);
+		}
 	}
 }

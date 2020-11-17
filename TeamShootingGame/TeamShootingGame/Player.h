@@ -9,8 +9,9 @@ private:
 	FPOINT pos;
 	int size;
 	float timer;
-
+	bool isBoss;
 	PMissileManager* missileMgr;
+	Image* img[2];
 
 public:
 	HRESULT Init();

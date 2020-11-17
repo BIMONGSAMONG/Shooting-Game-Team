@@ -10,6 +10,7 @@ private:
 	float angle;
 	bool isFire;
 	float speed;
+	Image* img;
 
 public:
 	HRESULT Init();

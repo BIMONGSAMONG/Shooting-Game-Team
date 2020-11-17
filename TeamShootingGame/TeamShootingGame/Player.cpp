@@ -1,13 +1,19 @@
 #include "Player.h"
 #include "PMissileManager.h"
+#include "Image.h"
 
 HRESULT Player::Init()
 {
 	pos = { WINSIZE_X / 2, WINSIZE_Y - 100 };
 	size = 20;
+	isBoss = false;
 
 	missileMgr = new PMissileManager;
 	missileMgr->Init();
+
+	img[0] = ImageManager::GetSingleton()->FindImage("Player_White");
+	img[1] = ImageManager::GetSingleton()->FindImage("Player_Black");
+	
 	return S_OK;
 }
 
@@ -35,7 +41,17 @@ void Player::Update()
 
 void Player::Render(HDC hdc)
 {
-	Rectangle(hdc, pos.x - (size / 2) + 5, pos.y - size, pos.x + (size / 2) - 5, pos.y + size);
+	if (img)
+	{
+		if (isBoss == false)
+		{
+			img[0]->Render(hdc, pos.x, pos.y);
+		}
+		else if (isBoss == true)
+		{
+			img[1]->Render(hdc, pos.x, pos.y);
+		}
+	}
 
 	if (missileMgr)
 	{
