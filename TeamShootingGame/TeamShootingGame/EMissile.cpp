@@ -4,10 +4,8 @@ HRESULT EMissile::Init()
 {
 	isFire = false;
 	pos = { 0,0 };
-	size = 14;
+	size = 20;
 	angle = -PI / 2;
-	pingpongAngle[0] = PI - (PI / 4);
-	pingpongAngle[1] = PI + (PI / 4);
 	speed = 1500.0f;
 	goalTime = 5.0f;
 	isPingPong = false;
@@ -20,22 +18,21 @@ void EMissile::Release()
 
 void EMissile::Update()
 {
-	random = rand() % 2;
 	if (isFire)
 	{
 		pos.x += cosf(angle) * speed * TimerManager::GetSingleton()->GetElapsedTime() / goalTime;
 		pos.y -= sinf(angle) * speed * TimerManager::GetSingleton()->GetElapsedTime() / goalTime;
 		if (isPingPong)
 		{
-			if (pos.x - (size / 2) <= 0)
+			if (pos.x - (size / 2) <= 0 + 10)
 			{
-				angle = pingpongAngle[random];
+				angle = PI - angle - (PI / 4);
 			}
-			if (pos.x + (size / 2) >= WINSIZE_X)
+			if (pos.x + (size / 2) >= WINSIZE_X - 10)
 			{
-				angle = pingpongAngle[random] - PI;
+				angle = PI - angle + (PI / 4);
 			}
-			if (pos.y + (size / 2) >= WINSIZE_Y)
+			if (pos.y - (size / 2) <= 0 || pos.y + (size / 2) >= WINSIZE_Y)
 			{
 				angle = PI * 2.0f - angle;
 			}
