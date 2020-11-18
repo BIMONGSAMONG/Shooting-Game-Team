@@ -23,7 +23,7 @@ public:
 	HRESULT Init();
 	void Release();
 	void Update(EnemyName name);
-	void Render(HDC hdc, EnemyName name);
+	void Render(HDC hdc, EnemyName name, Mode mode);
 
 	void Move();
 

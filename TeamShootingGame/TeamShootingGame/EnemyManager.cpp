@@ -35,6 +35,6 @@ void EnemyManager::Render(HDC hdc)
 {
 	for (itEnemys = vecEnemys.begin(); itEnemys != vecEnemys.end(); itEnemys++)
 	{
-		(*itEnemys)->Render(hdc, name);
+		(*itEnemys)->Render(hdc, name, mode);
 	}
 }

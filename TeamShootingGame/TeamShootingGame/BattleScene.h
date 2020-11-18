@@ -10,6 +10,7 @@ private:
 	Player* player;
 	EnemyManager* enemyMgr;
 	EnemyName name;
+	Mode mode;
 
 public:
 	HRESULT Init();
@@ -18,6 +19,6 @@ public:
 	void Render(HDC hdc);
 
 	void SetEnemyName(EnemyName name) { this->name = name; }
-
+	void SetMode(Mode mode) { this->mode = mode; }
 };
 

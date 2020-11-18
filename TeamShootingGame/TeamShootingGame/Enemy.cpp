@@ -10,7 +10,7 @@ HRESULT Enemy::Init()
 	currFrameX = 0;
 	currFrameY = 0;
 
-	img = ImageManager::GetSingleton()->FindImage("Easy_Boss");
+	img = ImageManager::GetSingleton()->FindImage("Small_Boss");
 
 	return S_OK;
 }
@@ -34,11 +34,11 @@ void Enemy::Update(EnemyName name)
 	}
 }
 
-void Enemy::Render(HDC hdc, EnemyName name)
+void Enemy::Render(HDC hdc, EnemyName name, Mode mode)
 {
 	if (img)
 	{
-		img->FrameRender(hdc, pos.x, pos.y, name, 0);
+		img->FrameRender(hdc, pos.x, pos.y, name, mode);
 	}
 }
 

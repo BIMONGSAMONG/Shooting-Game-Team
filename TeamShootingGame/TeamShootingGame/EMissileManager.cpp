@@ -41,4 +41,8 @@ void EMissileManager::Render(HDC hdc)
 
 void EMissileManager::Fire()
 {
+	//for (itMissiles = vecMissiles.begin(); itMissiles != vecMissiles.end(); itMissiles++)
+	//{
+	//	(*itMissiles)->;
+	//}
 }

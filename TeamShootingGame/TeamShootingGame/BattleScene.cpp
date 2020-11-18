@@ -29,6 +29,7 @@ void BattleScene::Update()
 	if (enemyMgr) enemyMgr->Update();
 
 	enemyMgr->SetEnemyName(name);
+	enemyMgr->SetMode(mode);
 }
 
 void BattleScene::Render(HDC hdc)

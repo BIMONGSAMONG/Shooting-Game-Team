@@ -33,7 +33,7 @@ HRESULT MainGame::Init()
 	//ImageManager::GetSingleton()->AddImage(EnemyName::Panic, "Image/EasyMode/Character/Panic.bmp", 64 * 3, 32 * 3, 2, 1, true, RGB(255, 0, 255));
 	//ImageManager::GetSingleton()->AddImage(EnemyName::Panic, "Image/EasyMode/Character/Panic.bmp", 64 * 3, 32 * 3, 2, 1, true, RGB(255, 0, 255));
 
-	ImageManager::GetSingleton()->AddImage("Easy_Boss", "Image/EasyMode/Character/SmallEnamy_sheet.bmp", 208 * 4, 16 * 4, 13, 1, true, RGB(255, 0, 255));
+	ImageManager::GetSingleton()->AddImage("Small_Boss", "Image/SmallEnamy_sheet.bmp", 208 * 4, 32 * 4, 13, 2, true, RGB(255, 0, 255));
 
 
 	/////// 타일 이미지
@@ -114,6 +114,7 @@ void MainGame::Update()
 			{
 				mainScene->SetEnemyChoice(true);
 				battleScene->SetEnemyName(mainScene->GetEasyTileNum());
+				battleScene->SetMode(Mode::Easy);
 				mouseData.clickedPosX = NULL; //클릭 좌표가 클릭시 고정되어있으니 초기화해서 다시 안들어오게 해줌
 				mouseData.clickedPosY = NULL;
 			}
@@ -124,6 +125,7 @@ void MainGame::Update()
 			{
 				mainScene->SetEnemyChoice(true);
 				battleScene->SetEnemyName(mainScene->GetHardTileNum());
+				battleScene->SetMode(Mode::Hard);
 				mouseData.clickedPosX = NULL; //클릭 좌표가 클릭시 고정되어있으니 초기화해서 다시 안들어오게 해줌
 				mouseData.clickedPosY = NULL;
 			}
