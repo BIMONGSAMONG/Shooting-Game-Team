@@ -15,8 +15,8 @@ HRESULT MainScene::Init()
 	hard = new HardModeUi();
 	hard->Init();
 
-	pos[0] = { 0 + 5, WINSIZE_Y / 2 - (24 * 3) };
-	pos[1] = { WINSIZE_X - 12 * 3 - 5, WINSIZE_Y / 2 - (24 * 3) };
+	pos[0] = { 0 + 22 , WINSIZE_Y / 2 - 50 };
+	pos[1] = { WINSIZE_X - 22 , WINSIZE_Y / 2 - 50 };
 	return S_OK;
 }
 

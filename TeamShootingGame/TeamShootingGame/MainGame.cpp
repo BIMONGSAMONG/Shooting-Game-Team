@@ -115,8 +115,6 @@ void MainGame::Update()
 				mainScene->SetEnemyChoice(true);
 				battleScene->SetEnemyName(mainScene->GetEasyTileNum());
 				battleScene->SetMode(Mode::Easy);
-				mouseData.clickedPosX = NULL; //클릭 좌표가 클릭시 고정되어있으니 초기화해서 다시 안들어오게 해줌
-				mouseData.clickedPosY = NULL;
 			}
 		}
 		else if (mainScene->GetMode() == Mode::Hard)
@@ -126,8 +124,6 @@ void MainGame::Update()
 				mainScene->SetEnemyChoice(true);
 				battleScene->SetEnemyName(mainScene->GetHardTileNum());
 				battleScene->SetMode(Mode::Hard);
-				mouseData.clickedPosX = NULL; //클릭 좌표가 클릭시 고정되어있으니 초기화해서 다시 안들어오게 해줌
-				mouseData.clickedPosY = NULL;
 			}
 		}
 	}
@@ -152,7 +148,11 @@ void MainGame::Update()
 			mouseData.clickedPosY = NULL;
 		}
 	}
-
+	if (mainScene->GetEnemyChoice() == true)
+	{
+		mouseData.clickedPosX = NULL; //클릭 좌표가 클릭시 고정되어있으니 초기화해서 다시 안들어오게 해줌
+		mouseData.clickedPosY = NULL;
+	}
 	
 	InvalidateRect(g_hWnd, NULL, false);
 }
@@ -237,8 +237,8 @@ bool MainGame::IsInRect(FPOINT pos, MOUSE_DATA mouseData , int size) //마우스가 
 
 bool MainGame::IsInRect2(FPOINT pos, MOUSE_DATA mouseData, int sizeX, int sizeY) //마우스가 왼쪽버튼 클릭시 해당 좌표 네모안에 있는지
 {
-	if (pos.x <= mouseData.clickedPosX && mouseData.clickedPosX <= pos.x + sizeX
-		&& pos.y <= mouseData.clickedPosY && mouseData.clickedPosY <= pos.y + sizeY)
+	if (pos.x - (sizeX / 2) <= mouseData.clickedPosX && mouseData.clickedPosX <= pos.x + (sizeX / 2)
+		&& pos.y - (sizeY / 2) <= mouseData.clickedPosY && mouseData.clickedPosY <= pos.y + (sizeY / 2))
 	{
 		return true;
 	}
