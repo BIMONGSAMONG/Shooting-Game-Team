@@ -4,8 +4,8 @@
 
 HRESULT Player::Init()
 {
-	pos = { WINSIZE_X / 2, WINSIZE_Y - 100 };
-	size = 20;
+	pos = { WINSIZE_X / 2 - 6, WINSIZE_Y - 100 };
+	size = 4;
 	isBoss = false;
 
 	missileMgr = new PMissileManager;

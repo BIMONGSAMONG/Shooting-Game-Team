@@ -9,8 +9,9 @@ private:
 	int size;
 	float angle;
 	bool isFire;
+	bool isBoss;
 	float speed;
-	Image* img;
+	Image* img[2];
 
 public:
 	HRESULT Init();

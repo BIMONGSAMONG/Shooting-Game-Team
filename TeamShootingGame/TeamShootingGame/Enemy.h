@@ -16,7 +16,7 @@ private:
 	int name;
 	
 	EMissileManager* missileMgr;
-	Image* img[EnemyName::END_NUM];
+	Image* img;
 
 
 public:

@@ -1,8 +1,7 @@
 #include "MainGame.h"
 #include "Image.h"
-#include "Player.h"
-#include "EnemyManager.h"
 #include "MainScene.h"
+#include "BattleScene.h"
 
 HRESULT MainGame::Init()
 {
@@ -15,28 +14,31 @@ HRESULT MainGame::Init()
 
 	//////// 몬스터 이미지
 
-	ImageManager::GetSingleton()->AddImage(EnemyName::Irritation, "Image/EasyMode/Character/Irrietation.bmp", 16 * 3, 16 * 3, true, RGB(255, 0, 255));
-	ImageManager::GetSingleton()->AddImage(EnemyName::Pressure, "Image/EasyMode/Character/Pressure.bmp", 16 * 3, 16 * 3, true, RGB(255, 0, 255));
-	ImageManager::GetSingleton()->AddImage(EnemyName::Loneliness, "Image/EasyMode/Character/Loneliness.bmp", 16 * 3, 16 * 3, true, RGB(255, 0, 255));
-	ImageManager::GetSingleton()->AddImage(EnemyName::Distress, "Image/EasyMode/Character/Distress.bmp", 16 * 3, 16 * 3, true, RGB(255, 0, 255));
-	ImageManager::GetSingleton()->AddImage(EnemyName::Fear, "Image/EasyMode/Character/Fear.bmp", 16 * 3, 16 * 3, true, RGB(255, 0, 255));
-	ImageManager::GetSingleton()->AddImage(EnemyName::Hatred, "Image/EasyMode/Character/Hatred.bmp", 16 * 3, 16 * 3, true, RGB(255, 0, 255));
-	ImageManager::GetSingleton()->AddImage(EnemyName::Guilt, "Image/EasyMode/Character/Guilt.bmp", 16 * 3, 16 * 3, true, RGB(255, 0, 255));
-	ImageManager::GetSingleton()->AddImage(EnemyName::Confusion, "Image/EasyMode/Character/Confusion.bmp", 16 * 3, 16 * 3, true, RGB(255, 0, 255));
-	ImageManager::GetSingleton()->AddImage(EnemyName::Emptiness, "Image/EasyMode/Character/Emptieness.bmp", 16 * 3, 16 * 3, true, RGB(255, 0, 255));
-	ImageManager::GetSingleton()->AddImage(EnemyName::Shame, "Image/EasyMode/Character/Shame.bmp", 16 * 3, 16 * 3, true, RGB(255, 0, 255));
-	ImageManager::GetSingleton()->AddImage(EnemyName::Frustration, "Image/EasyMode/Character/Frustration.bmp", 16 * 3, 16 * 3, true, RGB(255, 0, 255));
-	ImageManager::GetSingleton()->AddImage(EnemyName::Jealousy, "Image/EasyMode/Character/Jealousy.bmp", 16 * 3, 16 * 3, true, RGB(255, 0, 255));
-	ImageManager::GetSingleton()->AddImage(EnemyName::Hoplessness, "Image/EasyMode/Character/Hopelessness.bmp", 16 * 3, 16 * 3, true, RGB(255, 0, 255));
-	ImageManager::GetSingleton()->AddImage(EnemyName::Anger, "Image/EasyMode/Character/Anger.bmp", 64 * 3, 32 * 3, 2, 1, true, RGB(255, 0, 255));
-	ImageManager::GetSingleton()->AddImage(EnemyName::Anxiety, "Image/EasyMode/Character/Anxiety.bmp", 64 * 3, 32 * 3, 2, 1, true, RGB(255, 0, 255));
-	ImageManager::GetSingleton()->AddImage(EnemyName::Sadness, "Image/EasyMode/Character/Sadness.bmp", 64 * 3, 32 * 3, 2, 1, true, RGB(255, 0, 255));
-	ImageManager::GetSingleton()->AddImage(EnemyName::Panic, "Image/EasyMode/Character/Panic.bmp", 64 * 3, 32 * 3, 2, 1, true, RGB(255, 0, 255));
-	ImageManager::GetSingleton()->AddImage(EnemyName::Panic, "Image/EasyMode/Character/Panic.bmp", 64 * 3, 32 * 3, 2, 1, true, RGB(255, 0, 255));
+	//ImageManager::GetSingleton()->AddImage(EnemyName::Irritation, "Image/EasyMode/Character/Irrietation.bmp", 16 * 3, 16 * 3, true, RGB(255, 0, 255));
+	//ImageManager::GetSingleton()->AddImage(EnemyName::Pressure, "Image/EasyMode/Character/Pressure.bmp", 16 * 3, 16 * 3, true, RGB(255, 0, 255));
+	//ImageManager::GetSingleton()->AddImage(EnemyName::Loneliness, "Image/EasyMode/Character/Loneliness.bmp", 16 * 3, 16 * 3, true, RGB(255, 0, 255));
+	//ImageManager::GetSingleton()->AddImage(EnemyName::Distress, "Image/EasyMode/Character/Distress.bmp", 16 * 3, 16 * 3, true, RGB(255, 0, 255));
+	//ImageManager::GetSingleton()->AddImage(EnemyName::Fear, "Image/EasyMode/Character/Fear.bmp", 16 * 3, 16 * 3, true, RGB(255, 0, 255));
+	//ImageManager::GetSingleton()->AddImage(EnemyName::Hatred, "Image/EasyMode/Character/Hatred.bmp", 16 * 3, 16 * 3, true, RGB(255, 0, 255));
+	//ImageManager::GetSingleton()->AddImage(EnemyName::Guilt, "Image/EasyMode/Character/Guilt.bmp", 16 * 3, 16 * 3, true, RGB(255, 0, 255));
+	//ImageManager::GetSingleton()->AddImage(EnemyName::Confusion, "Image/EasyMode/Character/Confusion.bmp", 16 * 3, 16 * 3, true, RGB(255, 0, 255));
+	//ImageManager::GetSingleton()->AddImage(EnemyName::Emptiness, "Image/EasyMode/Character/Emptieness.bmp", 16 * 3, 16 * 3, true, RGB(255, 0, 255));
+	//ImageManager::GetSingleton()->AddImage(EnemyName::Shame, "Image/EasyMode/Character/Shame.bmp", 16 * 3, 16 * 3, true, RGB(255, 0, 255));
+	//ImageManager::GetSingleton()->AddImage(EnemyName::Frustration, "Image/EasyMode/Character/Frustration.bmp", 16 * 3, 16 * 3, true, RGB(255, 0, 255));
+	//ImageManager::GetSingleton()->AddImage(EnemyName::Jealousy, "Image/EasyMode/Character/Jealousy.bmp", 16 * 3, 16 * 3, true, RGB(255, 0, 255));
+	//ImageManager::GetSingleton()->AddImage(EnemyName::Hoplessness, "Image/EasyMode/Character/Hopelessness.bmp", 16 * 3, 16 * 3, true, RGB(255, 0, 255));
+	//ImageManager::GetSingleton()->AddImage(EnemyName::Anger, "Image/EasyMode/Character/Anger.bmp", 64 * 3, 32 * 3, 2, 1, true, RGB(255, 0, 255));
+	//ImageManager::GetSingleton()->AddImage(EnemyName::Anxiety, "Image/EasyMode/Character/Anxiety.bmp", 64 * 3, 32 * 3, 2, 1, true, RGB(255, 0, 255));
+	//ImageManager::GetSingleton()->AddImage(EnemyName::Sadness, "Image/EasyMode/Character/Sadness.bmp", 64 * 3, 32 * 3, 2, 1, true, RGB(255, 0, 255));
+	//ImageManager::GetSingleton()->AddImage(EnemyName::Panic, "Image/EasyMode/Character/Panic.bmp", 64 * 3, 32 * 3, 2, 1, true, RGB(255, 0, 255));
+	//ImageManager::GetSingleton()->AddImage(EnemyName::Panic, "Image/EasyMode/Character/Panic.bmp", 64 * 3, 32 * 3, 2, 1, true, RGB(255, 0, 255));
+
+	ImageManager::GetSingleton()->AddImage("Easy_Boss", "Image/EasyMode/Character/SmallEnamy_sheet.bmp", 208 * 4, 16 * 4, 13, 1, true, RGB(255, 0, 255));
 
 
 	/////// 타일 이미지
 	ImageManager::GetSingleton()->AddImage("Easy_Tile", "Image/EasyMode/Tile_sheet.bmp", 576 * 3, 64 * 3, 18, 2, true, RGB(255, 0, 255));
+	ImageManager::GetSingleton()->AddImage("Hard_Tile", "Image/HardMode/Tile_sheet.bmp", 576 * 3, 64 * 3, 18, 2, true, RGB(255, 0, 255));
 	
 	/////// 플레이어 이미지
 	ImageManager::GetSingleton()->AddImage("Player_White", "Image/Player.bmp", 4 * 3, 11 * 3, true, RGB(255, 0, 255));
@@ -44,6 +46,8 @@ HRESULT MainGame::Init()
 
 	////// 플레이어 총알 이미지
 	ImageManager::GetSingleton()->AddImage("Player_Bullet", "Image/player_bullet.bmp", 3 * 3, 11 * 3, true, RGB(255, 0, 255));
+	ImageManager::GetSingleton()->AddImage("Player_Bullet_Black", "Image/player_bullet_Black.bmp", 3 * 3, 11 * 3, true, RGB(255, 0, 255));
+
 	
 	////// 화살표 이미지
 	ImageManager::GetSingleton()->AddImage("왼쪽화살표", "Image/left.bmp", 12 * 3, 24 * 3, 18, 2, true, RGB(255, 0, 255));
@@ -56,11 +60,8 @@ HRESULT MainGame::Init()
 	mainScene = new MainScene();
 	mainScene->Init();
 
-	player = new Player();
-	player->Init();
-
-	enemyMng = new EnemyManager();
-	enemyMng->Init();
+	battleScene = new BattleScene();
+	battleScene->Init();
 
 	backGround = new Image();
 	if (FAILED(backGround->Init("Image/background.bmp", WINSIZE_X, WINSIZE_Y)))
@@ -82,12 +83,9 @@ void MainGame::Release()
 
 	mainScene->Release();
 	delete mainScene;
-
-	player->Release();
-	delete player;
-
-	enemyMng->Release();
-	delete enemyMng;
+	
+	battleScene->Release();
+	delete battleScene;
 
 	backGround->Release();
 	delete backGround;
@@ -103,52 +101,54 @@ void MainGame::Update()
 {
 	if (mainScene->GetEnemyChoice())
 	{
-		if (player) player->Update();
-
-		if (enemyMng) enemyMng->Update();
+		if (battleScene) battleScene->Update();
 	}
 
 	if (mainScene) mainScene->Update();
 
 	if (mainScene->GetEnemyChoice() == false)
 	{
-		if (mainScene->GetIsEasy())  //이지모드일때만
+		if (mainScene->GetMode() == Mode::Easy)  //이지모드일때만
 		{
 			if (IsInRect(mainScene->GetEasyPos(), mouseData, mainScene->GetEasySize()))
 			{
 				mainScene->SetEnemyChoice(true);
-				enemyMng->SetEnemyName(mainScene->GetEasyTileNum());
+				battleScene->SetEnemyName(mainScene->GetEasyTileNum());
 				mouseData.clickedPosX = NULL; //클릭 좌표가 클릭시 고정되어있으니 초기화해서 다시 안들어오게 해줌
 				mouseData.clickedPosY = NULL;
 			}
 		}
-		else
+		else if (mainScene->GetMode() == Mode::Hard)
 		{
 			if (IsInRect(mainScene->GetHardPos(), mouseData, mainScene->GetHardSize()))
 			{
 				mainScene->SetEnemyChoice(true);
-				enemyMng->SetEnemyName(mainScene->GetHardTileNum());
+				battleScene->SetEnemyName(mainScene->GetHardTileNum());
 				mouseData.clickedPosX = NULL; //클릭 좌표가 클릭시 고정되어있으니 초기화해서 다시 안들어오게 해줌
 				mouseData.clickedPosY = NULL;
 			}
 		}
 	}
+
 	if (KeyManager::GetSingleton()->IsOnceKeyDown('Q'))
 	{
 		mainScene->SetEnemyChoice(false);
 	}
 
-	if (IsInRect2(mainScene->GetRightPos(), mouseData, 36, 72))
+	if (mainScene->GetEnemyChoice() == false)
 	{
-		mainScene->SetIsEasy(false);
-		mouseData.clickedPosX = NULL; //클릭 좌표가 클릭시 고정되어있으니 초기화해서 다시 안들어오게 해줌
-		mouseData.clickedPosY = NULL;
-	}
-	if (IsInRect2(mainScene->GetLeftPos(), mouseData, 36, 72))
-	{
-		mainScene->SetIsEasy(true);
-		mouseData.clickedPosX = NULL; //클릭 좌표가 클릭시 고정되어있으니 초기화해서 다시 안들어오게 해줌
-		mouseData.clickedPosY = NULL;
+		if (IsInRect2(mainScene->GetRightPos(), mouseData, 36, 72))
+		{
+			mainScene->SetMode(Mode::Hard);
+			mouseData.clickedPosX = NULL; //클릭 좌표가 클릭시 고정되어있으니 초기화해서 다시 안들어오게 해줌
+			mouseData.clickedPosY = NULL;
+		}
+		if (IsInRect2(mainScene->GetLeftPos(), mouseData, 36, 72))
+		{
+			mainScene->SetMode(Mode::Easy);
+			mouseData.clickedPosX = NULL; //클릭 좌표가 클릭시 고정되어있으니 초기화해서 다시 안들어오게 해줌
+			mouseData.clickedPosY = NULL;
+		}
 	}
 
 	
@@ -175,8 +175,7 @@ void MainGame::Render()
 	}
 	if (mainScene->GetEnemyChoice())
 	{
-		if (player) player->Render(backDC);
-		if (enemyMng) enemyMng->Render(backDC);
+		if (battleScene) battleScene->Render(backDC);
 	}
 	TimerManager::GetSingleton()->Render(backDC);
 	backBuffer->Render(hdc, 0, 0);
