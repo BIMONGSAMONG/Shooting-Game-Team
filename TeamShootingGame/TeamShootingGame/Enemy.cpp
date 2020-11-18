@@ -10,7 +10,6 @@ HRESULT Enemy::Init()
 	currFrameX = 0;
 	currFrameY = 0;
 	destAngle = 0;
-
 	missileMgr = new EMissileManager();
 	missileMgr->Init();
 
@@ -25,15 +24,26 @@ void Enemy::Release()
 	delete missileMgr;
 }
 
-void Enemy::Update(EnemyName name)
+void Enemy::Update(EnemyName name , float fireDelay)
 {
 	if (missileMgr)
 	{
 		missileMgr->Update();
 	}
 
+	//////플레이어가 있는 방향
 	destAngle = atan2f(-(targetPos.y - pos.y), (targetPos.x - pos.x));
+	
+	fireTime += TimerManager::GetSingleton()->GetElapsedTime();
+
+	if (fireTime >= fireDelay)
+	{
+		Fire(name);
+		fireTime = 0;
+	}
+
 	animationTime += TimerManager::GetSingleton()->GetElapsedTime();
+
 	if (animationTime >= 0.4f)
 	{
 		//currFrameX++;
@@ -44,24 +54,17 @@ void Enemy::Update(EnemyName name)
 		//}
 		animationTime = 0;
 	}
-	fireTime += TimerManager::GetSingleton()->GetElapsedTime();
-	if (fireTime >= 0.7)
-	{
-		Fire(name);
-		fireTime = 0;
-	}
 }
 
 void Enemy::Render(HDC hdc, EnemyName name, Mode mode)
 {
-	if (img)
-	{
-		img->FrameRender(hdc, pos.x, pos.y, name, mode);
-	}
-
 	if (missileMgr)
 	{
 		missileMgr->Render(hdc);
+	}
+	if (img)
+	{
+		img->FrameRender(hdc, pos.x, pos.y, name, mode);
 	}
 }
 
@@ -85,7 +88,7 @@ void Enemy::Fire(EnemyName name)
 	case EnemyName::Irritation:
 		if (missileMgr)
 		{
-			missileMgr->Fire(pos, destAngle, 1800);
+			missileMgr->Fire(pos, destAngle, 1300);
 		}
 		break;
 	case EnemyName::Pressure:

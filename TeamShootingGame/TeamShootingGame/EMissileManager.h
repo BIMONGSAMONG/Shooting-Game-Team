@@ -17,6 +17,6 @@ public:
 	void Render(HDC hdc);
 
 	void Fire(FPOINT pos, float angle, float speed);
-	
+
 };
 

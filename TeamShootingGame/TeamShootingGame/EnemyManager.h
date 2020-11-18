@@ -12,6 +12,7 @@ private:
 	FPOINT targetPos;
 	EnemyName name;
 	Mode mode;
+	float fireDelay;
 public:
 	HRESULT Init();
 	void Release();
