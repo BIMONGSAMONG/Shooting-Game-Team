@@ -34,7 +34,7 @@ HRESULT MainGame::Init()
 	//ImageManager::GetSingleton()->AddImage(EnemyName::Panic, "Image/EasyMode/Character/Panic.bmp", 64 * 3, 32 * 3, 2, 1, true, RGB(255, 0, 255));
 	//ImageManager::GetSingleton()->AddImage(EnemyName::Panic, "Image/EasyMode/Character/Panic.bmp", 64 * 3, 32 * 3, 2, 1, true, RGB(255, 0, 255));
 
-	ImageManager::GetSingleton()->AddImage("Easy_Boss", "Image/EasyMode/Character/SmallEnamy_sheet.bmp", 208 * 3, 16 * 3, 13, 1, true, RGB(255, 0, 255));
+	ImageManager::GetSingleton()->AddImage("Easy_Boss", "Image/EasyMode/Character/SmallEnamy_sheet.bmp", 208 * 4, 16 * 4, 13, 1, true, RGB(255, 0, 255));
 
 
 	/////// 타일 이미지
@@ -117,7 +117,7 @@ void MainGame::Update()
 
 	if (mainScene->GetEnemyChoice() == false)
 	{
-		if (mainScene->GetIsEasy())  //이지모드일때만
+		if (mainScene->GetMode() == Mode::Easy)  //이지모드일때만
 		{
 			if (IsInRect(mainScene->GetEasyPos(), mouseData, mainScene->GetEasySize()))
 			{
@@ -127,7 +127,7 @@ void MainGame::Update()
 				mouseData.clickedPosY = NULL;
 			}
 		}
-		else
+		else if (mainScene->GetMode() == Mode::Hard)
 		{
 			if (IsInRect(mainScene->GetHardPos(), mouseData, mainScene->GetHardSize()))
 			{
@@ -147,13 +147,13 @@ void MainGame::Update()
 	{
 		if (IsInRect2(mainScene->GetRightPos(), mouseData, 36, 72))
 		{
-			mainScene->SetIsEasy(false);
+			mainScene->SetMode(Mode::Hard);
 			mouseData.clickedPosX = NULL; //클릭 좌표가 클릭시 고정되어있으니 초기화해서 다시 안들어오게 해줌
 			mouseData.clickedPosY = NULL;
 		}
 		if (IsInRect2(mainScene->GetLeftPos(), mouseData, 36, 72))
 		{
-			mainScene->SetIsEasy(true);
+			mainScene->SetMode(Mode::Easy);
 			mouseData.clickedPosX = NULL; //클릭 좌표가 클릭시 고정되어있으니 초기화해서 다시 안들어오게 해줌
 			mouseData.clickedPosY = NULL;
 		}

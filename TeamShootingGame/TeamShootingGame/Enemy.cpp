@@ -4,7 +4,7 @@
 HRESULT Enemy::Init()
 {
 	pos = { WINSIZE_X / 2, 150 };
-	size = 48;
+	size = 64;
 	life = 50;
 	currFrameX = 0;
 	currFrameY = 0;
@@ -37,8 +37,7 @@ void Enemy::Render(HDC hdc, EnemyName name)
 {
 	if (img)
 	{
-		img->FrameRender(hdc, pos.x - (size / 2), pos.y - (size / 2), name, 0);
-		//img->Render(hdc, pos.x - (size / 2), pos.y - (size / 2));
+		img->FrameRender(hdc, pos.x, pos.y, name, 0);
 	}
 }
 

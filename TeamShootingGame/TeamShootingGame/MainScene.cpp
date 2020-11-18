@@ -7,7 +7,7 @@ HRESULT MainScene::Init()
 {
 	img[0] = ImageManager::GetSingleton()->FindImage("왼쪽화살표");
 	img[1] = ImageManager::GetSingleton()->FindImage("오른쪽화살표");
-	isEasy = true;
+	mode = Mode::Easy;
 	enemyChoice = false;
 	easy = new EasyModeUI();
 	easy->Init();
@@ -27,11 +27,11 @@ void MainScene::Release()
 
 void MainScene::Update()
 {
-	if (isEasy)
+	if (mode == Mode::Easy)
 	{
 		if (easy) easy->Update();
 	}
-	else
+	else if (mode == Mode::Hard)
 	{
 		if (hard) hard->Update();
 	}
@@ -40,7 +40,7 @@ void MainScene::Update()
 
 void MainScene::Render(HDC hdc)
 {
-	if (isEasy)
+	if (mode == Mode::Easy)
 	{
 		if (easy) easy->Render(hdc);
 		img[0]->Render(hdc, pos[0].x, pos[0].y);
@@ -48,7 +48,7 @@ void MainScene::Render(HDC hdc)
 		//Rectangle(hdc, pos[0].x , pos[0].y , pos[0].x + 36 , pos[0].y + 72 );
 		//Rectangle(hdc, pos[1].x, pos[1].y, pos[1].x + 36, pos[1].y + 72);
 	}
-	else
+	else if (mode == Mode::Hard)
 	{
 		img[0]->Render(hdc, pos[0].x, pos[0].y);
 		if (hard) hard->Render(hdc);
