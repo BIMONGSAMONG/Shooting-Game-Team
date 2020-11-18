@@ -8,9 +8,12 @@ private:
 	FPOINT pos;
 	int size;
 	float angle;
+	float pingpongAngle[2];
+	int random;
 	bool isFire;
 	float speed;
 	float goalTime;
+	bool isPingPong;
 
 public:
 	HRESULT Init();
@@ -23,5 +26,6 @@ public:
 	void SetPos(FPOINT pos) { this->pos = pos; }
 	void SetSpeed(float speed) { this->speed = speed; }
 	void SetAngle(float angle) { this->angle = angle; }
+	void SetIsPingPong(bool isPingPong) { this->isPingPong = isPingPong; }
 };
 

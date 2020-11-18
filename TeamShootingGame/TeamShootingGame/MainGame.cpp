@@ -52,7 +52,8 @@ HRESULT MainGame::Init()
 	////// 화살표 이미지
 	ImageManager::GetSingleton()->AddImage("왼쪽화살표", "Image/left.bmp", 12 * 3, 24 * 3, 18, 2, true, RGB(255, 0, 255));
 	ImageManager::GetSingleton()->AddImage("오른쪽화살표", "Image/right.bmp", 12 * 3, 24 * 3, 18, 2, true, RGB(255, 0, 255));
-												
+
+	srand(time(NULL));
 
 	backBuffer = new Image();
 	backBuffer->Init(WINSIZE_X, WINSIZE_Y);
@@ -131,6 +132,11 @@ void MainGame::Update()
 	if (KeyManager::GetSingleton()->IsOnceKeyDown('Q'))
 	{
 		mainScene->SetEnemyChoice(false);
+
+		battleScene->Release();
+		delete battleScene;
+		battleScene = new BattleScene();
+		battleScene->Init();
 	}
 
 	if (mainScene->GetEnemyChoice() == false)

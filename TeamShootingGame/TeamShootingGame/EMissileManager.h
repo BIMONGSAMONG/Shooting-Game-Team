@@ -9,7 +9,7 @@ private:
 	vector<EMissile*> vecMissiles;
 	vector<EMissile*>::iterator itMissiles;
 	int enemyMissileCount;
-
+	bool isPingPong;
 public:
 	HRESULT Init();
 	void Release();
@@ -17,5 +17,6 @@ public:
 	void Render(HDC hdc);
 
 	void Fire(FPOINT pos, float angle, float speed);
+	void SetIsPingPong(bool isPingPong) { this->isPingPong = isPingPong; }
 };
 

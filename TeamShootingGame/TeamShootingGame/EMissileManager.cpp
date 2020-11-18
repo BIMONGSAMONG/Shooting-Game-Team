@@ -45,11 +45,11 @@ void EMissileManager::Fire(FPOINT pos, float angle, float speed)
 	{
 		if ((*itMissiles)->GetIsFire() == false)
 		{
-
 			(*itMissiles)->SetPos(pos);
 			(*itMissiles)->SetSpeed(speed);
 			(*itMissiles)->SetAngle(angle);
 			(*itMissiles)->SetIsFire(true);
+			(*itMissiles)->SetIsPingPong(isPingPong);
 			break;
 		}
 	}

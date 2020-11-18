@@ -28,18 +28,20 @@ void EnemyManager::Update()
 	switch (name)
 	{
 	case Irritation:
-		fireDelay = 2.1f;
+		fireDelay = 0.9f;
 		break;
 	case Pressure:
-		fireDelay = 0.1f;
+		fireDelay = 1.2f;
 		break;
 	case Loneliness:
 		break;
 	case Distress:
+		fireDelay = 1.2f;
 		break;
 	case Fear:
 		break;
 	case Hatred:
+		fireDelay = 0.2f;
 		break;
 	case Guilt:
 		break;

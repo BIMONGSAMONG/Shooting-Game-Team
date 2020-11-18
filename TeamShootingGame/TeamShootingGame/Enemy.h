@@ -14,8 +14,14 @@ private:
 	int currFrameX, currFrameY;
 	float animationTime;
 	float fireTime;
+	float secondFireDelay;
 	float movePosY;
 	float destAngle;
+	float angle;
+	float tempAngle;
+	float addAngle;
+	int count;
+	bool isPingpong;
 	
 	EMissileManager* missileMgr;
 	Image* img;
