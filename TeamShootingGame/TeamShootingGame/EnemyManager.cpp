@@ -3,7 +3,7 @@
 
 HRESULT EnemyManager::Init()
 {
-	enemyCount = 36;
+	enemyCount = 1;
 	vecEnemys.reserve(enemyCount);
 	for (int i = 0; i < enemyCount; i++)
 	{
@@ -28,6 +28,7 @@ void EnemyManager::Update()
 	for (itEnemys = vecEnemys.begin(); itEnemys != vecEnemys.end(); itEnemys++)
 	{
 		(*itEnemys)->Update(name);
+		(*itEnemys)->SetTargetPos(targetPos);
 	}
 }
 

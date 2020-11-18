@@ -39,10 +39,18 @@ void EMissileManager::Render(HDC hdc)
 	}
 }
 
-void EMissileManager::Fire()
+void EMissileManager::Fire(FPOINT pos, float angle, float speed)
 {
-	//for (itMissiles = vecMissiles.begin(); itMissiles != vecMissiles.end(); itMissiles++)
-	//{
-	//	(*itMissiles)->;
-	//}
+	for (itMissiles = vecMissiles.begin(); itMissiles != vecMissiles.end(); itMissiles++)
+	{
+		if ((*itMissiles)->GetIsFire() == false)
+		{
+
+			(*itMissiles)->SetPos(pos);
+			(*itMissiles)->SetSpeed(speed);
+			(*itMissiles)->SetAngle(angle);
+			(*itMissiles)->SetIsFire(true);
+			break;
+		}
+	}
 }

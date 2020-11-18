@@ -9,6 +9,7 @@ private:
 	vector<Enemy*>	vecEnemys;
 	vector<Enemy*>::iterator itEnemys;
 	int enemyCount;
+	FPOINT targetPos;
 	EnemyName name;
 	Mode mode;
 public:
@@ -20,5 +21,6 @@ public:
 	//EnemyName GetEnemyName() { return this->name; }
 
 	void SetMode(Mode mode) { this->mode = mode; }
+	void SetTargetPos(FPOINT targetPos) { this->targetPos = targetPos; }
 };
 

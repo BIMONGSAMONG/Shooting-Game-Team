@@ -30,6 +30,7 @@ void BattleScene::Update()
 
 	enemyMgr->SetEnemyName(name);
 	enemyMgr->SetMode(mode);
+	enemyMgr->SetTargetPos(player->GetPos());
 }
 
 void BattleScene::Render(HDC hdc)
