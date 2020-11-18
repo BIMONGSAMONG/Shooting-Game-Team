@@ -32,7 +32,7 @@ void Enemy::Update(EnemyName name)
 		missileMgr->Update();
 	}
 
-	destAngle = atan2f(-(targetPos.y) - pos.y, (targetPos.x) - pos.x);
+	destAngle = atan2f(-(targetPos.y - pos.y), (targetPos.x - pos.x));
 	animationTime += TimerManager::GetSingleton()->GetElapsedTime();
 	if (animationTime >= 0.4f)
 	{
