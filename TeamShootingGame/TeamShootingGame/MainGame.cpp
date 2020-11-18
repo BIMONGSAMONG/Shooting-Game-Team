@@ -1,8 +1,7 @@
 #include "MainGame.h"
 #include "Image.h"
-#include "Player.h"
-#include "EnemyManager.h"
 #include "MainScene.h"
+#include "BattleScene.h"
 
 HRESULT MainGame::Init()
 {
@@ -61,11 +60,8 @@ HRESULT MainGame::Init()
 	mainScene = new MainScene();
 	mainScene->Init();
 
-	player = new Player();
-	player->Init();
-
-	enemyMng = new EnemyManager();
-	enemyMng->Init();
+	battleScene = new BattleScene();
+	battleScene->Init();
 
 	backGround = new Image();
 	if (FAILED(backGround->Init("Image/background.bmp", WINSIZE_X, WINSIZE_Y)))
@@ -87,12 +83,9 @@ void MainGame::Release()
 
 	mainScene->Release();
 	delete mainScene;
-
-	player->Release();
-	delete player;
-
-	enemyMng->Release();
-	delete enemyMng;
+	
+	battleScene->Release();
+	delete battleScene;
 
 	backGround->Release();
 	delete backGround;
@@ -108,9 +101,7 @@ void MainGame::Update()
 {
 	if (mainScene->GetEnemyChoice())
 	{
-		if (player) player->Update();
-
-		if (enemyMng) enemyMng->Update();
+		if (battleScene) battleScene->Update();
 	}
 
 	if (mainScene) mainScene->Update();
@@ -122,7 +113,7 @@ void MainGame::Update()
 			if (IsInRect(mainScene->GetEasyPos(), mouseData, mainScene->GetEasySize()))
 			{
 				mainScene->SetEnemyChoice(true);
-				enemyMng->SetEnemyName(mainScene->GetEasyTileNum());
+				battleScene->SetEnemyName(mainScene->GetEasyTileNum());
 				mouseData.clickedPosX = NULL; //클릭 좌표가 클릭시 고정되어있으니 초기화해서 다시 안들어오게 해줌
 				mouseData.clickedPosY = NULL;
 			}
@@ -132,12 +123,13 @@ void MainGame::Update()
 			if (IsInRect(mainScene->GetHardPos(), mouseData, mainScene->GetHardSize()))
 			{
 				mainScene->SetEnemyChoice(true);
-				enemyMng->SetEnemyName(mainScene->GetHardTileNum());
+				battleScene->SetEnemyName(mainScene->GetHardTileNum());
 				mouseData.clickedPosX = NULL; //클릭 좌표가 클릭시 고정되어있으니 초기화해서 다시 안들어오게 해줌
 				mouseData.clickedPosY = NULL;
 			}
 		}
 	}
+
 	if (KeyManager::GetSingleton()->IsOnceKeyDown('Q'))
 	{
 		mainScene->SetEnemyChoice(false);
@@ -183,8 +175,7 @@ void MainGame::Render()
 	}
 	if (mainScene->GetEnemyChoice())
 	{
-		if (player) player->Render(backDC);
-		if (enemyMng) enemyMng->Render(backDC);
+		if (battleScene) battleScene->Render(backDC);
 	}
 	TimerManager::GetSingleton()->Render(backDC);
 	backBuffer->Render(hdc, 0, 0);

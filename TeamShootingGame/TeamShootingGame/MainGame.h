@@ -6,6 +6,7 @@ class Image;
 class Player;
 class EnemyManager;
 class MainScene;
+class BattleScene;
 class MainGame : public GameNode
 {
 private:
@@ -15,9 +16,8 @@ private:
 	Image* backBuffer;
 	Image* backGround;
 	Image* img;
-	Player* player;
-	EnemyManager* enemyMng;
 	MainScene* mainScene;
+	BattleScene* battleScene;
 
 	struct MOUSE_DATA  //마우스 실시간 좌표 // 마우스 클릭 좌표
 	{
