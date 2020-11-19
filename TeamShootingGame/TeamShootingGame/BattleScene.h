@@ -3,12 +3,12 @@
 #include "GameNode.h"
 
 class Player;
-class EnemyManager;
+class Enemy;
 class BattleScene : public GameNode
 {
 private:
 	Player* player;
-	EnemyManager* enemyMgr;
+	Enemy* enemy;
 	EnemyName name;
 	Mode mode;
 

@@ -129,7 +129,6 @@
     <ClCompile Include="EMissile.cpp" />
     <ClCompile Include="EMissileManager.cpp" />
     <ClCompile Include="Enemy.cpp" />
-    <ClCompile Include="EnemyManager.cpp" />
     <ClCompile Include="GameNode.cpp" />
     <ClCompile Include="HardModeUi.cpp" />
     <ClCompile Include="Image.cpp" />
@@ -152,7 +151,6 @@
     <ClInclude Include="EMissile.h" />
     <ClInclude Include="EMissileManager.h" />
     <ClInclude Include="Enemy.h" />
-    <ClInclude Include="EnemyManager.h" />
     <ClInclude Include="GameNode.h" />
     <ClInclude Include="HardModeUi.h" />
     <ClInclude Include="Image.h" />

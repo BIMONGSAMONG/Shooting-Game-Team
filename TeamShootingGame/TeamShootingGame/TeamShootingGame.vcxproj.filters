@@ -105,9 +105,6 @@
     <ClCompile Include="PMissile.cpp">
       <Filter>MainGame\Player</Filter>
     </ClCompile>
-    <ClCompile Include="EnemyManager.cpp">
-      <Filter>MainGame\Enemy</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -172,9 +169,6 @@
     </ClInclude>
     <ClInclude Include="PMissile.h">
       <Filter>MainGame\Player</Filter>
-    </ClInclude>
-    <ClInclude Include="EnemyManager.h">
-      <Filter>MainGame\Enemy</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

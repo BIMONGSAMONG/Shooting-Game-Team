@@ -1,14 +1,14 @@
 #include "BattleScene.h"
 #include "Player.h"
-#include "EnemyManager.h"
+#include "Enemy.h"
 
 HRESULT BattleScene::Init()
 {
 	player = new Player();
 	player->Init();
 
-	enemyMgr = new EnemyManager();
-	enemyMgr->Init();
+	enemy = new Enemy();
+	enemy->Init();
 
 	return S_OK;
 }
@@ -18,23 +18,23 @@ void BattleScene::Release()
 	player->Release();
 	delete player;
 
-	enemyMgr->Release();
-	delete enemyMgr;
+	enemy->Release();
+	delete enemy;
 }
 
 void BattleScene::Update()
 {
 	if(player) player->Update();
 
-	if (enemyMgr) enemyMgr->Update();
+	if (enemy) enemy->Update(name);
 
-	enemyMgr->SetEnemyName(name);
-	enemyMgr->SetMode(mode);
-	enemyMgr->SetTargetPos(player->GetPos());
+	enemy->SetEnemyName(name);
+	enemy->SetMode(mode);
+	enemy->SetTargetPos(player->GetPos());
 }
 
 void BattleScene::Render(HDC hdc)
 {
 	if (player) player->Render(hdc);
-	if (enemyMgr) enemyMgr->Render(hdc);
+	if (enemy) enemy->Render(hdc, name, mode);
 }

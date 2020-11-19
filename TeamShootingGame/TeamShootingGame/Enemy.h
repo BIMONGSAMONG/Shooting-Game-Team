@@ -13,30 +13,29 @@ private:
 	int life;
 	int currFrameX, currFrameY;
 	float animationTime;
-	float fireTime;
-	float secondFireDelay;
 	float movePosY;
 	float destAngle;
-	float angle;
-	float tempAngle;
-	float addAngle;
-	int count;
-	bool isPingpong;
+
+	EnemyName name;
+	Mode mode;
+	float fireDelay;
 	
 	EMissileManager* missileMgr;
 	Image* img;
 
-
 public:
 	HRESULT Init();
 	void Release();
-	void Update(EnemyName name , float fireDelay);
+	void Update(EnemyName name);
 	void Render(HDC hdc, EnemyName name, Mode mode);
 
 	void Move();
 	void Fire(EnemyName name);
 
 	FPOINT GetEnemyPos() { return pos; }
+
+	void SetEnemyName(EnemyName name) { this->name = name; }
+	void SetMode(Mode mode) { this->mode = mode; }
 	void SetTargetPos(FPOINT targetPos) { this->targetPos = targetPos; }
 };
 
