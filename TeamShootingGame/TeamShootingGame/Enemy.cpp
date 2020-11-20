@@ -6,14 +6,20 @@ HRESULT Enemy::Init()
 {
 	pos = { WINSIZE_X / 2, 150 };
 	size = 64;
-	life = 50;
+	bossSize = 128;
+	life = 10;
 	currFrameX = 0;
 	currFrameY = 0;
 	destAngle = 0;
+	die = false;
 	missileMgr = new EMissileManager();
 	missileMgr->Init();
 
 	img = ImageManager::GetSingleton()->FindImage("Small_Boss");
+	for (int i = EnemyName::Anger; i <= EnemyName::Panic; i++)
+	{
+		bossImg[i - 13] = ImageManager::GetSingleton()->FindImage(i);
+	}
 
 	fireDelay = 0;
 
@@ -26,7 +32,7 @@ void Enemy::Release()
 	delete missileMgr;
 }
 
-void Enemy::Update(EnemyName name)
+void Enemy::Update(EnemyName name, Mode mode)
 {
 	switch (name)
 	{
@@ -49,14 +55,17 @@ void Enemy::Update(EnemyName name)
 	case Guilt:
 		break;
 	case Confusion:
+		fireDelay = 1.0f;
 		break;
 	case Emptiness:
 		break;
 	case Shame:
+		fireDelay = 0.3f;
 		break;
 	case Frustration:
 		break;
 	case Jealousy:
+		fireDelay = 0.3f;
 		break;
 	case Hoplessness:
 		break;
@@ -76,35 +85,81 @@ void Enemy::Update(EnemyName name)
 
 	if (missileMgr)
 	{
-		missileMgr->Update(name, pos, destAngle, fireDelay);
+		missileMgr->Update(name, pos, destAngle, fireDelay, mode);
 	}
 
 	//////플레이어가 있는 방향
 	SetTargetPos(targetPos);
 	destAngle = atan2f(-(targetPos.y - pos.y), (targetPos.x - pos.x));
 
+	missileMgr->SetTargetPos(targetPos);
+
 	animationTime += TimerManager::GetSingleton()->GetElapsedTime();
 	if (animationTime >= 0.4f)
 	{
-		//currFrameX++;
-		//if (currFrameX >= img->GetMaxFrameX())
-		//{
-		Move();
-		//currFrameX = 0;
-		//}
+		if (name != EnemyName::Anger)
+		{
+			Move();
+		}
 		animationTime = 0;
+	}
+
+	if (name >= EnemyName::Anger)
+	{
+		bossAnimationTime += TimerManager::GetSingleton()->GetElapsedTime();
+		if (bossAnimationTime >= 0.2f)
+		{
+			if (name == EnemyName::Anger)
+			{
+				pos.x += 8;
+				if (pos.x - bossSize >= WINSIZE_X)
+				{
+					pos.x = 0;
+				}
+			}
+			currFrameX++;
+			for (int i = EnemyName::Anger; i <= EnemyName::Panic; i++)
+			{
+				if (currFrameX >= bossImg[i - 13]->GetMaxFrameX())
+				{
+					currFrameX = 0;
+				}
+			}
+			bossAnimationTime = 0;
+		}
+	}
+
+	if (life <= 0)
+	{
+		die = true;
 	}
 }
 
 void Enemy::Render(HDC hdc, EnemyName name, Mode mode)
 {
+	char szText[128] = "";
+	wsprintf(szText, "HP : %d", life);
+	TextOut(hdc, 10, 80, szText, strlen(szText));
 	if (missileMgr)
 	{
-		missileMgr->Render(hdc);
+		missileMgr->Render(hdc, name, mode);
 	}
-	if (img)
+	if (die == false)
 	{
-		img->FrameRender(hdc, pos.x, pos.y, name, mode);
+		if (img)
+		{
+			if (name < EnemyName::Anger)
+			{
+				img->FrameRender(hdc, pos.x, pos.y, name, mode);
+			}
+		}
+		if (bossImg)
+		{
+			if (name >= EnemyName::Anger)
+			{
+				bossImg[name - 13]->FrameRender(hdc, pos.x, pos.y, currFrameX, mode);
+			}
+		}
 	}
 }
 
@@ -121,8 +176,7 @@ void Enemy::Move()
 	}
 }
 
-void Enemy::Fire(EnemyName name)
+void Enemy::Fire(EnemyName name, Mode mode)
 {
-	missileMgr->Fire(name, pos, destAngle);
+	missileMgr->Fire(name, pos, destAngle, mode);
 }
-

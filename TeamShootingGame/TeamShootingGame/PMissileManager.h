@@ -17,5 +17,7 @@ public:
 	void Render(HDC hdc);
 
 	void Fire(FPOINT pos);
+	int GetMissileCount() { return missileCount; }
+	vector<PMissile*> GetVecMissiles() { return vecMissiles; }
 };
 

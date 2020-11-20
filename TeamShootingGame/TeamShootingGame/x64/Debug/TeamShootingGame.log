@@ -1,0 +1,46 @@
+﻿  BattleScene.cpp
+  EasyModeUI.cpp
+c:\users\kga_12\desktop\github\ky\teamshootinggame\teamshootinggame\easymodeui.cpp(59): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  EMissile.cpp
+c:\users\kga_12\desktop\github\ky\teamshootinggame\teamshootinggame\emissile.cpp(75): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  EMissileManager.cpp
+  Enemy.cpp
+c:\users\kga_12\desktop\github\ky\teamshootinggame\teamshootinggame\enemy.cpp(142): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\kga_12\desktop\github\ky\teamshootinggame\teamshootinggame\enemy.cpp(149): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  GameNode.cpp
+  HardModeUi.cpp
+c:\users\kga_12\desktop\github\ky\teamshootinggame\teamshootinggame\hardmodeui.cpp(60): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Image.cpp
+c:\users\kga_12\desktop\github\ky\teamshootinggame\teamshootinggame\image.cpp(174): warning C4244: '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\kga_12\desktop\github\ky\teamshootinggame\teamshootinggame\image.cpp(175): warning C4244: '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\kga_12\desktop\github\ky\teamshootinggame\teamshootinggame\image.cpp(181): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\kga_12\desktop\github\ky\teamshootinggame\teamshootinggame\image.cpp(194): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  ImageManager.cpp
+  KeyManager.cpp
+  main.cpp
+c:\users\kga_12\desktop\github\ky\teamshootinggame\teamshootinggame\main.cpp(72): warning C4244: 'return': 'WPARAM'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  MainGame.cpp
+c:\users\kga_12\desktop\github\ky\teamshootinggame\teamshootinggame\maingame.cpp(41): warning C4244: '인수': 'time_t'에서 'unsigned int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\kga_12\desktop\github\ky\teamshootinggame\teamshootinggame\maingame.cpp(159): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\kga_12\desktop\github\ky\teamshootinggame\teamshootinggame\maingame.cpp(163): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  MainScene.cpp
+c:\users\kga_12\desktop\github\ky\teamshootinggame\teamshootinggame\mainscene.cpp(45): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\kga_12\desktop\github\ky\teamshootinggame\teamshootinggame\mainscene.cpp(46): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\kga_12\desktop\github\ky\teamshootinggame\teamshootinggame\mainscene.cpp(52): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Player.cpp
+c:\users\kga_12\desktop\github\ky\teamshootinggame\teamshootinggame\player.cpp(48): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\kga_12\desktop\github\ky\teamshootinggame\teamshootinggame\player.cpp(52): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  PMissile.cpp
+c:\users\kga_12\desktop\github\ky\teamshootinggame\teamshootinggame\pmissile.cpp(44): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\kga_12\desktop\github\ky\teamshootinggame\teamshootinggame\pmissile.cpp(48): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  PMissileManager.cpp
+  Timer.cpp
+  TimerManager.cpp
+c:\users\kga_12\desktop\github\ky\teamshootinggame\teamshootinggame\timermanager.cpp(28): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  TitleScene.cpp
+  UI.cpp
+  코드를 생성하고 있습니다...
+Image.obj : error LNK2019: __imp_AlphaBlend 외부 기호(참조 위치: "public: void __cdecl Image::AlphaRender(struct HDC__ *,int,int,unsigned char)" (?AlphaRender@Image@@QEAAXPEAUHDC__@@HHE@Z) 함수)에서 확인하지 못했습니다.
+Timer.obj : error LNK2019: __imp_timeGetTime 외부 기호(참조 위치: "public: long __cdecl Timer::Init(void)" (?Init@Timer@@QEAAJXZ) 함수)에서 확인하지 못했습니다.
+MSVCRTD.lib(exe_main.obj) : error LNK2019: main 외부 기호(참조 위치: "int __cdecl invoke_main(void)" (?invoke_main@@YAHXZ) 함수)에서 확인하지 못했습니다.
+C:\Users\KGA_12\Desktop\Github\KY\TeamShootingGame\x64\Debug\TeamShootingGame.exe : fatal error LNK1120: 3개의 확인할 수 없는 외부 참조입니다.

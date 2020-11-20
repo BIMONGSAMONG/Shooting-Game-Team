@@ -10,6 +10,7 @@ private:
 	int size;
 	float timer;
 	bool isBoss;
+	bool die;
 	PMissileManager* missileMgr;
 	Image* img[2];
 
@@ -23,5 +24,9 @@ public:
 	void Fire();
 
 	FPOINT GetPos() { return pos; }
+	int GetSize() { return size; }
+	void SetDie(bool die) { this->die = die; }
+	PMissileManager* GetMissileMgr() { return missileMgr; }
+	bool GetDie() { return die; }
 };
 

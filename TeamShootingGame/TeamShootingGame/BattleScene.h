@@ -4,6 +4,8 @@
 
 class Player;
 class Enemy;
+class EMissileManager;
+class PMissileManager;
 class BattleScene : public GameNode
 {
 private:
@@ -20,5 +22,8 @@ public:
 
 	void SetEnemyName(EnemyName name) { this->name = name; }
 	void SetMode(Mode mode) { this->mode = mode; }
+
+	bool CheckCollision(int size_1, int size_2, FPOINT pos_1, FPOINT pos_2);
+	float GetDistance(FPOINT pos1, FPOINT pos2);
 };
 

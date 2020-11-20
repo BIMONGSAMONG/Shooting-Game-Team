@@ -7,7 +7,7 @@ HRESULT Player::Init()
 	pos = { WINSIZE_X / 2, WINSIZE_Y - 100 };
 	size = 4;
 	isBoss = false;
-
+	die = false;
 	missileMgr = new PMissileManager;
 	missileMgr->Init();
 
@@ -43,13 +43,16 @@ void Player::Render(HDC hdc)
 {
 	if (img)
 	{
-		if (isBoss == false)
+		if (die == false)
 		{
-			img[0]->Render(hdc, pos.x, pos.y);
-		}
-		else if (isBoss == true)
-		{
-			img[1]->Render(hdc, pos.x, pos.y);
+			if (isBoss == false)
+			{
+				img[0]->Render(hdc, pos.x, pos.y);
+			}
+			else if (isBoss == true)
+			{
+				img[1]->Render(hdc, pos.x, pos.y);
+			}
 		}
 	}
 

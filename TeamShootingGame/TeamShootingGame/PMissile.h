@@ -23,5 +23,7 @@ public:
 	void SetIsFire(bool isFire) { this->isFire = isFire; }
 
 	void SetPos(FPOINT pos) { this->pos = pos; }
+	int GetSize() { return size; }
+	FPOINT GetPos() { return pos; }
 };
 
