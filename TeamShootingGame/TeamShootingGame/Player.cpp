@@ -13,7 +13,7 @@ HRESULT Player::Init()
 
 	img[0] = ImageManager::GetSingleton()->FindImage("Player_White");
 	img[1] = ImageManager::GetSingleton()->FindImage("Player_Black");
-	
+	timerDelay = 0.0f;
 	return S_OK;
 }
 
@@ -26,16 +26,16 @@ void Player::Release()
 void Player::Update()
 {
 	Move();
-	timer += TimerManager::GetSingleton()->GetElapsedTime();
-	if (timer >= 0.3f)
-	{
-		Fire();
-		timer = 0.0f;
-	}
+	
+	Fire();
 	
 	if (missileMgr)
 	{
 		missileMgr->Update();
+	}
+	if (die)
+	{
+		pos = { WINSIZE_X / 2, WINSIZE_Y - 100 };
 	}
 }
 
@@ -84,13 +84,19 @@ void Player::Move()
 
 void Player::Fire()
 {
-	if (KeyManager::GetSingleton()->IsStayKeyDown(KEY_Z))
+	timer += TimerManager::GetSingleton()->GetElapsedTime();
+	if (timer >= timerDelay)
 	{
-		if (missileMgr)
+		if (KeyManager::GetSingleton()->IsStayKeyDown(KEY_Z))
 		{
-			if (die == false)
+			if (missileMgr)
 			{
-				missileMgr->Fire(pos);
+				if (die == false)
+				{
+					missileMgr->Fire(pos);
+					timer = 0;
+					timerDelay = 0.4;
+				}
 			}
 		}
 	}

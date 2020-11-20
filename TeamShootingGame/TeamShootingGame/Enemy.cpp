@@ -67,6 +67,7 @@ void Enemy::Update(EnemyName name, Mode mode)
 		fireDelay = 0.3f;
 		break;
 	case Frustration:
+		fireDelay = 1.3f;
 		break;
 	case Jealousy:
 		fireDelay = 0.3f;
@@ -104,7 +105,7 @@ void Enemy::Update(EnemyName name, Mode mode)
 	{
 		if (name != EnemyName::Anger)
 		{
-			Move();
+			//Move();
 		}
 		animationTime = 0;
 	}

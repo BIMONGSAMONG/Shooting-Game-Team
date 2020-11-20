@@ -13,6 +13,7 @@ private:
 	bool die;
 	PMissileManager* missileMgr;
 	Image* img[2];
+	float timerDelay;
 
 public:
 	HRESULT Init();

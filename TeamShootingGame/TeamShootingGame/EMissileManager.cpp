@@ -778,7 +778,22 @@ void EMissileManager::Fire(EnemyName name, FPOINT pos, float destAngle, Mode mod
 	case Frustration:
 		if (mode == Mode::Easy)
 		{
-
+			for (int i = 0; i < 1; i++)
+			{
+				for (itMissiles = vecMissiles.begin(); itMissiles != vecMissiles.end(); itMissiles++)
+				{
+					if ((*itMissiles)->GetIsFire() == false)
+					{
+						(*itMissiles)->SetPos(pos);
+						(*itMissiles)->SetAngle(-PI/2.0f);
+						(*itMissiles)->SetSpeed(1300);
+						(*itMissiles)->SetIsFire(true);
+						(*itMissiles)->SetIsLeftAngle(true);
+						(*itMissiles)->SetLeftAddAngle(RadianToDegree(1), 80.0f);
+						break;
+					}
+				}
+			}
 		}
 		else if (mode == Mode::Hard)
 		{

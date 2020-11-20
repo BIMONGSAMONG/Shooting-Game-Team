@@ -25,6 +25,12 @@ private:
 	float leftAddAngle;
 	float rightAddAngle;
 
+
+	float leftAddAngleX;
+	float rightAddAngleX;
+	float leftAddAngleY;
+	float rightAddAngleY;
+
 public:
 	HRESULT Init();
 	void Release();

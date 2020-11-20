@@ -19,6 +19,11 @@ HRESULT EMissile::Init()
 	leftAddAngle = 0;
 	rightAddAngle = 0;
 
+	leftAddAngleX = 0;
+	rightAddAngleX = 0;
+	leftAddAngleY = 0;
+	rightAddAngleY = 0;
+
 	return S_OK;
 }
 
@@ -71,10 +76,9 @@ void EMissile::Update()
 		}
 		if (isLeftAngle)
 		{
-
-			pos.x += cosf(angle)* speed * TimerManager::GetSingleton()->GetElapsedTime() / goalTime;
-			pos.y -= sinf(angle) * speed * TimerManager::GetSingleton()->GetElapsedTime() / goalTime;
-			angle += leftAddAngle;
+				pos.x += (cosf(angle)) * speed  *TimerManager::GetSingleton()->GetElapsedTime() / goalTime;
+				pos.y -= (sinf(angle)) * speed	 *TimerManager::GetSingleton()->GetElapsedTime() / goalTime;
+				angle += leftAddAngle;
 		}
 		if (isRightAngle)
 		{
