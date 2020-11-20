@@ -36,5 +36,6 @@ public:
 	int GetSize() { return this->size; }
 	FPOINT GetTilePos();
 	EnemyName GetTileNum();
+	void SetIsClear(bool isClear, int num) { this->tile[num].isClear = isClear; }
 };
 

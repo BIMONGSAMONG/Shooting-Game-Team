@@ -12,6 +12,13 @@ HRESULT EMissile::Init()
 	goalTime = 5.0f;
 	isPingPong = false;
 
+	isSizeDown = false;
+	isSizeUp = false;;
+	isLeftAngle = false;
+	isRightAngle = false;
+	leftAddAngle = 0;
+	rightAddAngle = 0;
+
 	return S_OK;
 }
 
@@ -62,10 +69,41 @@ void EMissile::Update()
 				timer = 0;
 			}
 		}
+		if (isLeftAngle)
+		{
+
+			pos.x += cosf(angle)* speed * TimerManager::GetSingleton()->GetElapsedTime() / goalTime;
+			pos.y -= sinf(angle) * speed * TimerManager::GetSingleton()->GetElapsedTime() / goalTime;
+			angle += leftAddAngle;
+		}
+		if (isRightAngle)
+		{
+			pos.x += cosf(angle) * speed * TimerManager::GetSingleton()->GetElapsedTime() / goalTime;
+			pos.y -= sinf(angle) * speed * TimerManager::GetSingleton()->GetElapsedTime() / goalTime;
+			angle += rightAddAngle;
+		}
+		if (!isLeftAngle && !isRightAngle)
+		{
+			pos.x += cosf(angle) * speed * TimerManager::GetSingleton()->GetElapsedTime() / goalTime;
+			pos.y -= sinf(angle) * speed * TimerManager::GetSingleton()->GetElapsedTime() / goalTime;
+		}
 
 		if (pos.x <= 0 || pos.x >= WINSIZE_X || pos.y <= 0 || pos.y >= WINSIZE_Y)
 		{
 			isFire = false;
+			isSizeDown = false;
+			isSizeUp = false;
+		}
+		if (pos.x <= 150 || pos.x >= WINSIZE_X - 150 || pos.y <= 50 || pos.y >= WINSIZE_Y - 150)
+		{
+			if (isSizeDown)
+			{
+				size = 10;
+			}
+			if (isSizeUp)
+			{
+				size = 15;
+			}
 		}
 	}
 
@@ -81,4 +119,14 @@ void EMissile::Render(HDC hdc, EnemyName name, Mode mode)
 			img->FrameRender(hdc, pos.x, pos.y, name, mode);
 		}
 	}
+}
+
+void EMissile::SetLeftAddAngle(float leftAddAngle, float fDivision)
+{
+	this->leftAddAngle = DegreeToRadian(leftAddAngle) / fDivision;
+}
+
+void EMissile::SetRightAddAngle(float rightAddAngle, float fDivision)
+{
+	this->rightAddAngle = DegreeToRadian(rightAddAngle) / fDivision;
 }

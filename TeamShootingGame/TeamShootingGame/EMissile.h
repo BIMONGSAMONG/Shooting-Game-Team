@@ -18,6 +18,13 @@ private:
 	float timer;
 	Image* img;
 
+	bool isSizeDown;
+	bool isSizeUp;
+	bool isLeftAngle;
+	bool isRightAngle;
+	float leftAddAngle;
+	float rightAddAngle;
+
 public:
 	HRESULT Init();
 	void Release();
@@ -32,5 +39,12 @@ public:
 	void SetSpeed(float speed) { this->speed = speed; }
 	void SetAngle(float angle) { this->angle = angle; }
 	void SetIsPingPong(bool isPingPong) { this->isPingPong = isPingPong; }
+	void SetIsSizeDown(bool isSizeDown) { this->isSizeDown = isSizeDown; }
+	void SetIsSizeUp(bool isSizeUp) { this->isSizeUp = isSizeUp; }
+	void SetIsSize(int size) { this->size = size; }
+	void SetLeftAddAngle(float leftAddAngle, float fDivision);
+	void SetRightAddAngle(float rightAddAngle, float fDivision);
+	void SetIsLeftAngle(bool isLeftAngle) { this->isLeftAngle = isLeftAngle; }
+	void SetIsRightAngle(bool isRightAngle) { this->isRightAngle = isRightAngle; }
 };
 

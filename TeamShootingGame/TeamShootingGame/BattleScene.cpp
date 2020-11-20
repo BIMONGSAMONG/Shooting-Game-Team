@@ -28,10 +28,10 @@ void BattleScene::Release()
 
 void BattleScene::Update()
 {
-	if (player->GetDie() == false)
-	{
+	//if (player->GetDie() == false)
+	//{
 		if (player) player->Update();
-	}
+	//}
 
 	if (enemy) enemy->Update(name, mode);
 
@@ -40,6 +40,7 @@ void BattleScene::Update()
 	enemy->SetMode(mode);
 	enemy->SetTargetPos(player->GetPos());
 
+	//////총알에 맞는다니 제정신이 아니네요.
 	for (int i = 0; i < enemy->GetMissileMgr()->GetMissileCount(); i++)
 	{
 		if (enemy->GetMissileMgr()->GetVecMissiles()[i]->GetIsFire() == true)
@@ -53,7 +54,7 @@ void BattleScene::Update()
 			}
 		}
 	}
-
+	//////이겼으니 다행이지 목숨은 하나입니다.
 	for (int i = 0; i < player->GetMissileMgr()->GetMissileCount(); i++)
 	{
 		if (player->GetMissileMgr()->GetVecMissiles()[i]->GetIsFire() == true)
@@ -63,9 +64,19 @@ void BattleScene::Update()
 			{
 				enemy->SetLife(enemy->GetLife() - 1);
 				player->GetMissileMgr()->GetVecMissiles()[i]->SetIsFire(false);
-				enemy->GetMissileMgr()->SetIsShoot(false);
+				if (enemy->GetLife() <= 0)
+				{
+					enemy->GetMissileMgr()->SetIsShoot(false);
+				}
 			}
 		}
+	}
+	//////벽에 다가서지마세요 죽고싶습니까?
+	if (player->GetPos().x - (player->GetSize() / 2.0f) < 0 || player->GetPos().x + (player->GetSize() / 2.0f) > WINSIZE_X ||
+		player->GetPos().y - (player->GetSize() / 2.0f) < 0 || player->GetPos().y + (player->GetSize() / 2.0f) > WINSIZE_Y)
+	{
+		player->SetDie(true);
+		enemy->GetMissileMgr()->SetIsShoot(false);
 	}
 }
 

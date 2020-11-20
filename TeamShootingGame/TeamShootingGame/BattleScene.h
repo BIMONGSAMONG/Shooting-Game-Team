@@ -25,5 +25,8 @@ public:
 
 	bool CheckCollision(int size_1, int size_2, FPOINT pos_1, FPOINT pos_2);
 	float GetDistance(FPOINT pos1, FPOINT pos2);
+
+	Enemy* GetEnemy() { return enemy; }
+
 };
 

@@ -40,5 +40,7 @@ public:
 
 	void SetMode(Mode mode) { this->mode = mode; }
 	Mode GetMode() { return  this->mode; }
+	EasyModeUI* GetEasyModUI() { return this->easy; }
+	HardModeUi* GetHardModeUI() { return this->hard; }
 };
 

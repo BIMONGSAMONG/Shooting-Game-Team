@@ -18,6 +18,7 @@ private:
 	Image* img;
 	MainScene* mainScene;
 	BattleScene* battleScene;
+	EnemyName cName;
 
 	struct MOUSE_DATA  //마우스 실시간 좌표 // 마우스 클릭 좌표
 	{

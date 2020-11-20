@@ -2,7 +2,7 @@
 #include "Image.h"
 #include "MainScene.h"
 #include "BattleScene.h"
-
+#include "Enemy.h"
 HRESULT MainGame::Init()
 {
 	KeyManager::GetSingleton()->Init();
@@ -103,6 +103,7 @@ void MainGame::Update()
 				mainScene->SetEnemyChoice(true);
 				battleScene->SetEnemyName(mainScene->GetEasyTileNum());
 				battleScene->SetMode(Mode::Easy);
+				cName = mainScene->GetEasyTileNum();
 			}
 		}
 		else if (mainScene->GetMode() == Mode::Hard)
@@ -112,6 +113,7 @@ void MainGame::Update()
 				mainScene->SetEnemyChoice(true);
 				battleScene->SetEnemyName(mainScene->GetHardTileNum());
 				battleScene->SetMode(Mode::Hard);
+				cName = mainScene->GetHardTileNum();
 			}
 		}
 	}
@@ -145,6 +147,21 @@ void MainGame::Update()
 	{
 		mouseData.clickedPosX = NULL; //클릭 좌표가 클릭시 고정되어있으니 초기화해서 다시 안들어오게 해줌
 		mouseData.clickedPosY = NULL;
+	}
+
+	if (mainScene->GetMode() == Mode::Easy)  //이지모드일때만
+	{
+		if (battleScene->GetEnemy()->GetLife() == 0)
+		{
+			mainScene->GetEasyModUI()->SetIsClear(true, cName);
+		}
+	}
+	if (mainScene->GetMode() == Mode::Hard)  //하드모드일때만
+	{
+		if (battleScene->GetEnemy()->GetLife() == 0)
+		{
+			mainScene->GetHardModeUI()->SetIsClear(true, cName);
+		}
 	}
 
 	InvalidateRect(g_hWnd, NULL, false);

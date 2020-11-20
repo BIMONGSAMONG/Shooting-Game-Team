@@ -88,7 +88,10 @@ void Player::Fire()
 	{
 		if (missileMgr)
 		{
-			missileMgr->Fire(pos);
+			if (die == false)
+			{
+				missileMgr->Fire(pos);
+			}
 		}
 	}
 }

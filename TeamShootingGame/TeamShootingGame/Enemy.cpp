@@ -43,21 +43,25 @@ void Enemy::Update(EnemyName name, Mode mode)
 		fireDelay = 1.2f;
 		break;
 	case Loneliness:
+		fireDelay = 0.2f;
 		break;
 	case Distress:
 		fireDelay = 1.2f;
 		break;
 	case Fear:
+		fireDelay = 0.3;
 		break;
 	case Hatred:
 		fireDelay = 0.2f;
 		break;
 	case Guilt:
+		fireDelay = 0.3f;
 		break;
 	case Confusion:
 		fireDelay = 1.0f;
 		break;
 	case Emptiness:
+		fireDelay = 0.1f;
 		break;
 	case Shame:
 		fireDelay = 0.3f;
@@ -70,6 +74,7 @@ void Enemy::Update(EnemyName name, Mode mode)
 	case Hoplessness:
 		break;
 	case Anger:
+		fireDelay = 0.2f;
 		break;
 	case Anxiety:
 		break;

@@ -9,6 +9,7 @@ private:
 	vector<EMissile*> vecMissiles;
 	vector<EMissile*>::iterator itMissiles;
 	FPOINT targetPos;
+	FPOINT randomPos;
 	int enemyMissileCount;
 	bool isPingPong;
 	bool isPattern;
