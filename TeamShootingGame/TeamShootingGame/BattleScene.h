@@ -14,6 +14,8 @@ private:
 	EnemyName name;
 	Mode mode;
 
+	bool isShake;
+
 public:
 	HRESULT Init();
 	void Release();
@@ -27,6 +29,9 @@ public:
 	float GetDistance(FPOINT pos1, FPOINT pos2);
 
 	Enemy* GetEnemy() { return enemy; }
+
+	bool GetIsShank() { return isShake; }
+	void SetIsShank(bool isShank) { this->isShake = isShank; }
 
 };
 

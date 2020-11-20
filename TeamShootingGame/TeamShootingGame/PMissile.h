@@ -13,6 +13,7 @@ private:
 	float speed;
 	Image* img[2];
 
+
 public:
 	HRESULT Init();
 	void Release();

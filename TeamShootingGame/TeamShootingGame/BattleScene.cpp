@@ -14,6 +14,8 @@ HRESULT BattleScene::Init()
 	enemy = new Enemy();
 	enemy->Init();
 
+	isShake = false;
+
 	return S_OK;
 }
 
@@ -49,6 +51,7 @@ void BattleScene::Update()
 				player->GetPos(), enemy->GetMissileMgr()->GetVecMissiles()[i]->GetPos()) && player->GetDie() == false)
 			{
 				player->SetDie(true);
+				isShake = true;
 				enemy->GetMissileMgr()->GetVecMissiles()[i]->SetIsFire(false);
 				enemy->GetMissileMgr()->SetIsShoot(false);
 			}
@@ -67,6 +70,7 @@ void BattleScene::Update()
 				if (enemy->GetLife() <= 0)
 				{
 					enemy->GetMissileMgr()->SetIsShoot(false);
+					isShake = true;
 				}
 			}
 		}

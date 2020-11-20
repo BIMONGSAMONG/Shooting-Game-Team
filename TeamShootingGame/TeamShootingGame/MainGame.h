@@ -28,6 +28,11 @@ private:
 
 	MOUSE_DATA mouseData;
 
+	int shake;
+	float sec;
+	int count;
+	bool shaking;
+
 public:
 	HRESULT Init();				// 멤버 변수 초기화, 메모리 할당
 	void Release();				// 메모리 해제

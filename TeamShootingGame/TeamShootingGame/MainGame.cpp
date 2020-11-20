@@ -59,6 +59,10 @@ HRESULT MainGame::Init()
 	}
 
 	isInit = true;
+	shake = 0;
+	sec = 0.0f;
+	count = 0;
+	shaking = false;
 
 	return S_OK;
 }
@@ -164,6 +168,41 @@ void MainGame::Update()
 		}
 	}
 
+
+	
+
+	if (battleScene->GetIsShank())
+	{
+		sec += TimerManager::GetSingleton()->GetElapsedTime();
+		if (sec >= 0.05)
+		{
+			sec = 0;
+			count++;
+			if (count == 1 || count == 3)
+			{
+				shake = -10;
+			}
+			if (count == 2 || count == 4)
+			{
+				shake = 10;
+			}
+			if (count == 5 || count == 7)
+			{
+				shake = -5;
+			}
+			if (count == 6 || count == 8)
+			{
+				shake = 5;
+			}
+			if (count >= 9)
+			{
+				shake = 0;
+				count = 0;
+				battleScene->SetIsShank(false);
+			}
+		}
+	}
+
 	InvalidateRect(g_hWnd, NULL, false);
 }
 
@@ -174,12 +213,12 @@ void MainGame::Render()
 
 	char szText[128] = "";
 
-	wsprintf(szText, "X : %d, Y : %d", mouseData.mousePosX, mouseData.mousePosY);
-	TextOut(backDC, 10, 5, szText, strlen(szText));
-
-	wsprintf(szText, "Clicked X : %d, Y : %d",
-		mouseData.clickedPosX, mouseData.clickedPosY);
-	TextOut(backDC, 10, 30, szText, strlen(szText));
+	//wsprintf(szText, "X : %d, Y : %d", mouseData.mousePosX, mouseData.mousePosY);
+	//TextOut(backDC, 10, 5, szText, strlen(szText));
+	//
+	//wsprintf(szText, "Clicked X : %d, Y : %d",
+	//	mouseData.clickedPosX, mouseData.clickedPosY);
+	//TextOut(backDC, 10, 30, szText, strlen(szText));
 
 	if (mainScene->GetEnemyChoice() == false)
 	{
@@ -190,7 +229,7 @@ void MainGame::Render()
 		if (battleScene) battleScene->Render(backDC);
 	}
 	TimerManager::GetSingleton()->Render(backDC);
-	backBuffer->Render(hdc, 0, 0);
+	backBuffer->Render(hdc, shake, shake);
 }
 
 

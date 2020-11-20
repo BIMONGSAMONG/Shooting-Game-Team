@@ -32,7 +32,6 @@ using namespace std;
 #define KEY_RIGHT	0x27
 
 
-
 struct FPOINT
 {
 	float x;
