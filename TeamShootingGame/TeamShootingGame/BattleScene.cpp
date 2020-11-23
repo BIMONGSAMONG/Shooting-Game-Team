@@ -48,10 +48,13 @@ void BattleScene::Update()
 			if (CheckCollision(player->GetSize(), enemy->GetMissileMgr()->GetVecMissiles()[i]->GetSize(),
 				player->GetPos(), enemy->GetMissileMgr()->GetVecMissiles()[i]->GetPos()) && player->GetDie() == false)
 			{
-				player->SetDie(true);
-				isShake = true;
+				if (!KeyManager::GetSingleton()->IsStayKeyDown(VK_SHIFT))
+				{
+					player->SetDie(true);
+					isShake = true;
+					enemy->GetMissileMgr()->SetIsShoot(false);
+				}
 				enemy->GetMissileMgr()->GetVecMissiles()[i]->SetIsFire(false);
-				enemy->GetMissileMgr()->SetIsShoot(false);
 			}
 		}
 	}

@@ -66,19 +66,19 @@ void Player::Move()
 {
 	if (KeyManager::GetSingleton()->IsStayKeyDown(KEY_LEFT))
 	{
-		pos.x -= 1;
+		pos.x -= 2;
 	}
 	else if (KeyManager::GetSingleton()->IsStayKeyDown(KEY_RIGHT))
 	{
-		pos.x += 1;
+		pos.x += 2;
 	}
 	if (KeyManager::GetSingleton()->IsStayKeyDown(KEY_UP))
 	{
-		pos.y -= 1;
+		pos.y -= 2;
 	}
 	else if (KeyManager::GetSingleton()->IsStayKeyDown(KEY_DOWN))
 	{
-		pos.y += 1;
+		pos.y += 2;
 	}
 }
 

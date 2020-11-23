@@ -949,7 +949,7 @@ void EMissileManager::Fire(EnemyName name, FPOINT pos, float destAngle, Mode mod
 					{
 						if (vecMissiles[i]->GetPos().x <= (WINSIZE_X / 2) - 250.0f)
 						{
-							vecMissiles[i]->SetSpeed(1800.0f);
+							vecMissiles[i]->SetSpeed(1300.0f);
 							destAngle1 = atan2f(-(targetPos.y - vecMissiles[i]->GetPos().y), (targetPos.x - vecMissiles[i]->GetPos().x));
 							if (i == 0 + bulletCount)
 							{
@@ -979,7 +979,7 @@ void EMissileManager::Fire(EnemyName name, FPOINT pos, float destAngle, Mode mod
 					{
 						if (vecMissiles[i]->GetPos().x >= (WINSIZE_X / 2) + 250.0f)
 						{
-							vecMissiles[i]->SetSpeed(1800.0f);
+							vecMissiles[i]->SetSpeed(1300.0f);
 							destAngle2 = atan2f(-(targetPos.y - vecMissiles[i]->GetPos().y), (targetPos.x - vecMissiles[i]->GetPos().x));
 							if (i == 3 + bulletCount)
 							{
@@ -1028,7 +1028,7 @@ void EMissileManager::Fire(EnemyName name, FPOINT pos, float destAngle, Mode mod
 						{
 							vecMissiles[i]->SetAngle(destAngle + ((i - 9 - bulletCount) / 40.0f) + 0.5f);
 						}
-						vecMissiles[i]->SetSpeed(1600.0f);
+						vecMissiles[i]->SetSpeed(1400.0f);
 						vecMissiles[i]->SetIsFire(true);
 					}
 				}
@@ -1060,7 +1060,7 @@ void EMissileManager::Fire(EnemyName name, FPOINT pos, float destAngle, Mode mod
 					{
 						if (vecMissiles[i]->GetPos().x <= (WINSIZE_X / 2) - 250.0f)
 						{
-							vecMissiles[i]->SetSpeed(1800.0f);
+							vecMissiles[i]->SetSpeed(1400.0f);
 							destAngle1 = atan2f(-(targetPos.y - vecMissiles[i]->GetPos().y), (targetPos.x - vecMissiles[i]->GetPos().x));
 							if (i == 0 + bulletCount)
 							{
@@ -1090,7 +1090,7 @@ void EMissileManager::Fire(EnemyName name, FPOINT pos, float destAngle, Mode mod
 					{
 						if (vecMissiles[i]->GetPos().x >= (WINSIZE_X / 2) + 250.0f)
 						{
-							vecMissiles[i]->SetSpeed(1800.0f);
+							vecMissiles[i]->SetSpeed(1400.0f);
 							destAngle2 = atan2f(-(targetPos.y - vecMissiles[i]->GetPos().y), (targetPos.x - vecMissiles[i]->GetPos().x));
 							if (i == 3 + bulletCount)
 							{
@@ -1139,7 +1139,7 @@ void EMissileManager::Fire(EnemyName name, FPOINT pos, float destAngle, Mode mod
 						{
 							vecMissiles[i]->SetAngle(destAngle + ((i - 9 - bulletCount) / 40.0f) + 0.5f);
 						}
-						vecMissiles[i]->SetSpeed(1500.0f);
+						vecMissiles[i]->SetSpeed(1250.0f);
 						vecMissiles[i]->SetIsFire(true);
 					}
 				}
@@ -1152,7 +1152,7 @@ void EMissileManager::Fire(EnemyName name, FPOINT pos, float destAngle, Mode mod
 					{
 						vecMissiles[i]->SetPos(pos);
 						vecMissiles[i]->SetAngle(destAngle + ((i - 14 - bulletCount) / 6.0f));
-						vecMissiles[i]->SetSpeed(1500.0f);
+						vecMissiles[i]->SetSpeed(1250.0f);
 						vecMissiles[i]->SetIsFire(true);
 					}
 				}
@@ -1189,7 +1189,7 @@ void EMissileManager::Fire(EnemyName name, FPOINT pos, float destAngle, Mode mod
 						{
 							vecMissiles[i]->SetAngle(destAngle + ((i - 20 - bulletCount) / 40.0f) + 0.5f);
 						}
-						vecMissiles[i]->SetSpeed(1500.0f);
+						vecMissiles[i]->SetSpeed(1250.0f);
 						vecMissiles[i]->SetIsFire(true);
 					}
 				}
@@ -2194,7 +2194,7 @@ void EMissileManager::Fire(EnemyName name, FPOINT pos, float destAngle, Mode mod
 				if (life <= 10)
 				{
 					isShake = false;
-					if (count == 2)
+					if (count == 1)
 					{
 						for (int i = 32 + bulletCount; i < 33 + bulletCount; i++)
 						{
@@ -2204,7 +2204,7 @@ void EMissileManager::Fire(EnemyName name, FPOINT pos, float destAngle, Mode mod
 							vecMissiles[i]->SetIsFire(true);
 						}
 					}
-					if (count == 4)
+					if (count == 2)
 					{
 						for (int i = 33 + bulletCount; i < 35 + bulletCount; i++)
 						{
@@ -2221,13 +2221,40 @@ void EMissileManager::Fire(EnemyName name, FPOINT pos, float destAngle, Mode mod
 							vecMissiles[i]->SetIsFire(true);
 						}
 					}
+					if (count == 3)
+					{
+						for (int i = 35 + bulletCount; i < 36 + bulletCount; i++)
+						{
+							vecMissiles[i]->SetPos(pos);
+							vecMissiles[i]->SetAngle(destAngle);
+							vecMissiles[i]->SetSpeed(900.0f);
+							vecMissiles[i]->SetIsFire(true);
+						}
+					}
+					if (count == 4)
+					{
+						for (int i = 36 + bulletCount; i < 38 + bulletCount; i++)
+						{
+							vecMissiles[i]->SetPos(pos);
+							if (i == 36 + bulletCount)
+							{
+								vecMissiles[i]->SetAngle(destAngle + ((i - 37 - bulletCount) / 40.0f) - 0.1f);
+							}
+							if (i == 37 + bulletCount)
+							{
+								vecMissiles[i]->SetAngle(destAngle + ((i - 36 - bulletCount) / 40.0f) + 0.1f);
+							}
+							vecMissiles[i]->SetSpeed(900.0f);
+							vecMissiles[i]->SetIsFire(true);
+						}
+					}
 				}
-				bulletCount += 35;
-				if (bulletCount >= 245)
+				bulletCount += 38;
+				if (bulletCount >= 342)
 				{
 					bulletCount = 0;
 				}
-				if (count >= 8)
+				if (count >= 5)
 				{
 					count = 0;
 				}

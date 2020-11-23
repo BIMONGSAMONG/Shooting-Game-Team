@@ -7,7 +7,7 @@ HRESULT Enemy::Init()
 	pos = { WINSIZE_X / 2, 150 };
 	size = 64;
 	bossSize = 128;
-	life = 10;
+	life = 20;
 	currFrameX = 0;
 	currFrameY = 0;
 	destAngle = 0;

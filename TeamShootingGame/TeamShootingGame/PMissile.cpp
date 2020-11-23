@@ -7,7 +7,7 @@ HRESULT PMissile::Init()
 	size = 10;
 	angle = PI / 2;
 	pos = { 0, 0 };
-	speed = 2.0f;
+	speed = 3.2f;
 	isBoss = false;
 
 	img[0] = ImageManager::GetSingleton()->FindImage("Player_Bullet");
