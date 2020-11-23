@@ -58,11 +58,15 @@ void BattleScene::Update()
 		delete player;
 		enemy->Release();
 		delete enemy;
+		ui->Release();
+		delete ui;
 
 		player = new Player();
 		player->Init();
 		enemy = new Enemy();
 		enemy->Init();
+		ui = new UI();
+		ui->Init();
 	}
 
 	//////총알에 맞는다니 제정신이 아니네요.
