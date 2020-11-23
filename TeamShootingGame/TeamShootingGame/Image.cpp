@@ -229,6 +229,48 @@ void Image::AlphaRender(HDC hdc, int destX, int destY, BYTE alpha)
 	}
 }
 
+void Image::Render(HDC hdc, int destX, int destY, LifebarColor color, float life)
+{
+
+	if (color == White)
+	{
+		GdiTransparentBlt(
+			hdc,
+			destX, destY,
+			imageInfo->width, imageInfo->height,
+
+			imageInfo->hMemDC,
+			0, 0,
+			imageInfo->width, imageInfo->height,
+			transColor);
+	}
+	if (color == Red)
+	{
+		GdiTransparentBlt(
+			hdc,
+			destX, destY,
+			life, imageInfo->height,
+
+			imageInfo->hMemDC,
+			0, 0,
+			imageInfo->width, imageInfo->height,
+			transColor);
+	}
+	if (color == Black)
+	{
+		GdiTransparentBlt(
+			hdc,
+			destX, destY,
+			life, imageInfo->height,
+
+			imageInfo->hMemDC,
+			0, 0,
+			imageInfo->width, imageInfo->height,
+			transColor);
+	}
+
+}
+
 Image::Image()
 {
 }

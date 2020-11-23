@@ -11,7 +11,7 @@ class MainScene :public GameNode
 private:
 	EasyModeUI* easy;
 	HardModeUi* hard;
-	Image* img[2];
+	Image* img[3];
 	FPOINT pos[2];
 	int size;
 	bool enemyChoice;

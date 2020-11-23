@@ -6,6 +6,7 @@
 #include "PMissileManager.h"
 #include "PMissile.h"
 #include "Image.h"
+#include "UI.h"
 
 HRESULT BattleScene::Init()
 {
@@ -14,6 +15,9 @@ HRESULT BattleScene::Init()
 
 	enemy = new Enemy();
 	enemy->Init();
+
+	ui = new UI();
+	ui->Init();
 
 	img = ImageManager::GetSingleton()->FindImage("Die");
 
@@ -30,6 +34,9 @@ void BattleScene::Release()
 
 	enemy->Release();
 	delete enemy;
+
+	ui->Release();
+	delete ui;
 }
 
 void BattleScene::Update()
@@ -37,6 +44,8 @@ void BattleScene::Update()
 	if (player) player->Update();
 
 	if (enemy) enemy->Update(name, mode);
+
+	if (ui) ui->Update(enemy->GetLife());
 
 
 	enemy->SetEnemyName(name);
@@ -153,6 +162,7 @@ void BattleScene::Render(HDC hdc)
 {
 	if (player) player->Render(hdc);
 	if (enemy) enemy->Render(hdc, name, mode);
+	if (ui) ui->Render(hdc);
 	if (player->GetDie() == true)
 	{
 		if (img)

@@ -32,6 +32,12 @@ using namespace std;
 #define KEY_RIGHT	0x27
 
 
+
+#define FULL_LIFE	30
+
+
+
+
 struct FPOINT
 {
 	float x;
@@ -50,7 +56,8 @@ enum Scene {  // 씬 종류
 
 enum Mode {  // 모드 종류
 	Easy,
-	Hard
+	Hard,
+	Secret
 };
 
 enum EnemyName { // 적 종류
@@ -80,4 +87,10 @@ enum Phase
 	Phase1,
 	Phase2,
 	Phase3
+};
+
+enum LifebarColor { // 라이프 바 색
+	White,
+	Red,
+	Black
 };

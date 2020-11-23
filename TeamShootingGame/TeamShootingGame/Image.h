@@ -97,6 +97,7 @@ public:
 	void FrameRender(HDC hdc, int destX, int destY,
 		int currFrameX, int currFrameY);
 	void AlphaRender(HDC hdc, int destX, int destY, BYTE alpha);
+	void Render(HDC hdc, int destX, int destY, LifebarColor color, float life = 0.0f);
 
 	HDC GetMemDC() { return imageInfo->hMemDC; }
 	int GetMaxFrameX() { return imageInfo->maxFrameX; }

@@ -7,6 +7,7 @@ class Enemy;
 class EMissileManager;
 class PMissileManager;
 class Image;
+class UI;
 class BattleScene : public GameNode
 {
 private:
@@ -15,6 +16,7 @@ private:
 	Image* img;
 	EnemyName name;
 	Mode mode;
+	UI* ui;
 
 	bool isShake;
 	bool shaking;

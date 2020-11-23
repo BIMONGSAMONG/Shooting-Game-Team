@@ -7,6 +7,7 @@ HRESULT MainScene::Init()
 {
 	img[0] = ImageManager::GetSingleton()->FindImage("왼쪽화살표");
 	img[1] = ImageManager::GetSingleton()->FindImage("오른쪽화살표");
+	img[2] = ImageManager::GetSingleton()->FindImage("시크릿");
 	mode = Mode::Easy;
 	enemyChoice = false;
 	easy = new EasyModeUI();
@@ -51,5 +52,10 @@ void MainScene::Render(HDC hdc)
 	{
 		img[0]->Render(hdc, pos[0].x, pos[0].y);
 		if (hard) hard->Render(hdc);
+	}
+	else if (mode == Mode::Secret)
+	{
+		img[2]->Render(hdc, 0, 0);
+		img[1]->Render(hdc, pos[1].x, pos[1].y);
 	}
 }

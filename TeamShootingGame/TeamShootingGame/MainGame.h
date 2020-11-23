@@ -7,17 +7,21 @@ class Player;
 class EnemyManager;
 class MainScene;
 class BattleScene;
+class TitleScene;
 class MainGame : public GameNode
 {
 private:
 	HDC hdc;
 	bool isInit;
 
+	Scene sceneNum;
+
 	Image* backBuffer;
 	Image* backGround;
 	Image* img;
 	MainScene* mainScene;
 	BattleScene* battleScene;
+	TitleScene* titleScene;
 	EnemyName cName;
 
 	struct MOUSE_DATA  //마우스 실시간 좌표 // 마우스 클릭 좌표

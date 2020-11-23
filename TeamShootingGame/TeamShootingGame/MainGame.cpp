@@ -2,6 +2,7 @@
 #include "Image.h"
 #include "MainScene.h"
 #include "BattleScene.h"
+#include "TitleScene.h"
 #include "Enemy.h"
 HRESULT MainGame::Init()
 {
@@ -41,6 +42,12 @@ HRESULT MainGame::Init()
 	ImageManager::GetSingleton()->AddImage("왼쪽화살표", "Image/left.bmp", 12 * 3, 24 * 3, 18, 2, true, RGB(255, 0, 255));
 	ImageManager::GetSingleton()->AddImage("오른쪽화살표", "Image/right.bmp", 12 * 3, 24 * 3, 18, 2, true, RGB(255, 0, 255));
 
+	////// 타이틀 이미지
+	ImageManager::GetSingleton()->AddImage("Z키를 누르세요", "Image/TitleScene.bmp", WINSIZE_X, WINSIZE_Y);
+
+	///// 시크릿?
+	ImageManager::GetSingleton()->AddImage("시크릿", "Image/SecretBuger.bmp", WINSIZE_X, WINSIZE_Y);
+
 	srand(time(NULL));
 
 	backBuffer = new Image();
@@ -51,6 +58,9 @@ HRESULT MainGame::Init()
 
 	battleScene = new BattleScene();
 	battleScene->Init();
+
+	titleScene = new TitleScene();
+	titleScene->Init();
 
 	backGround = new Image();
 	if (FAILED(backGround->Init("Image/background.bmp", WINSIZE_X + 40, WINSIZE_Y + 40)))
@@ -81,6 +91,9 @@ void MainGame::Release()
 	battleScene->Release();
 	delete battleScene;
 
+	titleScene->Release();
+	delete titleScene;
+
 	backGround->Release();
 	delete backGround;
 
@@ -93,15 +106,15 @@ void MainGame::Release()
 
 void MainGame::Update()
 {
-	if (mainScene->GetEnemyChoice())
+	if (sceneNum == Scene::Title)
 	{
-		if (battleScene) battleScene->Update();
+		if (titleScene) titleScene->Update();
+		if (titleScene->GetGoMain()) sceneNum = Scene::Main;
 	}
-
-	if (mainScene) mainScene->Update();
-
-	if (mainScene->GetEnemyChoice() == false)
+	if (sceneNum == Scene::Main)
 	{
+		if (mainScene) mainScene->Update();
+
 		if (mainScene->GetMode() == Mode::Easy)  //이지모드일때만
 		{
 			if (IsInRect(mainScene->GetEasyPos(), mouseData, mainScene->GetEasySize()))
@@ -122,33 +135,161 @@ void MainGame::Update()
 				cName = mainScene->GetHardTileNum();
 			}
 		}
-	}
 
-	if (KeyManager::GetSingleton()->IsOnceKeyDown('Q'))
+		if (mainScene->GetEnemyChoice()) sceneNum = Scene::Battle;
+	}
+	if (sceneNum == Scene::Battle)
 	{
-		mainScene->SetEnemyChoice(false);
+		if (battleScene) battleScene->Update();
 
-		battleScene->Release();
-		delete battleScene;
-		battleScene = new BattleScene();
-		battleScene->Init();
+		if (battleScene->GetIsShake())
+		{
+			sec += TimerManager::GetSingleton()->GetElapsedTime();
+			if (sec >= 0.05)
+			{
+				sec = 0;
+				count++;
+				if (count == 1 || count == 3)
+				{
+					shake = -10;
+				}
+				if (count == 2 || count == 4)
+				{
+					shake = 10;
+				}
+				if (count == 5 || count == 7)
+				{
+					shake = -5;
+				}
+				if (count == 6 || count == 8)
+				{
+					shake = 5;
+				}
+				if (count >= 9)
+				{
+					shake = 0;
+					count = 0;
+					battleScene->SetIsShake(false);
+				}
+			}
+		}
+
+		if (KeyManager::GetSingleton()->IsOnceKeyDown('Q'))
+		{
+			mainScene->SetEnemyChoice(false);
+
+			battleScene->Release();
+			delete battleScene;
+			battleScene = new BattleScene();
+			battleScene->Init();
+
+			sceneNum = Scene::Main;
+		}
+		
+		if (battleScene->GetIsShake())
+		{
+			sec += TimerManager::GetSingleton()->GetElapsedTime();
+			if (sec >= 0.05)
+			{
+				sec = 0;
+				count++;
+				if (count == 1 || count == 3)
+				{
+					shake = -10;
+				}
+				if (count == 2 || count == 4)
+				{
+					shake = 10;
+				}
+				if (count == 5 || count == 7)
+				{
+					shake = -5;
+				}
+				if (count == 6 || count == 8)
+				{
+					shake = 5;
+				}
+				if (count >= 9)
+				{
+					shake = 0;
+					count = 0;
+					battleScene->SetIsShake(false);
+				}
+			}
+		}
+
+		if (battleScene->GetIsShaking())
+		{
+			patternTimer += TimerManager::GetSingleton()->GetElapsedTime();
+			if (patternTimer >= 0.05)
+			{
+				patternTimer = 0;
+				count++;
+				if (count == 1 || count == 3)
+				{
+					shake = -3;
+				}
+				if (count == 2 || count == 4)
+				{
+					shake = 3;
+				}
+				if (count == 5 || count == 7)
+				{
+					shake = -1;
+				}
+				if (count == 6 || count == 8)
+				{
+					shake = 1;
+				}
+				if (count >= 9)
+				{
+					shake = 0;
+					count = 0;
+					battleScene->SetIsShaking(false);
+				}
+			}
+		}
 	}
+
+
+
 
 	if (mainScene->GetEnemyChoice() == false)
 	{
 		if (IsInRect2(mainScene->GetRightPos(), mouseData, 36, 72))
 		{
-			mainScene->SetMode(Mode::Hard);
-			mouseData.clickedPosX = NULL; //클릭 좌표가 클릭시 고정되어있으니 초기화해서 다시 안들어오게 해줌
-			mouseData.clickedPosY = NULL;
+			if (mainScene->GetMode() == Mode::Easy)
+			{
+				mainScene->SetMode(Mode::Hard);
+				mouseData.clickedPosX = NULL; //클릭 좌표가 클릭시 고정되어있으니 초기화해서 다시 안들어오게 해줌
+				mouseData.clickedPosY = NULL;
+			}
+			else if (mainScene->GetMode() == Mode::Secret)
+			{
+				mainScene->SetMode(Mode::Easy);
+				mouseData.clickedPosX = NULL; //클릭 좌표가 클릭시 고정되어있으니 초기화해서 다시 안들어오게 해줌
+				mouseData.clickedPosY = NULL;
+			}
+
 		}
 		if (IsInRect2(mainScene->GetLeftPos(), mouseData, 36, 72))
 		{
-			mainScene->SetMode(Mode::Easy);
-			mouseData.clickedPosX = NULL; //클릭 좌표가 클릭시 고정되어있으니 초기화해서 다시 안들어오게 해줌
-			mouseData.clickedPosY = NULL;
+			if (mainScene->GetMode() == Mode::Hard)
+			{
+				mainScene->SetMode(Mode::Easy);
+				mouseData.clickedPosX = NULL; //클릭 좌표가 클릭시 고정되어있으니 초기화해서 다시 안들어오게 해줌
+				mouseData.clickedPosY = NULL;
+			}
+			else if (mainScene->GetMode() == Mode::Easy)
+			{
+				mainScene->SetMode(Mode::Secret);
+				mouseData.clickedPosX = NULL; //클릭 좌표가 클릭시 고정되어있으니 초기화해서 다시 안들어오게 해줌
+				mouseData.clickedPosY = NULL;
+			}
+
 		}
 	}
+
 	if (mainScene->GetEnemyChoice() == true)
 	{
 		mouseData.clickedPosX = NULL; //클릭 좌표가 클릭시 고정되어있으니 초기화해서 다시 안들어오게 해줌
@@ -171,72 +312,6 @@ void MainGame::Update()
 	}
 
 
-	
-
-	if (battleScene->GetIsShake())
-	{
-		sec += TimerManager::GetSingleton()->GetElapsedTime();
-		if (sec >= 0.05)
-		{
-			sec = 0;
-			count++;
-			if (count == 1 || count == 3)
-			{
-				shake = -10;
-			}
-			if (count == 2 || count == 4)
-			{
-				shake = 10;
-			}
-			if (count == 5 || count == 7)
-			{
-				shake = -5;
-			}
-			if (count == 6 || count == 8)
-			{
-				shake = 5;
-			}
-			if (count >= 9)
-			{
-				shake = 0;
-				count = 0;
-				battleScene->SetIsShake(false);
-			}
-		}
-	}
-
-	if (battleScene->GetIsShaking())
-	{
-		patternTimer += TimerManager::GetSingleton()->GetElapsedTime();
-		if (patternTimer >= 0.05)
-		{
-			patternTimer = 0;
-			count++;
-			if (count == 1 || count == 3)
-			{
-				shake = -3;
-			}
-			if (count == 2 || count == 4)
-			{
-				shake = 3;
-			}
-			if (count == 5 || count == 7)
-			{
-				shake = -1;
-			}
-			if (count == 6 || count == 8)
-			{
-				shake = 1;
-			}
-			if (count >= 9)
-			{
-				shake = 0;
-				count = 0;
-				battleScene->SetIsShaking(false);
-			}
-		}
-	}
-
 	InvalidateRect(g_hWnd, NULL, false);
 }
 
@@ -245,23 +320,19 @@ void MainGame::Render()
 	HDC backDC = backBuffer->GetMemDC();
 	backGround->Render(backDC, 0, 0);
 
-	char szText[128] = "";
-
-	//wsprintf(szText, "X : %d, Y : %d", mouseData.mousePosX, mouseData.mousePosY);
-	//TextOut(backDC, 10, 5, szText, strlen(szText));
-	//
-	//wsprintf(szText, "Clicked X : %d, Y : %d",
-	//	mouseData.clickedPosX, mouseData.clickedPosY);
-	//TextOut(backDC, 10, 30, szText, strlen(szText));
-
-	if (mainScene->GetEnemyChoice() == false)
+	if (sceneNum == Scene::Title)
+	{
+		if (titleScene) titleScene->Render(backDC);
+	}
+	if (sceneNum == Scene::Main)
 	{
 		if (mainScene) mainScene->Render(backDC);
 	}
-	if (mainScene->GetEnemyChoice())
+	if (sceneNum == Scene::Battle)
 	{
 		if (battleScene) battleScene->Render(backDC);
 	}
+
 	TimerManager::GetSingleton()->Render(backDC);
 	backBuffer->Render(hdc, shake, shake);
 }
