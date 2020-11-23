@@ -19,6 +19,10 @@ HRESULT MainGame::Init()
 	ImageManager::GetSingleton()->AddImage(EnemyName::Sadness, "Image/Boss/Sadness.bmp", 64 * 4, 64 * 4, 2, 2, true, RGB(255, 0, 255));
 	ImageManager::GetSingleton()->AddImage(EnemyName::Panic, "Image/Boss/Panic.bmp", 64 * 4, 64 * 4, 2, 2, true, RGB(255, 0, 255));
 	ImageManager::GetSingleton()->AddImage("Small_Boss", "Image/SmallEnamy_sheet.bmp", 208 * 4, 32 * 4, 13, 2, true, RGB(255, 0, 255));
+	ImageManager::GetSingleton()->AddImage("Easy_Boss", "Image/Boss/Boss_Easy.bmp", 24, 64, 1, 2, true, RGB(255, 0, 255));
+	ImageManager::GetSingleton()->AddImage("Hard_Boss", "Image/Boss/Boss_Hard.bmp", 96, 64, 4, 2, true, RGB(255, 0, 255));
+	ImageManager::GetSingleton()->AddImage("Boss_FirstBarrier", "Image/Boss/Boss_FirstBarrier.bmp", 768, 128, 13, 2, true, RGB(255, 0, 255));
+	ImageManager::GetSingleton()->AddImage("Boss_SecondBarrier", "Image/Boss/Boss_SecondBarrier.bmp", 64, 64, true, RGB(255, 0, 255));
 
 	/////// ¸ó½ºÅÍ ÃÑ¾Ë ÀÌ¹ÌÁö
 	ImageManager::GetSingleton()->AddImage("Boss_Bullet", "Image/Boss/bullet_sheet.bmp", 144 * 2, 16 * 2, 18, 2, true, RGB(255, 0, 255));
@@ -47,6 +51,10 @@ HRESULT MainGame::Init()
 
 	///// ½ÃÅ©¸´?
 	ImageManager::GetSingleton()->AddImage("½ÃÅ©¸´", "Image/SecretBuger.bmp", WINSIZE_X, WINSIZE_Y);
+
+	///// º¸½º ¹è°æÈ­¸é
+	ImageManager::GetSingleton()->AddImage("White", "Image/Background_White.bmp", WINSIZE_X, WINSIZE_Y, true, RGB(255, 0, 255));
+
 
 	srand(time(NULL));
 

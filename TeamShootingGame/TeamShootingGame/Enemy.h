@@ -26,6 +26,10 @@ private:
 	EMissileManager* missileMgr;
 	Image* img;
 	Image* bossImg[4];
+	Image* Fin_Easy_Boss;
+	Image* Fin_Hard_Boss;
+	Image* BossBarrier1;
+	Image* BossBarrier2;
 
 	bool setLife;
 

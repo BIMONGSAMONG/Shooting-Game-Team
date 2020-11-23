@@ -17,6 +17,10 @@ HRESULT Enemy::Init()
 	setLife = false;
 
 	img = ImageManager::GetSingleton()->FindImage("Small_Boss");
+	Fin_Easy_Boss = ImageManager::GetSingleton()->FindImage("Easy_Boss");
+	Fin_Hard_Boss = ImageManager::GetSingleton()->FindImage("Hard_Boss");
+	BossBarrier1 = ImageManager::GetSingleton()->FindImage("Boss_FirstBarrier");
+	BossBarrier2 = ImageManager::GetSingleton()->FindImage("Boss_SecondBarrier");
 	for (int i = EnemyName::Anger; i <= EnemyName::Panic; i++)
 	{
 		bossImg[i - 13] = ImageManager::GetSingleton()->FindImage(i);
