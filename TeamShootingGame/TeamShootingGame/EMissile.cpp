@@ -23,6 +23,7 @@ HRESULT EMissile::Init()
 	rightAddAngleX = 0;
 	leftAddAngleY = 0;
 	rightAddAngleY = 0;
+	disappears = 0;
 
 	return S_OK;
 }
@@ -68,7 +69,7 @@ void EMissile::Update()
 					angle = pingpongAngle[random];
 				}
 			}
-			else if (timer > 8.0f)
+			else if (timer > disappears)
 			{
 				isFire = false;
 				timer = 0;

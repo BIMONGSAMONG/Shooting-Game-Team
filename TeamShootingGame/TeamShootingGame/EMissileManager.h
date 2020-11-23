@@ -10,19 +10,26 @@ private:
 	vector<EMissile*>::iterator itMissiles;
 	FPOINT targetPos;
 	FPOINT randomPos;
+	FPOINT vertexPos1;
+	FPOINT vertexPos2;
+	
 	int enemyMissileCount;
 	bool isPingPong;
 	bool isPattern;
 	bool isShoot;
+	bool isShake;
 
 	float angle;
-	float addAngle;
+	float addAngle1;
+	float addAngle2;
 	float destAngle1;
 	float destAngle2;
 	float fireTime;
 
 	int bulletCount;
 	int count;
+	int life;
+	int phase;
 
 public:
 	HRESULT Init();
@@ -37,4 +44,6 @@ public:
 	vector<EMissile*> GetVecMissiles() { return vecMissiles; }
 	int GetMissileCount() { return enemyMissileCount; }
 	void SetIsShoot(bool isShoot) { this->isShoot = isShoot; }
+	void SetLife(int life) { this->life = life; }
+	bool GetIsShake() { return isShake; }
 };

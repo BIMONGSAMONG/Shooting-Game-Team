@@ -52,7 +52,7 @@ HRESULT MainGame::Init()
 	battleScene->Init();
 
 	backGround = new Image();
-	if (FAILED(backGround->Init("Image/background.bmp", WINSIZE_X, WINSIZE_Y)))
+	if (FAILED(backGround->Init("Image/background.bmp", WINSIZE_X + 40, WINSIZE_Y + 40)))
 	{
 		// 예외처리
 		MessageBox(g_hWnd, "빈 비트맵 생성에 실패했습니다.", "실패", MB_OK);
@@ -63,6 +63,7 @@ HRESULT MainGame::Init()
 	sec = 0.0f;
 	count = 0;
 	shaking = false;
+	isShake = false;
 
 	return S_OK;
 }
@@ -171,7 +172,7 @@ void MainGame::Update()
 
 	
 
-	if (battleScene->GetIsShank())
+	if (battleScene->GetIsShake())
 	{
 		sec += TimerManager::GetSingleton()->GetElapsedTime();
 		if (sec >= 0.05)
@@ -198,7 +199,39 @@ void MainGame::Update()
 			{
 				shake = 0;
 				count = 0;
-				battleScene->SetIsShank(false);
+				battleScene->SetIsShake(false);
+			}
+		}
+	}
+
+	if (battleScene->GetIsShaking())
+	{
+		patternTimer += TimerManager::GetSingleton()->GetElapsedTime();
+		if (patternTimer >= 0.05)
+		{
+			patternTimer = 0;
+			count++;
+			if (count == 1 || count == 3)
+			{
+				shake = -3;
+			}
+			if (count == 2 || count == 4)
+			{
+				shake = 3;
+			}
+			if (count == 5 || count == 7)
+			{
+				shake = -1;
+			}
+			if (count == 6 || count == 8)
+			{
+				shake = 1;
+			}
+			if (count >= 9)
+			{
+				shake = 0;
+				count = 0;
+				battleScene->SetIsShaking(false);
 			}
 		}
 	}

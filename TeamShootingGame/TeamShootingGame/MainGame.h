@@ -30,8 +30,10 @@ private:
 
 	int shake;
 	float sec;
+	float patternTimer;
 	int count;
 	bool shaking;
+	bool isShake;
 
 public:
 	HRESULT Init();				// 멤버 변수 초기화, 메모리 할당

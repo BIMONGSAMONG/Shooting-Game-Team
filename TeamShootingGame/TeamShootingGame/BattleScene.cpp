@@ -15,6 +15,7 @@ HRESULT BattleScene::Init()
 	enemy->Init();
 
 	isShake = false;
+	shaking = false;
 
 	return S_OK;
 }
@@ -30,10 +31,7 @@ void BattleScene::Release()
 
 void BattleScene::Update()
 {
-	//if (player->GetDie() == false)
-	//{
-		if (player) player->Update();
-	//}
+	if (player) player->Update();
 
 	if (enemy) enemy->Update(name, mode);
 
@@ -50,37 +48,84 @@ void BattleScene::Update()
 			if (CheckCollision(player->GetSize(), enemy->GetMissileMgr()->GetVecMissiles()[i]->GetSize(),
 				player->GetPos(), enemy->GetMissileMgr()->GetVecMissiles()[i]->GetPos()) && player->GetDie() == false)
 			{
-				player->SetDie(true);
-				isShake = true;
-				enemy->GetMissileMgr()->GetVecMissiles()[i]->SetIsFire(false);
-				enemy->GetMissileMgr()->SetIsShoot(false);
+				//player->SetDie(true);
+				//isShake = true;
+				//enemy->GetMissileMgr()->GetVecMissiles()[i]->SetIsFire(false);
+				//enemy->GetMissileMgr()->SetIsShoot(false);
 			}
 		}
 	}
 	//////이겼으니 다행이지 목숨은 하나입니다.
-	for (int i = 0; i < player->GetMissileMgr()->GetMissileCount(); i++)
+	if (name < EnemyName::Anger)
 	{
-		if (player->GetMissileMgr()->GetVecMissiles()[i]->GetIsFire() == true)
+		for (int i = 0; i < player->GetMissileMgr()->GetMissileCount(); i++)
 		{
-			if (CheckCollision(enemy->GetSize(), player->GetMissileMgr()->GetVecMissiles()[i]->GetSize(),
-				enemy->GetEnemyPos(), player->GetMissileMgr()->GetVecMissiles()[i]->GetPos()) && enemy->GetLife() >= 1)
+			if (player->GetMissileMgr()->GetVecMissiles()[i]->GetIsFire() == true)
 			{
-				enemy->SetLife(enemy->GetLife() - 1);
-				player->GetMissileMgr()->GetVecMissiles()[i]->SetIsFire(false);
-				if (enemy->GetLife() <= 0)
+				if (CheckCollision(enemy->GetSize(), player->GetMissileMgr()->GetVecMissiles()[i]->GetSize(),
+					enemy->GetEnemyPos(), player->GetMissileMgr()->GetVecMissiles()[i]->GetPos()) && enemy->GetLife() >= 1)
 				{
-					enemy->GetMissileMgr()->SetIsShoot(false);
-					isShake = true;
+					enemy->SetLife(enemy->GetLife() - 1);
+					player->GetMissileMgr()->GetVecMissiles()[i]->SetIsFire(false);
+					if (enemy->GetLife() <= 0)
+					{
+						enemy->GetMissileMgr()->SetIsShoot(false);
+						isShake = true;
+					}
 				}
 			}
 		}
 	}
+
+	if (name >= EnemyName::Anger)
+	{
+		for (int i = 0; i < player->GetMissileMgr()->GetMissileCount(); i++)
+		{
+			if (player->GetMissileMgr()->GetVecMissiles()[i]->GetIsFire() == true)
+			{
+				if (CheckCollision(enemy->GetBossSize(), player->GetMissileMgr()->GetVecMissiles()[i]->GetSize(),
+					enemy->GetEnemyPos(), player->GetMissileMgr()->GetVecMissiles()[i]->GetPos()) && enemy->GetLife() >= 1)
+				{
+					enemy->SetLife(enemy->GetLife() - 1);
+					player->GetMissileMgr()->GetVecMissiles()[i]->SetIsFire(false);
+					if (enemy->GetLife() <= 0)
+					{
+						enemy->GetMissileMgr()->SetIsShoot(false);
+						isShake = true;
+					}
+				}
+			}
+		}
+	}
+	if (name == EnemyName::Anger)
+	{
+		if(enemy->GetLife() > 10 && shaking == false)
+		{
+			shaking = enemy->GetMissileMgr()->GetIsShake();
+		}
+		if (enemy->GetLife() <= 10)
+		{
+			shaking = false;
+		}
+	}
+
+	if (CheckCollision(enemy->GetSize(), player->GetSize(), enemy->GetEnemyPos(), player->GetPos()))
+	{
+		player->SetDie(true);
+		isShake = true;
+		shaking = false;
+		enemy->GetMissileMgr()->SetIsShoot(false);
+	}
+
+
 	//////벽에 다가서지마세요 죽고싶습니까?
 	if (player->GetPos().x - (player->GetSize() / 2.0f) < 0 || player->GetPos().x + (player->GetSize() / 2.0f) > WINSIZE_X ||
 		player->GetPos().y - (player->GetSize() / 2.0f) < 0 || player->GetPos().y + (player->GetSize() / 2.0f) > WINSIZE_Y)
 	{
 		player->SetDie(true);
 		enemy->GetMissileMgr()->SetIsShoot(false);
+		isShake = true;
+		shaking = false;
 	}
 }
 

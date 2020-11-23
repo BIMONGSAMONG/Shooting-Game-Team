@@ -15,7 +15,7 @@ private:
 	Mode mode;
 
 	bool isShake;
-
+	bool shaking;
 public:
 	HRESULT Init();
 	void Release();
@@ -30,8 +30,10 @@ public:
 
 	Enemy* GetEnemy() { return enemy; }
 
-	bool GetIsShank() { return isShake; }
-	void SetIsShank(bool isShank) { this->isShake = isShank; }
+	bool GetIsShake() { return isShake; }
+	void SetIsShake(bool isShake) { this->isShake = isShake; }
+	bool GetIsShaking() { return shaking; }
+	void SetIsShaking(bool shaking) { this->shaking = shaking; }
 
 };
 

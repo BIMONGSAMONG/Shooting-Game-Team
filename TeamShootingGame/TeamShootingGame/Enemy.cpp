@@ -7,7 +7,7 @@ HRESULT Enemy::Init()
 	pos = { WINSIZE_X / 2, 150 };
 	size = 64;
 	bossSize = 128;
-	life = 10;
+	life = 30;
 	currFrameX = 0;
 	currFrameY = 0;
 	destAngle = 0;
@@ -46,7 +46,7 @@ void Enemy::Update(EnemyName name, Mode mode)
 		fireDelay = 0.2f;
 		break;
 	case Distress:
-		fireDelay = 1.2f;
+		fireDelay = 0.3f;
 		break;
 	case Fear:
 		fireDelay = 0.3;
@@ -58,7 +58,7 @@ void Enemy::Update(EnemyName name, Mode mode)
 		fireDelay = 0.3f;
 		break;
 	case Confusion:
-		fireDelay = 1.0f;
+		fireDelay = 0.3f;
 		break;
 	case Emptiness:
 		fireDelay = 0.1f;
@@ -80,6 +80,7 @@ void Enemy::Update(EnemyName name, Mode mode)
 	case Anxiety:
 		break;
 	case Sadness:
+		fireDelay = 0.4f;
 		break;
 	case Panic:
 		break;
@@ -92,6 +93,7 @@ void Enemy::Update(EnemyName name, Mode mode)
 	if (missileMgr)
 	{
 		missileMgr->Update(name, pos, destAngle, fireDelay, mode);
+		missileMgr->SetLife(life);
 	}
 
 	//////플레이어가 있는 방향
@@ -101,11 +103,19 @@ void Enemy::Update(EnemyName name, Mode mode)
 	missileMgr->SetTargetPos(targetPos);
 
 	animationTime += TimerManager::GetSingleton()->GetElapsedTime();
-	if (animationTime >= 0.4f)
+	if (animationTime >= 0.35f)
 	{
 		if (name != EnemyName::Anger)
 		{
-			//Move();
+			Move();
+		}
+		currFrameX++;
+		for (int i = EnemyName::Anger; i <= EnemyName::Panic; i++)
+		{
+			if (currFrameX >= bossImg[i - 13]->GetMaxFrameX())
+			{
+				currFrameX = 0;
+			}
 		}
 		animationTime = 0;
 	}
@@ -113,22 +123,14 @@ void Enemy::Update(EnemyName name, Mode mode)
 	if (name >= EnemyName::Anger)
 	{
 		bossAnimationTime += TimerManager::GetSingleton()->GetElapsedTime();
-		if (bossAnimationTime >= 0.2f)
+		if (bossAnimationTime >= 0.016f)
 		{
-			if (name == EnemyName::Anger)
+			if (name == EnemyName::Anger && life <= 10)
 			{
-				pos.x += 8;
+				pos.x += 2;
 				if (pos.x - bossSize >= WINSIZE_X)
 				{
 					pos.x = 0;
-				}
-			}
-			currFrameX++;
-			for (int i = EnemyName::Anger; i <= EnemyName::Panic; i++)
-			{
-				if (currFrameX >= bossImg[i - 13]->GetMaxFrameX())
-				{
-					currFrameX = 0;
 				}
 			}
 			bossAnimationTime = 0;

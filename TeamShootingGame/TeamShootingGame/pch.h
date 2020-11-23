@@ -75,3 +75,9 @@ enum EnemyName { // Àû Á¾·ù
 	END_NUM
 };
 
+enum Phase
+{
+	Phase1,
+	Phase2,
+	Phase3
+};

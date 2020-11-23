@@ -24,6 +24,7 @@ private:
 	bool isRightAngle;
 	float leftAddAngle;
 	float rightAddAngle;
+	float disappears;
 
 
 	float leftAddAngleX;
@@ -52,5 +53,6 @@ public:
 	void SetRightAddAngle(float rightAddAngle, float fDivision);
 	void SetIsLeftAngle(bool isLeftAngle) { this->isLeftAngle = isLeftAngle; }
 	void SetIsRightAngle(bool isRightAngle) { this->isRightAngle = isRightAngle; }
+	void SetDisappears(float disappears) { this->disappears = disappears; }
 };
 
