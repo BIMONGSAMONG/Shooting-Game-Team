@@ -6,11 +6,13 @@ class Player;
 class Enemy;
 class EMissileManager;
 class PMissileManager;
+class Image;
 class BattleScene : public GameNode
 {
 private:
 	Player* player;
 	Enemy* enemy;
+	Image* img;
 	EnemyName name;
 	Mode mode;
 

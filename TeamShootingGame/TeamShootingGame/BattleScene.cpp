@@ -5,6 +5,7 @@
 #include "EMissile.h"
 #include "PMissileManager.h"
 #include "PMissile.h"
+#include "Image.h"
 
 HRESULT BattleScene::Init()
 {
@@ -13,6 +14,8 @@ HRESULT BattleScene::Init()
 
 	enemy = new Enemy();
 	enemy->Init();
+
+	img = ImageManager::GetSingleton()->FindImage("Die");
 
 	isShake = false;
 	shaking = false;
@@ -40,6 +43,19 @@ void BattleScene::Update()
 	enemy->SetMode(mode);
 	enemy->SetTargetPos(player->GetPos());
 
+	if (KeyManager::GetSingleton()->IsOnceKeyDown('R'))
+	{
+		player->Release();
+		delete player;
+		enemy->Release();
+		delete enemy;
+
+		player = new Player();
+		player->Init();
+		enemy = new Enemy();
+		enemy->Init();
+	}
+
 	//////총알에 맞는다니 제정신이 아니네요.
 	for (int i = 0; i < enemy->GetMissileMgr()->GetMissileCount(); i++)
 	{
@@ -55,6 +71,7 @@ void BattleScene::Update()
 					enemy->GetMissileMgr()->SetIsShoot(false);
 				}
 				enemy->GetMissileMgr()->GetVecMissiles()[i]->SetIsFire(false);
+
 			}
 		}
 	}
@@ -136,6 +153,13 @@ void BattleScene::Render(HDC hdc)
 {
 	if (player) player->Render(hdc);
 	if (enemy) enemy->Render(hdc, name, mode);
+	if (player->GetDie() == true)
+	{
+		if (img)
+		{
+			img->Render(hdc, WINSIZE_X / 2, WINSIZE_Y / 2);
+		}
+	}
 }
 
 bool BattleScene::CheckCollision(int size_1, int size_2, FPOINT pos_1, FPOINT pos_2)
