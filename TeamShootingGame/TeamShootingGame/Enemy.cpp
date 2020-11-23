@@ -7,13 +7,14 @@ HRESULT Enemy::Init()
 	pos = { WINSIZE_X / 2, 150 };
 	size = 64;
 	bossSize = 128;
-	life = 30;
+	life = 10;
 	currFrameX = 0;
 	currFrameY = 0;
 	destAngle = 0;
 	die = false;
 	missileMgr = new EMissileManager();
 	missileMgr->Init();
+	setLife = false;
 
 	img = ImageManager::GetSingleton()->FindImage("Small_Boss");
 	for (int i = EnemyName::Anger; i <= EnemyName::Panic; i++)
@@ -67,22 +68,45 @@ void Enemy::Update(EnemyName name, Mode mode)
 		fireDelay = 0.3f;
 		break;
 	case Frustration:
-		fireDelay = 1.3f;
+		fireDelay = 0.05f;
 		break;
 	case Jealousy:
 		fireDelay = 0.3f;
 		break;
 	case Hoplessness:
+		fireDelay = 0.3f;
 		break;
 	case Anger:
+		if (setLife == false)
+		{
+			life = 30;
+			setLife = true;
+		}
 		fireDelay = 0.2f;
 		break;
 	case Anxiety:
+		if (setLife == false)
+		{
+			life = 30;
+			setLife = true;
+		}
+		fireDelay = 0.2f;
 		break;
 	case Sadness:
+		if (setLife == false)
+		{
+			life = 30;
+			setLife = true;
+		}
 		fireDelay = 0.4f;
 		break;
 	case Panic:
+		if (setLife == false)
+		{
+			life = 30;
+			setLife = true;
+		}
+		fireDelay = 0.2f;
 		break;
 	case Despair:
 		break;

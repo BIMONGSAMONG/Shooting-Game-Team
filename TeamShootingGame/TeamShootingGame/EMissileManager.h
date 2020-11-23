@@ -30,6 +30,14 @@ private:
 	int count;
 	int life;
 	int phase;
+	float random;
+	float clearBullet;
+
+	bool phaseTwo;
+	bool lastPhase;
+	float randomAngle;
+	float randomSpeed;
+	int  randomPhase;
 
 public:
 	HRESULT Init();

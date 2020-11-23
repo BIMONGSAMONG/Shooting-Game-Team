@@ -26,11 +26,35 @@ private:
 	float rightAddAngle;
 	float disappears;
 
+	bool cSpeed;
+	float dTime;
+	float toTime;
+	float chSpeed;
+	float saveSpeed;
+	float newAngle;
+	bool cAngle;
+	float dATime;
+	float toATime;
 
-	float leftAddAngleX;
-	float rightAddAngleX;
-	float leftAddAngleY;
-	float rightAddAngleY;
+	bool isDestAngle;
+
+	bool isReverseAngle;
+	bool isReverseAngle2;
+	float dIsReversTime;
+	float toIsReversTime;
+	float dReversTime;
+	float toReversTime;
+	bool cIsReverse;
+	float cIsReverseOffTime;
+	float dcIsReverseOffTime;
+
+	int life;
+	float toPingPongTime;
+	float dPingPongTime;
+
+	bool isLR_PingPong;
+	float dLR_PingPongTimer;
+	float toLR_PingPongTimer;
 
 public:
 	HRESULT Init();
@@ -54,5 +78,19 @@ public:
 	void SetIsLeftAngle(bool isLeftAngle) { this->isLeftAngle = isLeftAngle; }
 	void SetIsRightAngle(bool isRightAngle) { this->isRightAngle = isRightAngle; }
 	void SetDisappears(float disappears) { this->disappears = disappears; }
+
+	void SetC_Speed(bool cSpeed, float toTime, float chSpeed, float saveSpeed);
+	void SetC_Angle(bool cAngle, float dATime, float newAngle);
+	void SetIsDestAngle(bool isDestAngle) { this->isDestAngle = isDestAngle; }
+	bool GetIsDestAngle() { return this->isDestAngle; }
+	bool GetIsLeftAngle() { return this->isLeftAngle; }
+	bool GetIsRightAngle() { return this->isRightAngle; }
+
+	void SetRevers(float dIsReversTime, float dReversTime, bool isReverseAngle, bool cIsReverse, float dcIsReverseOffTime);
+	void SetLife(int life) { this->life = life; }
+	void SetDPingPingTime(float dPingPongTime) { this->dPingPongTime = dPingPongTime; }
+	void SetToPingPingTime(float toPingPongTime) { this->toPingPongTime = toPingPongTime; }
+	void SetIsLR_PingPong(bool isLR_PingPong) { this->isLR_PingPong = isLR_PingPong; }
+	void SetdLR_PingPong(float dLR_PingPongTimer) { this->dLR_PingPongTimer = dLR_PingPongTimer; }
 };
 

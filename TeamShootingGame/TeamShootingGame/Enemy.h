@@ -27,6 +27,8 @@ private:
 	Image* img;
 	Image* bossImg[4];
 
+	bool setLife;
+
 public:
 	HRESULT Init();
 	void Release();
