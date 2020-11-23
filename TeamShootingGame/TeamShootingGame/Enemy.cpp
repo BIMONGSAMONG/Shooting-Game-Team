@@ -125,12 +125,23 @@ void Enemy::Update(EnemyName name, Mode mode)
 		bossAnimationTime += TimerManager::GetSingleton()->GetElapsedTime();
 		if (bossAnimationTime >= 0.016f)
 		{
-			if (name == EnemyName::Anger && life <= 10)
+			if (name == EnemyName::Anger)
 			{
-				pos.x += 2;
-				if (pos.x - bossSize >= WINSIZE_X)
+				if (mode == Mode::Easy && life <= 15)
 				{
-					pos.x = 0;
+					pos.x += 2;
+					if (pos.x - bossSize >= WINSIZE_X)
+					{
+						pos.x = 0;
+					}
+				}
+				else if (mode == Mode::Hard && life <= 20)
+				{
+					pos.x += 2;
+					if (pos.x - bossSize >= WINSIZE_X)
+					{
+						pos.x = 0;
+					}
 				}
 			}
 			bossAnimationTime = 0;

@@ -1360,7 +1360,8 @@ void EMissileManager::Fire(EnemyName name, FPOINT pos, float destAngle, Mode mod
 			}
 			if (life <= 15)
 			{
-				if (count != 0 && life <= 10 && isPattern == false)
+				isShake = false;
+				if (count != 0 && life <= 15 && isPattern == false)
 				{
 					count = 0;
 					isPattern = true;
@@ -1673,7 +1674,8 @@ void EMissileManager::Fire(EnemyName name, FPOINT pos, float destAngle, Mode mod
 			// 2페이즈
 			if (life <= 20)
 			{
-				if (count != 0 && life <= 10 && isPattern == false)
+				isShake = false;
+				if (count != 0 && life <= 20 && isPattern == false)
 				{
 					count = 0;
 					isPattern = true;
@@ -1693,7 +1695,7 @@ void EMissileManager::Fire(EnemyName name, FPOINT pos, float destAngle, Mode mod
 							}
 						}
 					}
-					if (count == 5)
+					if (count == 4)
 					{
 						for (int i = 16 + bulletCount; i < 32 + bulletCount; i++)
 						{
@@ -1701,7 +1703,7 @@ void EMissileManager::Fire(EnemyName name, FPOINT pos, float destAngle, Mode mod
 							{
 								vecMissiles[i]->SetPos(pos);
 								vecMissiles[i]->SetAngle(angle - (PI / 8) * (i - bulletCount) + (PI / 16));
-								vecMissiles[i]->SetSpeed(1100.0f);
+								vecMissiles[i]->SetSpeed(800.0f);
 								vecMissiles[i]->SetIsFire(true);
 							}
 						}
@@ -1710,6 +1712,7 @@ void EMissileManager::Fire(EnemyName name, FPOINT pos, float destAngle, Mode mod
 				// 3페이즈
 				if (life <= 10)
 				{
+					isShake = false;
 					if (count == 2)
 					{
 						for (int i = 32 + bulletCount; i < 33 + bulletCount; i++)
