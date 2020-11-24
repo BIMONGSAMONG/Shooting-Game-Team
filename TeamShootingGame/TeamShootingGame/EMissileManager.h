@@ -29,7 +29,6 @@ private:
 	int bulletCount;
 	int count;
 	int life;
-	int phase;
 	float random;
 	float clearBullet;
 
