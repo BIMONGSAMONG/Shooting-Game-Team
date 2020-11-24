@@ -48,7 +48,7 @@ void UI::Update(int life, int bossLife, int firstBarrierLife, int secondBarrierL
 	if (name == EnemyName::Despair)
 	{
 		sec += TimerManager::GetSingleton()->GetElapsedTime();
-		if (phase >= Phase::Phase1)
+		if (phase == Phase::Phase1)
 		{
 			if (firstBarrierLife != FULL_LIFE)
 			{
@@ -63,11 +63,11 @@ void UI::Update(int life, int bossLife, int firstBarrierLife, int secondBarrierL
 				sec = 0.0f;
 			}
 		}
-		if (phase >= Phase::Phase2)
+		if (phase == Phase::Phase2)
 		{
 
 		}
-		if (phase >= Phase::Phase3)
+		if (phase == Phase::Phase3)
 		{
 			
 		}

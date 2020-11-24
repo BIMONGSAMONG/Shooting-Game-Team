@@ -20,6 +20,8 @@ private:
 
 	bool isShake;
 	bool shaking;
+	bool isClear;
+	
 public:
 	HRESULT Init();
 	void Release();
@@ -38,6 +40,7 @@ public:
 	void SetIsShake(bool isShake) { this->isShake = isShake; }
 	bool GetIsShaking() { return shaking; }
 	void SetIsShaking(bool shaking) { this->shaking = shaking; }
+	bool GetIsClear() { return isClear; }
 
 };
 
