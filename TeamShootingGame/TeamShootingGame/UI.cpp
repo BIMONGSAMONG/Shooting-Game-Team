@@ -4,12 +4,10 @@
 HRESULT UI::Init()
 {
 	ImageManager::GetSingleton()->AddImage("»Úªˆ", "Image/lifebar_white.bmp", WINSIZE_X, 8 * 3.20, true, RGB(255, 0, 255));
-	ImageManager::GetSingleton()->AddImage("«œæ·ªˆ", "Image/lifebar_white.bmp", WINSIZE_X, -10, 6 * 3.22, true, RGB(255, 0, 255));
 	ImageManager::GetSingleton()->AddImage("ª°∞≠", "Image/lifebar_red.bmp", WINSIZE_X - 10, 6 * 3.22, true, RGB(255, 0, 255));
 	ImageManager::GetSingleton()->AddImage("∞À¡§", "Image/lifebar_black.bmp", WINSIZE_X - 10, 6 * 3.22, true, RGB(255, 0, 255));
 
 	lifeBar[LifebarColor::White] = ImageManager::GetSingleton()->FindImage("»Úªˆ");
-	lifeBar[LifebarColor::WhiteBar] = ImageManager::GetSingleton()->FindImage("«œæ·ªˆ");
 	lifeBar[LifebarColor::Red] = ImageManager::GetSingleton()->FindImage("ª°∞≠");
 	lifeBar[LifebarColor::Black] = ImageManager::GetSingleton()->FindImage("∞À¡§");
 
@@ -26,7 +24,7 @@ void UI::Release()
 {
 }
 
-void UI::Update(int life, EnemyName name, Phase phase)
+void UI::Update(int life, int bossLife, int firstBarrierLife, int secondBarrierLife, EnemyName name, Phase phase)
 {
 	if (name <= EnemyName::Panic)
 	{
@@ -52,9 +50,9 @@ void UI::Update(int life, EnemyName name, Phase phase)
 		sec += TimerManager::GetSingleton()->GetElapsedTime();
 		if (phase >= Phase::Phase1)
 		{
-			if (life != FIN_LIFE)
+			if (firstBarrierLife != FULL_LIFE)
 			{
-				black = ((WINSIZE_X - 10) / FIN_LIFE) * life;
+				black = ((WINSIZE_X - 10) / FULL_LIFE) * firstBarrierLife;
 			}
 			if (sec >= 0.05)
 			{
@@ -67,31 +65,11 @@ void UI::Update(int life, EnemyName name, Phase phase)
 		}
 		if (phase >= Phase::Phase2)
 		{
-			if (sec >= 0.05)
-			{
-				if (life != FIN_LIFE)
-				{
-					whiteBar = ((WINSIZE_X - 10) / FIN_LIFE) * life;
-				}
-				if (sec >= 0.05)
-				{
-					if (black > whiteBar)
-					{
-						black -= 8.0f;
-					}
-					sec = 0.0f;
-				}
-			}
+
 		}
 		if (phase >= Phase::Phase3)
 		{
-			if (sec >= 0.05)
-			{
-				if (life != FIN_LIFE)
-				{
-					red = ((WINSIZE_X - 10) / FIN_LIFE) * life;
-				}
-			}
+			
 		}
 	}
 }
@@ -99,7 +77,6 @@ void UI::Update(int life, EnemyName name, Phase phase)
 void UI::Render(HDC hdc)
 {
 	lifeBar[LifebarColor::White]->Render(hdc, 0, 0, White);
-	lifeBar[LifebarColor::WhiteBar]->Render(hdc, 5, 2.5, WhiteBar, whiteBar);
 	lifeBar[LifebarColor::Red]->Render(hdc, 5, 2.5, Red, red);
 	lifeBar[LifebarColor::Black]->Render(hdc, 5, 2.5, Black, black);
 }

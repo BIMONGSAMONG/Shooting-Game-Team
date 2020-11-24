@@ -19,6 +19,9 @@ HRESULT Enemy::Init()
 	missileMgr = new EMissileManager();
 	missileMgr->Init();
 	setLife = false;
+	BossLife = FULL_LIFE;
+	firstBarriarLife = FULL_LIFE;
+	secondBarriarLife = FULL_LIFE;
 
 	img = ImageManager::GetSingleton()->FindImage("Small_Boss");
 	Fin_Easy_Boss = ImageManager::GetSingleton()->FindImage("Easy_Boss");

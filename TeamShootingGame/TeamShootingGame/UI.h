@@ -15,6 +15,6 @@ private:
 public:
 	HRESULT Init();
 	void Release();
-	void Update(int life, EnemyName name, Phase phase);
+	void Update(int life, int bossLife, int firstBarrierLife, int secondBarrierLife, EnemyName name, Phase phase);
 	void Render(HDC hdc);
 };

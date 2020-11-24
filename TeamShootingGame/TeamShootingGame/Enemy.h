@@ -16,6 +16,9 @@ private:
 	int finBossSize;
 	int life;
 	int finBossLife;
+	int BossLife;
+	int firstBarriarLife;
+	int secondBarriarLife;
 	int currFrameX, currFrameY;
 	int currFrameX2, currFrameY2;
 	Phase phase;
@@ -61,12 +64,18 @@ public:
 	EMissileManager* GetMissileMgr() { return missileMgr; }
 	Phase GetPhase() { return phase; }
 	int GetLife() { return life; }
-	int GetBossLife() { return finBossLife; }
+	int GetFinBossLife() { return finBossLife; }
+	int GetBossLife() { return BossLife; }
+	int GetFirstBarriarLife() { return firstBarriarLife; }
+	int GetSecondBarriarLife() { return secondBarriarLife; }
 
 	void SetEnemyName(EnemyName name) { this->name = name; }
 	void SetMode(Mode mode) { this->mode = mode; }
 	void SetTargetPos(FPOINT targetPos) { this->targetPos = targetPos; }
 	void SetLife(int life) { this->life = life; }
-	void SetBossLife(int finBossLife) { this->finBossLife = finBossLife; }
+	void SetFinBossLife(int finBossLife) { this->finBossLife = finBossLife; }
+	void SetBossLife(int BossLife) { this->BossLife = BossLife; }
+	void SetFirstBarriarLife(int firstBarriarLife) { this->firstBarriarLife = firstBarriarLife; }
+	void SetSecondBarriarLife(int secondBarriarLife) { this->secondBarriarLife = secondBarriarLife; }
 	
 };
