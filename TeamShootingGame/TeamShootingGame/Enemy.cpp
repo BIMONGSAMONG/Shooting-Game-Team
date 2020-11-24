@@ -249,6 +249,11 @@ void Enemy::Update(EnemyName name, Mode mode)
 			phase = Phase::Phase1;
 		}
 	}
+
+	if (name == EnemyName::Despair)
+	{
+		missileMgr->SetPhase(phase);
+	}
 }
 
 void Enemy::Render(HDC hdc, EnemyName name, Mode mode)

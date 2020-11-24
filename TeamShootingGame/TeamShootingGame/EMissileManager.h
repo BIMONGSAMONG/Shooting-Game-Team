@@ -38,6 +38,7 @@ private:
 	float randomAngle;
 	float randomSpeed;
 	int  randomPhase;
+	Phase phase;
 
 public:
 	HRESULT Init();
@@ -54,4 +55,5 @@ public:
 	void SetIsShoot(bool isShoot) { this->isShoot = isShoot; }
 	void SetLife(int life) { this->life = life; }
 	bool GetIsShake() { return isShake; }
+	void SetPhase(Phase phase) { this->phase = phase; }
 };

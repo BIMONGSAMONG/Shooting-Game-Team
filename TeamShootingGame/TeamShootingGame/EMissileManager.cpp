@@ -3675,11 +3675,33 @@ void EMissileManager::Fire(EnemyName name, FPOINT pos, float destAngle, Mode mod
 	case Despair:
 		if (mode == Mode::Easy)
 		{
+			if (phase == Phase::Phase1)
+			{
 
+			}
+			if (phase == Phase::Phase2)
+			{
+				
+			}
+			if (phase == Phase::Phase3)
+			{
+
+			}
 		}
 		else if (mode == Mode::Hard)
 		{
+			if (phase == Phase::Phase1)
+			{
 
+			}
+			if (phase == Phase::Phase2)
+			{
+
+			}
+			if (phase == Phase::Phase3)
+			{
+
+			}
 		}
 		break;
 	case END_NUM:
