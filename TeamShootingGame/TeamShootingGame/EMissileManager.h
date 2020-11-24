@@ -29,6 +29,7 @@ private:
 	int bulletCount;
 	int count;
 	int life;
+	int bossLife;
 	float random;
 	float clearBullet;
 
@@ -53,6 +54,7 @@ public:
 	int GetMissileCount() { return enemyMissileCount; }
 	void SetIsShoot(bool isShoot) { this->isShoot = isShoot; }
 	void SetLife(int life) { this->life = life; }
+	void SetBossLife(int life) { this->bossLife = bossLife; }
 	bool GetIsShake() { return isShake; }
 	void SetPhase(Phase phase) { this->phase = phase; }
 };

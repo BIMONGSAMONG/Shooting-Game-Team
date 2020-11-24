@@ -3685,7 +3685,14 @@ void EMissileManager::Fire(EnemyName name, FPOINT pos, float destAngle, Mode mod
 			}
 			if (phase == Phase::Phase3)
 			{
+				if (bossLife > 15)
+				{
 
+				}
+				else if (bossLife <= 15)
+				{
+
+				}
 			}
 		}
 		else if (mode == Mode::Hard)
@@ -3700,7 +3707,19 @@ void EMissileManager::Fire(EnemyName name, FPOINT pos, float destAngle, Mode mod
 			}
 			if (phase == Phase::Phase3)
 			{
+				if (bossLife > 20)
+				{
 
+				}
+				else if(bossLife >10 && bossLife <=20)
+				{
+
+				}
+				else
+				{
+
+				}
+				
 			}
 		}
 		break;

@@ -136,6 +136,7 @@ void Enemy::Update(EnemyName name, Mode mode)
 	{
 		missileMgr->Update(name, pos, destAngle, fireDelay, mode);
 		missileMgr->SetLife(life);
+		missileMgr->SetBossLife(bossLife);
 	}
 
 	//////플레이어가 있는 방향
