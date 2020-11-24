@@ -38,6 +38,9 @@ private:
 	float randomAngle;
 	float randomSpeed;
 	int  randomPhase;
+
+	int BossLife;
+
 	Phase phase;
 
 public:
@@ -54,7 +57,10 @@ public:
 	int GetMissileCount() { return enemyMissileCount; }
 	void SetIsShoot(bool isShoot) { this->isShoot = isShoot; }
 	void SetLife(int life) { this->life = life; }
-	void SetBossLife(int life) { this->bossLife = bossLife; }
+
+	int GetBossLife() { return bossLife; }
+	void SetBossLife(int bossLife) { this->bossLife = bossLife; }
+
 	bool GetIsShake() { return isShake; }
 	void SetPhase(Phase phase) { this->phase = phase; }
 };

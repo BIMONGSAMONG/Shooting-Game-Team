@@ -16,7 +16,7 @@ private:
 	int finBossSize;
 	int life;
 	int finBossLife;
-	int BossLife;
+	int bossLife;
 	int firstBarriarLife;
 	int secondBarriarLife;
 	int currFrameX, currFrameY;
@@ -65,7 +65,7 @@ public:
 	Phase GetPhase() { return phase; }
 	int GetLife() { return life; }
 	int GetFinBossLife() { return finBossLife; }
-	int GetBossLife() { return BossLife; }
+	int GetBossLife() { return bossLife; }
 	int GetFirstBarriarLife() { return firstBarriarLife; }
 	int GetSecondBarriarLife() { return secondBarriarLife; }
 
@@ -74,7 +74,7 @@ public:
 	void SetTargetPos(FPOINT targetPos) { this->targetPos = targetPos; }
 	void SetLife(int life) { this->life = life; }
 	void SetFinBossLife(int finBossLife) { this->finBossLife = finBossLife; }
-	void SetBossLife(int BossLife) { this->BossLife = BossLife; }
+	void SetBossLife(int bossLife) { this->bossLife = bossLife; }
 	void SetFirstBarriarLife(int firstBarriarLife) { this->firstBarriarLife = firstBarriarLife; }
 	void SetSecondBarriarLife(int secondBarriarLife) { this->secondBarriarLife = secondBarriarLife; }
 	

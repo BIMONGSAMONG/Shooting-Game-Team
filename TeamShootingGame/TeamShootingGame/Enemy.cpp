@@ -19,7 +19,7 @@ HRESULT Enemy::Init()
 	missileMgr = new EMissileManager();
 	missileMgr->Init();
 	setLife = false;
-	BossLife = FULL_LIFE;
+	bossLife = FULL_LIFE;
 	firstBarriarLife = FULL_LIFE;
 	secondBarriarLife = FULL_LIFE;
 
@@ -171,6 +171,7 @@ void Enemy::Update(EnemyName name, Mode mode)
 			animationTime = 0;
 		}
 	}
+
 	if (name == EnemyName::Despair)
 	{
 		finBossAnimationTimer += TimerManager::GetSingleton()->GetElapsedTime();		
@@ -231,7 +232,7 @@ void Enemy::Update(EnemyName name, Mode mode)
 		}
 	}
 
-	if (life <= 0)
+	if (life <= 0 || bossLife <=0)
 	{
 		die = true;
 	}
@@ -260,8 +261,17 @@ void Enemy::Update(EnemyName name, Mode mode)
 void Enemy::Render(HDC hdc, EnemyName name, Mode mode)
 {
 	char szText[128] = "";
-	wsprintf(szText, "HP : %d", life);
+	wsprintf(szText, "HP : %d", finBossLife);
 	TextOut(hdc, 10, 80, szText, strlen(szText));
+	wsprintf(szText, "HP : %d", bossLife);
+	TextOut(hdc, 10, 95, szText, strlen(szText));
+	wsprintf(szText, "HP : %d", secondBarriarLife);
+	TextOut(hdc, 10, 110, szText, strlen(szText));
+	wsprintf(szText, "HP : %d", firstBarriarLife);
+	TextOut(hdc, 10, 125, szText, strlen(szText));
+	wsprintf(szText, "HP : %d", life);
+	TextOut(hdc, 10, 140, szText, strlen(szText));
+
 	if (missileMgr)
 	{
 		missileMgr->Render(hdc, name, mode);
