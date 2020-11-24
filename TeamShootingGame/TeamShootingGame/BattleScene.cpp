@@ -41,12 +41,18 @@ void BattleScene::Release()
 
 void BattleScene::Update()
 {
-	if (player) player->Update();
+	if (player)
+	{
+		player->Update();
+		if (name == EnemyName::Despair)
+		{
+			player->SetBossName(EnemyName::Despair);
+		}
+	}
 
 	if (enemy) enemy->Update(name, mode);
 
 	if (ui) ui->Update(enemy->GetLife());
-
 
 	enemy->SetEnemyName(name);
 	enemy->SetMode(mode);
@@ -110,7 +116,7 @@ void BattleScene::Update()
 		}
 	}
 
-	if (name >= EnemyName::Anger)
+	if (name >= EnemyName::Anger && name <= EnemyName::Panic)
 	{
 		for (int i = 0; i < player->GetMissileMgr()->GetMissileCount(); i++)
 		{
@@ -130,6 +136,69 @@ void BattleScene::Update()
 			}
 		}
 	}
+
+	if (name == EnemyName::Despair)
+	{
+		if (enemy->GetPhase() >= Phase::Phase1)
+		{
+			for (int i = 0; i < player->GetMissileMgr()->GetMissileCount(); i++)
+			{
+				if (player->GetMissileMgr()->GetVecMissiles()[i]->GetIsFire() == true)
+				{
+					if (CheckCollision(enemy->GetFirstBerrierSize(), player->GetMissileMgr()->GetVecMissiles()[i]->GetSize(),
+						enemy->GetEnemyPos(), player->GetMissileMgr()->GetVecMissiles()[i]->GetPos()) && enemy->GetLife() >= 1)
+					{
+						enemy->SetLife(enemy->GetLife() - 1);
+						player->GetMissileMgr()->GetVecMissiles()[i]->SetIsFire(false);
+						if (enemy->GetLife() == 20)
+						{
+							isShake = true;
+						}
+					}
+				}
+			}
+		}
+		else if (enemy->GetPhase() >= Phase::Phase2)
+		{
+			for (int i = 0; i < player->GetMissileMgr()->GetMissileCount(); i++)
+			{
+				if (player->GetMissileMgr()->GetVecMissiles()[i]->GetIsFire() == true)
+				{
+					if (CheckCollision(enemy->GetSecondBerrierSize(), player->GetMissileMgr()->GetVecMissiles()[i]->GetSize(),
+						enemy->GetEnemyPos(), player->GetMissileMgr()->GetVecMissiles()[i]->GetPos()) && enemy->GetLife() >= 1)
+					{
+						enemy->SetLife(enemy->GetLife() - 1);
+						player->GetMissileMgr()->GetVecMissiles()[i]->SetIsFire(false);
+						if (enemy->GetLife() == 10)
+						{
+							isShake = true;
+						}
+					}
+				}
+			}
+		}
+		if (enemy->GetPhase() >= Phase::Phase3)
+		{
+			for (int i = 0; i < player->GetMissileMgr()->GetMissileCount(); i++)
+			{
+				if (player->GetMissileMgr()->GetVecMissiles()[i]->GetIsFire() == true)
+				{
+					if (CheckCollision(enemy->GetFinBossSize(), player->GetMissileMgr()->GetVecMissiles()[i]->GetSize(),
+						enemy->GetEnemyPos(), player->GetMissileMgr()->GetVecMissiles()[i]->GetPos()) && enemy->GetLife() >= 1)
+					{
+						enemy->SetLife(enemy->GetLife() - 1);
+						player->GetMissileMgr()->GetVecMissiles()[i]->SetIsFire(false);
+						if (enemy->GetLife() <= 0)
+						{
+							enemy->GetMissileMgr()->SetIsShoot(false);
+							isShake = true;
+						}
+					}
+				}
+			}
+		}
+	}
+
 	if (name == EnemyName::Anger)
 	{
 		if(enemy->GetLife() > 10 && shaking == false)

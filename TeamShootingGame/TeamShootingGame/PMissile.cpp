@@ -8,7 +8,6 @@ HRESULT PMissile::Init()
 	angle = PI / 2;
 	pos = { 0, 0 };
 	speed = 3.2f;
-	isBoss = false;
 
 	img[0] = ImageManager::GetSingleton()->FindImage("Player_Bullet");
 	img[1] = ImageManager::GetSingleton()->FindImage("Player_Bullet_Black");
@@ -39,11 +38,11 @@ void PMissile::Render(HDC hdc)
 	{
 		if (img)
 		{
-			if (isBoss == false)
+			if (boss != EnemyName::Despair)
 			{
 				img[0]->Render(hdc, pos.x, pos.y);
 			}
-			if (isBoss == true)
+			if (boss == EnemyName::Despair)
 			{
 				img[1]->Render(hdc, pos.x, pos.y);
 			}

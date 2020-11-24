@@ -45,7 +45,7 @@ void HardModeUi::Release()
 void HardModeUi::Update()
 {
 	count++;
-	if (count == 17)
+	if (count == 18)
 	{
 		count = 0;
 	}

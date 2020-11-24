@@ -1830,7 +1830,7 @@ void EMissileManager::Fire(EnemyName name, FPOINT pos, float destAngle, Mode mod
 					isShake = false;
 				}
 				bulletCount += 60;
-				if(bulletCount >= 240)
+				if(bulletCount >= 300)
 				{
 					bulletCount = 0;
 				}

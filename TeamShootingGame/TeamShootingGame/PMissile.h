@@ -9,7 +9,7 @@ private:
 	int size;
 	float angle;
 	bool isFire;
-	bool isBoss;
+	EnemyName boss;
 	float speed;
 	Image* img[2];
 
@@ -24,6 +24,7 @@ public:
 	void SetIsFire(bool isFire) { this->isFire = isFire; }
 
 	void SetPos(FPOINT pos) { this->pos = pos; }
+	void SetBossName(EnemyName boss) { this->boss = boss; }
 	int GetSize() { return size; }
 	FPOINT GetPos() { return pos; }
 };

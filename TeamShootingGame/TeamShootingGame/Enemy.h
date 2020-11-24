@@ -11,10 +11,18 @@ private:
 	FPOINT targetPos;
 	int size;
 	int bossSize;
+	int firstBerrierSize;
+	int secondtBerrierSize;
+	int finBossSize;
 	int life;
 	int currFrameX, currFrameY;
+	int currFrameX2, currFrameY2;
+	Phase phase;
 	float animationTime;
 	float bossAnimationTime;
+	float finBossAnimationTimer;
+	float barrierTimer;
+	float moveTimer;
 	float movePosY;
 	float destAngle;
 	bool die;
@@ -45,7 +53,12 @@ public:
 	FPOINT GetEnemyPos() { return pos; }
 	int GetSize() { return size; }
 	int GetBossSize() { return bossSize; }
+	int GetFirstBerrierSize() { return firstBerrierSize; }
+	int GetSecondBerrierSize() { return secondtBerrierSize; }
+	int GetFinBossSize() { return finBossSize; }
+	EnemyName GetEnemyName() { return name; }
 	EMissileManager* GetMissileMgr() { return missileMgr; }
+	Phase GetPhase() { return phase; }
 	int GetLife() { return life; }
 
 	void SetEnemyName(EnemyName name) { this->name = name; }

@@ -6,7 +6,6 @@ HRESULT Player::Init()
 {
 	pos = { WINSIZE_X / 2, WINSIZE_Y - 100 };
 	size = 4;
-	isBoss = false;
 	die = false;
 	missileMgr = new PMissileManager;
 	missileMgr->Init();
@@ -32,6 +31,7 @@ void Player::Update()
 	if (missileMgr)
 	{
 		missileMgr->Update();
+		missileMgr->SetBossName(boss);
 	}
 	if (die)
 	{
@@ -45,11 +45,11 @@ void Player::Render(HDC hdc)
 	{
 		if (die == false)
 		{
-			if (isBoss == false)
+			if (boss != EnemyName::Despair)
 			{
 				img[0]->Render(hdc, pos.x, pos.y);
 			}
-			else if (isBoss == true)
+			if (boss == EnemyName::Despair)
 			{
 				img[1]->Render(hdc, pos.x, pos.y);
 			}

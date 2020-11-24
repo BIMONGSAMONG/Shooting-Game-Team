@@ -44,7 +44,7 @@ void EasyModeUI::Release()
 void EasyModeUI::Update()
 {
 	count++;
-	if (count == 17)
+	if (count == 18)
 	{
 		count = 0;
 	}

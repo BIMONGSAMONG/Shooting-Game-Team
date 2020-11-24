@@ -84,9 +84,9 @@ enum EnemyName { // 적 종류
 
 enum Phase
 {
-	Phase1,
+	Phase3,
 	Phase2,
-	Phase3
+	Phase1
 };
 
 enum LifebarColor { // 라이프 바 색

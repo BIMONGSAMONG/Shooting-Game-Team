@@ -19,6 +19,7 @@ private:
 	Image* backBuffer;
 	Image* backGround;
 	Image* img;
+	Image* FinBossBackGround;
 	MainScene* mainScene;
 	BattleScene* battleScene;
 	TitleScene* titleScene;

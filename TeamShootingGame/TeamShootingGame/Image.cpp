@@ -229,6 +229,50 @@ void Image::AlphaRender(HDC hdc, int destX, int destY, BYTE alpha)
 	}
 }
 
+void Image::AlphaFrameRender(HDC hdc, int destX, int destY, int currFrameX, int currFrameY, BYTE alpha)
+{
+	blendFunc.SourceConstantAlpha = alpha;
+
+	imageInfo->currFrameX = currFrameX;
+	imageInfo->currFrameY = currFrameY;
+
+	imageInfo->x = destX - (imageInfo->frameWidth / 2);
+	imageInfo->y = destY - (imageInfo->frameHeight / 2);
+
+	if (isTrans)
+	{
+		BitBlt(imageInfo->hBlendDC, 0, 0, imageInfo->frameWidth, imageInfo->frameHeight,
+			hdc, destX, destY, SRCCOPY);
+
+		GdiTransparentBlt(
+			imageInfo->hBlendDC,
+			0, 0,
+			imageInfo->x, imageInfo->y,
+			imageInfo->hMemDC,
+			imageInfo->currFrameX* imageInfo->frameWidth,
+			imageInfo->currFrameY* imageInfo->frameHeight,
+			imageInfo->frameWidth, imageInfo->frameHeight,
+			transColor);
+
+		AlphaBlend(hdc,
+			destX, destY,
+			imageInfo->x, imageInfo->y,
+			imageInfo->hBlendDC,
+			0, 0,
+			imageInfo->frameWidth, imageInfo->frameHeight,
+			blendFunc);
+	}
+	else
+	{
+		AlphaBlend(hdc, destX, destY,
+			imageInfo->width, imageInfo->height,
+			imageInfo->hMemDC,
+			0, 0,
+			imageInfo->width, imageInfo->height,
+			blendFunc);
+	}
+}
+
 void Image::Render(HDC hdc, int destX, int destY, LifebarColor color, float life)
 {
 

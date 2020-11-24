@@ -19,10 +19,10 @@ HRESULT MainGame::Init()
 	ImageManager::GetSingleton()->AddImage(EnemyName::Sadness, "Image/Boss/Sadness.bmp", 64 * 4, 64 * 4, 2, 2, true, RGB(255, 0, 255));
 	ImageManager::GetSingleton()->AddImage(EnemyName::Panic, "Image/Boss/Panic.bmp", 64 * 4, 64 * 4, 2, 2, true, RGB(255, 0, 255));
 	ImageManager::GetSingleton()->AddImage("Small_Boss", "Image/SmallEnamy_sheet.bmp", 208 * 4, 32 * 4, 13, 2, true, RGB(255, 0, 255));
-	ImageManager::GetSingleton()->AddImage("Easy_Boss", "Image/Boss/Boss_Easy.bmp", 24, 64, 1, 2, true, RGB(255, 0, 255));
-	ImageManager::GetSingleton()->AddImage("Hard_Boss", "Image/Boss/Boss_Hard.bmp", 96, 64, 4, 2, true, RGB(255, 0, 255));
-	ImageManager::GetSingleton()->AddImage("Boss_FirstBarrier", "Image/Boss/Boss_FirstBarrier.bmp", 768, 128, 13, 2, true, RGB(255, 0, 255));
-	ImageManager::GetSingleton()->AddImage("Boss_SecondBarrier", "Image/Boss/Boss_SecondBarrier.bmp", 64, 64, true, RGB(255, 0, 255));
+	ImageManager::GetSingleton()->AddImage("Easy_Boss", "Image/Boss/Boss_Easy.bmp", 24 * (float)2.5, 64 * (float)2.5, 1, 2, true, RGB(255, 0, 255));
+	ImageManager::GetSingleton()->AddImage("Hard_Boss", "Image/Boss/Boss_Hard.bmp", 96 * (float)2.5, 64 * (float)2.5, 4, 2, true, RGB(255, 0, 255));
+	ImageManager::GetSingleton()->AddImage("Boss_FirstBarrier", "Image/Boss/Boss_FirstBarrier.bmp", 768 * (float)2.5, 128 * (float)2.5, 6, 1, true, RGB(255, 0, 255));
+	ImageManager::GetSingleton()->AddImage("Boss_SecondBarrier", "Image/Boss/Boss_SecondBarrier.bmp", 64 * (float)2.5, 64 * (float)2.5, true, RGB(255, 0, 255));
 
 	/////// 몬스터 총알 이미지
 	ImageManager::GetSingleton()->AddImage("Boss_Bullet", "Image/Boss/bullet_sheet.bmp", 144 * 2, 16 * 2, 18, 2, true, RGB(255, 0, 255));
@@ -76,6 +76,8 @@ HRESULT MainGame::Init()
 		// 예외처리
 		MessageBox(g_hWnd, "빈 비트맵 생성에 실패했습니다.", "실패", MB_OK);
 	}
+
+	FinBossBackGround = ImageManager::GetSingleton()->FindImage("White");
 
 	isInit = true;
 	shake = 0;
@@ -327,6 +329,11 @@ void MainGame::Render()
 {
 	HDC backDC = backBuffer->GetMemDC();
 	backGround->Render(backDC, 0, 0);
+
+	if (battleScene->GetEnemy()->GetEnemyName() == EnemyName::Despair)
+	{
+		FinBossBackGround->Render(backDC, WINSIZE_X / 2, WINSIZE_Y / 2);
+	}
 
 	if (sceneNum == Scene::Title)
 	{

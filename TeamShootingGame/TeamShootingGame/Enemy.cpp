@@ -6,7 +6,10 @@ HRESULT Enemy::Init()
 {
 	pos = { WINSIZE_X / 2, 150 };
 	size = 64;
-	bossSize = 128;
+	bossSize = 128; 
+	firstBerrierSize = 320;
+	secondtBerrierSize = 160;
+	finBossSize = 60;
 	life = FULL_LIFE;
 	currFrameX = 0;
 	currFrameY = 0;
@@ -21,6 +24,7 @@ HRESULT Enemy::Init()
 	Fin_Hard_Boss = ImageManager::GetSingleton()->FindImage("Hard_Boss");
 	BossBarrier1 = ImageManager::GetSingleton()->FindImage("Boss_FirstBarrier");
 	BossBarrier2 = ImageManager::GetSingleton()->FindImage("Boss_SecondBarrier");
+
 	for (int i = EnemyName::Anger; i <= EnemyName::Panic; i++)
 	{
 		bossImg[i - 13] = ImageManager::GetSingleton()->FindImage(i);
@@ -113,6 +117,12 @@ void Enemy::Update(EnemyName name, Mode mode)
 		fireDelay = 0.2f;
 		break;
 	case Despair:
+		if (setLife == false)
+		{
+			life = 30;
+			setLife = true;
+		}
+		fireDelay = 0.2f;
 		break;
 	default:
 		break;
@@ -130,25 +140,65 @@ void Enemy::Update(EnemyName name, Mode mode)
 
 	missileMgr->SetTargetPos(targetPos);
 
-	animationTime += TimerManager::GetSingleton()->GetElapsedTime();
-	if (animationTime >= 0.35f)
+	if (name != EnemyName::Anger && name <= EnemyName::Panic)
 	{
-		if (name != EnemyName::Anger)
+		moveTimer += TimerManager::GetSingleton()->GetElapsedTime();
+		if (moveTimer >= 0.016f)
 		{
 			Move();
+			moveTimer = 0;
 		}
-		currFrameX++;
-		for (int i = EnemyName::Anger; i <= EnemyName::Panic; i++)
-		{
-			if (currFrameX >= bossImg[i - 13]->GetMaxFrameX())
-			{
-				currFrameX = 0;
-			}
-		}
-		animationTime = 0;
 	}
 
-	if (name >= EnemyName::Anger)
+	if (name <= EnemyName::Panic)
+	{
+		animationTime += TimerManager::GetSingleton()->GetElapsedTime();
+		if (animationTime >= 0.35f)
+		{
+			currFrameX++;
+			for (int i = EnemyName::Anger; i <= EnemyName::Panic; i++)
+			{
+				if (currFrameX >= bossImg[i - 13]->GetMaxFrameX())
+				{
+					currFrameX = 0;
+				}
+			}
+			animationTime = 0;
+		}
+	}
+	if (name == EnemyName::Despair)
+	{
+		finBossAnimationTimer += TimerManager::GetSingleton()->GetElapsedTime();		
+		if (finBossAnimationTimer >= 0.2f)
+		{
+			currFrameX++;
+			if (name == EnemyName::Despair)
+			{
+				if (currFrameX >= Fin_Hard_Boss->GetMaxFrameX())
+				{
+					currFrameX = 0;
+				}
+			}
+			finBossAnimationTimer = 0;
+		}
+
+		barrierTimer += TimerManager::GetSingleton()->GetElapsedTime();
+		if (barrierTimer >= 0.016f)
+		{
+			currFrameX2++;
+			if (name == EnemyName::Despair)
+			{
+				Move();
+				if (currFrameX2 >= BossBarrier1->GetMaxFrameX())
+				{
+					currFrameX2 = 0;
+				}
+			}
+			barrierTimer = 0;
+		}
+	}
+
+	if (name == EnemyName::Anger)
 	{
 		bossAnimationTime += TimerManager::GetSingleton()->GetElapsedTime();
 		if (bossAnimationTime >= 0.016f)
@@ -180,6 +230,21 @@ void Enemy::Update(EnemyName name, Mode mode)
 	{
 		die = true;
 	}
+	if (name == EnemyName::Despair)
+	{
+		if (life <= 10)
+		{
+			phase = Phase::Phase3;
+		}
+		if (life <= 20 && life > 10)
+		{
+			phase = Phase::Phase2;
+		}
+		if (life > 20)
+		{
+			phase = Phase::Phase1;
+		}
+	}
 }
 
 void Enemy::Render(HDC hdc, EnemyName name, Mode mode)
@@ -200,11 +265,73 @@ void Enemy::Render(HDC hdc, EnemyName name, Mode mode)
 				img->FrameRender(hdc, pos.x, pos.y, name, mode);
 			}
 		}
+
 		if (bossImg)
 		{
-			if (name >= EnemyName::Anger)
+			if (name >= EnemyName::Anger && name <= EnemyName::Panic )
 			{
 				bossImg[name - 13]->FrameRender(hdc, pos.x, pos.y, currFrameX, mode);
+			}
+		}
+
+		if (name == EnemyName::Despair && mode == Mode::Easy)
+		{
+			if (phase >= Phase::Phase1)
+			{
+				if (BossBarrier1)
+				{
+					//BossBarrier1->AlphaFrameRender(hdc, pos.x, pos.y, currFrameX2, 0, 100);
+					BossBarrier1->FrameRender(hdc, pos.x, pos.y, currFrameX2, 0);
+				}
+			}
+			if (phase >= Phase::Phase2)
+			{
+				if (BossBarrier2)
+				{
+					BossBarrier2->Render(hdc, pos.x, pos.y);
+				}
+			}
+			if (Fin_Easy_Boss)
+			{
+				if (phase == Phase::Phase1 || phase == Phase::Phase2)
+				{
+					Fin_Easy_Boss->FrameRender(hdc, pos.x, pos.y, 0, 0);
+				}
+				else if (phase == Phase::Phase3)
+				{
+					Fin_Easy_Boss->FrameRender(hdc, pos.x, pos.y, 0, 1);
+				}
+			}
+		}
+		if (name == EnemyName::Despair && mode == Mode::Hard)
+		{
+			if (BossBarrier1)
+			{
+				if (phase >= Phase::Phase1)
+				{
+					//BossBarrier1->AlphaFrameRender(hdc, pos.x, pos.y, currFrameX2, 0, 100);
+					BossBarrier1->FrameRender(hdc, pos.x, pos.y, currFrameX2, 0);
+				}
+			}
+
+			if (BossBarrier2)
+			{
+				if (phase >= Phase::Phase2)
+				{
+					BossBarrier2->Render(hdc, pos.x, pos.y);
+				}
+			}
+
+			if (Fin_Hard_Boss)
+			{
+				if (phase == Phase::Phase1 || phase == Phase::Phase2)
+				{
+					Fin_Hard_Boss->FrameRender(hdc, pos.x, pos.y, currFrameX, 0);
+				}
+				else if (phase == Phase::Phase3)
+				{
+					Fin_Hard_Boss->FrameRender(hdc, pos.x, pos.y, currFrameX, 1);
+				}
 			}
 		}
 	}
@@ -215,11 +342,11 @@ void Enemy::Move()
 	pos.y += movePosY;
 	if (pos.y <= 150)
 	{
-		movePosY = 4;
+		movePosY = (float)0.2;
 	}
 	else if (pos.y >= 162)
 	{
-		movePosY = -4;
+		movePosY = -(float)0.2;
 	}
 }
 

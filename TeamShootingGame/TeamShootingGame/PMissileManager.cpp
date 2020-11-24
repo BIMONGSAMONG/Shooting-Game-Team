@@ -28,6 +28,7 @@ void PMissileManager::Update()
 	for (itMissiles = vecMissiles.begin(); itMissiles != vecMissiles.end(); itMissiles++)
 	{
 		(*itMissiles)->Update();
+		(*itMissiles)->SetBossName(boss);
 	}
 }
 
