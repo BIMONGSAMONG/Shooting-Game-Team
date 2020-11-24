@@ -3,9 +3,9 @@
 
 HRESULT PMissileManager::Init()
 {
-	missileCount = 6;
+	missileCount = 10;
 	vecMissiles.reserve(missileCount);
-	for (int i = 0; i < 6; i++)
+	for (int i = 0; i < missileCount; i++)
 	{
 		vecMissiles.push_back(new PMissile());
 		vecMissiles[i]->Init();

@@ -49,6 +49,10 @@ HRESULT EMissile::Init()
 	dLR_PingPongTimer = 0;
 	toLR_PingPongTimer = 0;
 
+
+	randomM = rand() % 18;
+	randomMissile = EnemyName(randomM);
+
 	return S_OK;
 }
 
@@ -218,11 +222,18 @@ void EMissile::Update(FPOINT targetPos)
 	{
 		if (isFire)
 		{
-			//Ellipse(hdc, pos.x - (size / 2), pos.y - (size / 2), pos.x + (size / 2), pos.y + (size / 2));
-			if (img)
+			if (name != EnemyName::Despair)
 			{
-				img->FrameRender(hdc, pos.x, pos.y, name, mode);
+				if (img)
+				{
+					img->FrameRender(hdc, pos.x, pos.y, name, mode);
+				}
 			}
+			else 
+			{
+				img->FrameRender(hdc, pos.x, pos.y, randomMissile, mode);
+			}
+
 		}
 	}
 

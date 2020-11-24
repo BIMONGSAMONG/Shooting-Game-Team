@@ -32,7 +32,7 @@ HRESULT EMissileManager::Init()
 	randomAngle = 0.0f;
 	randomSpeed = 0.0f;
 	randomPhase = 0;
-
+	randomAddAngle = 0;
 	return S_OK;
 }
 
@@ -46,7 +46,7 @@ void EMissileManager::Release()
 	vecMissiles.clear();
 }
 
-void EMissileManager::Update(EnemyName name, FPOINT pos, float destAngle, float fireDelay, Mode mode)
+void EMissileManager::Update(EnemyName name, FPOINT pos, float destAngle, float fireDelay, Mode mode, FPOINT rotatePos1, FPOINT rotatePos2)
 {
 	for (itMissiles = vecMissiles.begin(); itMissiles != vecMissiles.end(); itMissiles++)
 	{
@@ -58,7 +58,7 @@ void EMissileManager::Update(EnemyName name, FPOINT pos, float destAngle, float 
 	{
 		if (isShoot)
 		{
-			Fire(name, pos, destAngle, mode);
+			Fire(name, pos, destAngle, mode, rotatePos1, rotatePos2);
 		}
 		count++;
 		fireTime = 0.0f;
@@ -81,7 +81,7 @@ void EMissileManager::Render(HDC hdc, EnemyName name, Mode mode)
 	}
 }
 
-void EMissileManager::Fire(EnemyName name, FPOINT pos, float destAngle, Mode mode)
+void EMissileManager::Fire(EnemyName name, FPOINT pos, float destAngle, Mode mode, FPOINT rotatePos1, FPOINT rotatePos2)
 {
 	switch (name)
 	{
@@ -3677,7 +3677,6 @@ void EMissileManager::Fire(EnemyName name, FPOINT pos, float destAngle, Mode mod
 		{
 			if (phase == Phase::Phase1)
 			{
-				
 				if (count == 1)
 				{
 					for (int i = 0; i < 12; i++)
@@ -3693,8 +3692,8 @@ void EMissileManager::Fire(EnemyName name, FPOINT pos, float destAngle, Mode mod
 								(*itMissiles)->SetIsLeftAngle(false);
 								(*itMissiles)->SetIsRightAngle(true);
 								(*itMissiles)->SetRightAddAngle(DegreeToRadian(76), 12.0f);
-								(*itMissiles)->SetC_Angle(true, 0.5, 0.4);
-								(*itMissiles)->SetC_Speed(true, 0.5, 2000, 700.f);
+								//(*itMissiles)->SetC_Angle(true, 0.5, 0.4);
+								//(*itMissiles)->SetC_Speed(true, 0.5, 2000, 700.f);
 								break;
 							}
 						}
@@ -3787,7 +3786,131 @@ void EMissileManager::Fire(EnemyName name, FPOINT pos, float destAngle, Mode mod
 		{
 			if (phase == Phase::Phase1)
 			{
-
+				if (count == 1)
+				{
+					for (int i = 0; i < 12; i++)
+					{
+						for (itMissiles = vecMissiles.begin(); itMissiles != vecMissiles.end(); itMissiles++)
+						{
+							if ((*itMissiles)->GetIsFire() == false)
+							{
+								(*itMissiles)->SetPos(pos);
+								(*itMissiles)->SetAngle(angle + i * 0.5233333333333333);
+								(*itMissiles)->SetSpeed(1000.0f);
+								(*itMissiles)->SetIsFire(true);
+								(*itMissiles)->SetIsLeftAngle(false);
+								(*itMissiles)->SetIsRightAngle(true);
+								(*itMissiles)->SetRightAddAngle(DegreeToRadian(110) + (i / 10.0f), 12.0f);
+								break;
+							}
+						}
+					}
+				}
+				if (count == 2)
+				{
+					for (int i = 0; i < 12; i++)
+					{
+						for (itMissiles = vecMissiles.begin(); itMissiles != vecMissiles.end(); itMissiles++)
+						{
+							if ((*itMissiles)->GetIsFire() == false)
+							{
+								(*itMissiles)->SetPos(pos);
+								(*itMissiles)->SetAngle(angle + i * 0.5233333333333333);
+								(*itMissiles)->SetSpeed(1000.0f);
+								(*itMissiles)->SetIsFire(true);
+								(*itMissiles)->SetIsLeftAngle(true);
+								(*itMissiles)->SetIsRightAngle(false);
+								(*itMissiles)->SetLeftAddAngle(-DegreeToRadian(100), 12.0f);
+								break;
+							}
+						}
+					}
+				}
+				if (count == 3)
+				{
+					for (int i = 0; i < 12; i++)
+					{
+						for (itMissiles = vecMissiles.begin(); itMissiles != vecMissiles.end(); itMissiles++)
+						{
+							if ((*itMissiles)->GetIsFire() == false)
+							{
+								(*itMissiles)->SetPos(pos);
+								(*itMissiles)->SetAngle(angle + i * 0.5233333333333333);
+								(*itMissiles)->SetSpeed(1000.0f);
+								(*itMissiles)->SetIsFire(true);
+								(*itMissiles)->SetIsLeftAngle(false);
+								(*itMissiles)->SetIsRightAngle(true);
+								(*itMissiles)->SetRightAddAngle(DegreeToRadian(90) + (i / 50.0f), 12.0f);
+								break;
+							}
+						}
+					}
+				}
+				if (count == 4)
+				{
+					for (int i = 0; i < 12; i++)
+					{
+						for (itMissiles = vecMissiles.begin(); itMissiles != vecMissiles.end(); itMissiles++)
+						{
+							if ((*itMissiles)->GetIsFire() == false)
+							{
+								(*itMissiles)->SetPos(pos);
+								(*itMissiles)->SetAngle(angle + i * 0.5233333333333333);
+								(*itMissiles)->SetSpeed(1000.0f);
+								(*itMissiles)->SetIsFire(true);
+								(*itMissiles)->SetIsLeftAngle(true);
+								(*itMissiles)->SetIsRightAngle(false);
+								(*itMissiles)->SetLeftAddAngle(-DegreeToRadian(60) + (i / 5.0f), 12.0f);
+								break;
+							}
+						}
+					}
+				}
+				if (count == 5)
+				{
+					for (int i = 0; i < 12; i++)
+					{
+						for (itMissiles = vecMissiles.begin(); itMissiles != vecMissiles.end(); itMissiles++)
+						{
+							if ((*itMissiles)->GetIsFire() == false)
+							{
+								(*itMissiles)->SetPos(pos);
+								(*itMissiles)->SetAngle(angle + i * 0.5233333333333333);
+								(*itMissiles)->SetSpeed(1000.0f);
+								(*itMissiles)->SetIsFire(true);
+								(*itMissiles)->SetIsLeftAngle(false);
+								(*itMissiles)->SetIsRightAngle(true);
+								(*itMissiles)->SetRightAddAngle(DegreeToRadian(70), 12.0f);
+								break;
+							}
+						}
+					}
+				}
+				if (count == 6)
+				{
+					for (int i = 0; i < 12; i++)
+					{
+						for (itMissiles = vecMissiles.begin(); itMissiles != vecMissiles.end(); itMissiles++)
+						{
+							if ((*itMissiles)->GetIsFire() == false)
+							{
+								(*itMissiles)->SetPos(pos);
+								(*itMissiles)->SetAngle(angle + i * 0.5233333333333333);
+								(*itMissiles)->SetSpeed(1000.0f);
+								(*itMissiles)->SetIsFire(true);
+								(*itMissiles)->SetIsLeftAngle(true);
+								(*itMissiles)->SetIsRightAngle(false);
+								(*itMissiles)->SetLeftAddAngle(-DegreeToRadian(80) - (i / 35.0f), 12.0f);
+								break;
+							}
+						}
+					}
+				}
+				if (count >= 8)
+				{
+					angle += addAngle1 + (PI / 18);
+					count = 0;
+				}
 			}
 			if (phase == Phase::Phase2)
 			{
@@ -3795,6 +3918,84 @@ void EMissileManager::Fire(EnemyName name, FPOINT pos, float destAngle, Mode mod
 			}
 			if (phase == Phase::Phase3)
 			{
+				if (lastPhase == false)
+				{
+					count = 1;
+					lastPhase =true;
+				}
+				if (count == 1)
+				{
+					for (int i = 0; i < 12; i++)
+					{
+						for (itMissiles = vecMissiles.begin(); itMissiles != vecMissiles.end(); itMissiles++)
+						{
+							if ((*itMissiles)->GetIsFire() == false)
+							{
+								(*itMissiles)->SetPos(rotatePos1);
+								(*itMissiles)->SetAngle(angle + i * 0.5233333333333333);
+								(*itMissiles)->SetSpeed(700.0f);
+								(*itMissiles)->SetIsFire(true);
+								(*itMissiles)->SetIsLeftAngle(false);
+								(*itMissiles)->SetIsRightAngle(true);
+								(*itMissiles)->SetRightAddAngle(DegreeToRadian(90), 8.0f);
+								break;
+							}
+						}
+						for (itMissiles = vecMissiles.begin(); itMissiles != vecMissiles.end(); itMissiles++)
+						{
+							if ((*itMissiles)->GetIsFire() == false)
+							{
+								(*itMissiles)->SetPos(rotatePos1);
+								(*itMissiles)->SetAngle(angle - i * 0.5233333333333333);
+								(*itMissiles)->SetSpeed(700.0f);
+								(*itMissiles)->SetIsFire(true);
+								(*itMissiles)->SetIsLeftAngle(false);
+								(*itMissiles)->SetIsRightAngle(true);
+								(*itMissiles)->SetRightAddAngle(DegreeToRadian(-90), 8.0f);
+								break;
+							}
+						}
+					}
+				}
+				if (count == 1)
+				{
+					for (int i = 0; i < 12; i++)
+					{
+						for (itMissiles = vecMissiles.begin(); itMissiles != vecMissiles.end(); itMissiles++)
+						{
+							if ((*itMissiles)->GetIsFire() == false)
+							{
+								(*itMissiles)->SetPos(rotatePos2);
+								(*itMissiles)->SetAngle(angle + i * 0.5233333333333333);
+								(*itMissiles)->SetSpeed(700.0f);
+								(*itMissiles)->SetIsFire(true);
+								(*itMissiles)->SetIsLeftAngle(true);
+								(*itMissiles)->SetIsRightAngle(false);
+								(*itMissiles)->SetLeftAddAngle(DegreeToRadian(90), 8.0f);
+								break;
+							}
+						}
+						for (itMissiles = vecMissiles.begin(); itMissiles != vecMissiles.end(); itMissiles++)
+						{
+							if ((*itMissiles)->GetIsFire() == false)
+							{
+								(*itMissiles)->SetPos(rotatePos2);
+								(*itMissiles)->SetAngle(angle - i * 0.5233333333333333);
+								(*itMissiles)->SetSpeed(700.0f);
+								(*itMissiles)->SetIsFire(true);
+								(*itMissiles)->SetIsLeftAngle(false);
+								(*itMissiles)->SetIsRightAngle(true);
+								(*itMissiles)->SetRightAddAngle(DegreeToRadian(-90), 8.0f);
+								break;
+							}
+						}
+					}
+				}
+				if (count >= 12)
+				{
+					angle += addAngle1 + (PI / 18);
+					count = 0;
+				}
 				if (bossLife > 20)
 				{
 

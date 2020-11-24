@@ -241,17 +241,22 @@ void Image::AlphaFrameRender(HDC hdc, int destX, int destY, int currFrameX, int 
 
 	if (isTrans)
 	{
-		BitBlt(imageInfo->hBlendDC, 0, 0, imageInfo->frameWidth, imageInfo->frameHeight,
-			hdc, destX, destY, SRCCOPY);
+		BitBlt(
+			imageInfo->hBlendDC,
+			0, 0,
+			imageInfo->x, imageInfo->y,
+			hdc,
+			destX, destY,
+			SRCCOPY);
 
 		GdiTransparentBlt(
 			imageInfo->hBlendDC,
 			0, 0,
 			imageInfo->x, imageInfo->y,
 			imageInfo->hMemDC,
-			imageInfo->currFrameX* imageInfo->frameWidth,
-			imageInfo->currFrameY* imageInfo->frameHeight,
-			imageInfo->frameWidth, imageInfo->frameHeight,
+			imageInfo->currFrameX * imageInfo->x,
+			imageInfo->currFrameY * imageInfo->y,
+			imageInfo->x, imageInfo->y,
 			transColor);
 
 		AlphaBlend(hdc,
@@ -259,16 +264,16 @@ void Image::AlphaFrameRender(HDC hdc, int destX, int destY, int currFrameX, int 
 			imageInfo->x, imageInfo->y,
 			imageInfo->hBlendDC,
 			0, 0,
-			imageInfo->frameWidth, imageInfo->frameHeight,
+			imageInfo->x, imageInfo->y,
 			blendFunc);
 	}
 	else
 	{
 		AlphaBlend(hdc, destX, destY,
-			imageInfo->width, imageInfo->height,
+			imageInfo->x, imageInfo->y,
 			imageInfo->hMemDC,
 			0, 0,
-			imageInfo->width, imageInfo->height,
+			imageInfo->x, imageInfo->y,
 			blendFunc);
 	}
 }

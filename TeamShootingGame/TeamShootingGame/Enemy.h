@@ -9,6 +9,8 @@ class Enemy : public GameNode
 private:
 	FPOINT pos;
 	FPOINT targetPos;
+	FPOINT rotatePos1;
+	FPOINT rotatePos2;
 	int size;
 	int bossSize;
 	int firstBerrierSize;
@@ -29,6 +31,7 @@ private:
 	float moveTimer;
 	float movePosY;
 	float destAngle;
+	float rotateAngle;
 	bool die;
 
 	EnemyName name;
@@ -42,6 +45,7 @@ private:
 	Image* Fin_Hard_Boss;
 	Image* BossBarrier1;
 	Image* BossBarrier2;
+	Image* rotateImg[2];
 
 	bool setLife;
 
@@ -77,5 +81,6 @@ public:
 	void SetBossLife(int bossLife) { this->bossLife = bossLife; }
 	void SetFirstBarriarLife(int firstBarriarLife) { this->firstBarriarLife = firstBarriarLife; }
 	void SetSecondBarriarLife(int secondBarriarLife) { this->secondBarriarLife = secondBarriarLife; }
-	
+
+	void Rotate();
 };

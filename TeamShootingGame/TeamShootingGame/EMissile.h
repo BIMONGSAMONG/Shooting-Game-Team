@@ -58,6 +58,9 @@ private:
 	float toLR_PingPongTimer;
 	float homingAngleTimer;
 
+	EnemyName randomMissile;
+	int randomM;
+
 public:
 	HRESULT Init();
 	void Release();

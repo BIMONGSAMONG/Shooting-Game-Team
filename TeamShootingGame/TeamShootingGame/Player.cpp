@@ -95,7 +95,7 @@ void Player::Fire()
 				{
 					missileMgr->Fire(pos);
 					timer = 0;
-					timerDelay = 0.4;
+					timerDelay = 0.1;
 				}
 			}
 		}

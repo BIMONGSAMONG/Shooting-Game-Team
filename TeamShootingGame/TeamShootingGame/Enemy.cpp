@@ -22,12 +22,16 @@ HRESULT Enemy::Init()
 	bossLife = FULL_LIFE;
 	firstBarriarLife = FULL_LIFE;
 	secondBarriarLife = FULL_LIFE;
+	rotatePos1 = { WINSIZE_X / 2, 200 };
+	rotatePos2 = { WINSIZE_X / 2, 150 };
 
 	img = ImageManager::GetSingleton()->FindImage("Small_Boss");
 	Fin_Easy_Boss = ImageManager::GetSingleton()->FindImage("Easy_Boss");
 	Fin_Hard_Boss = ImageManager::GetSingleton()->FindImage("Hard_Boss");
 	BossBarrier1 = ImageManager::GetSingleton()->FindImage("Boss_FirstBarrier");
 	BossBarrier2 = ImageManager::GetSingleton()->FindImage("Boss_SecondBarrier");
+	rotateImg[0] = ImageManager::GetSingleton()->FindImage("Boss_Bullet");
+	rotateImg[1] = ImageManager::GetSingleton()->FindImage("Boss_Bullet");
 
 	for (int i = EnemyName::Anger; i <= EnemyName::Panic; i++)
 	{
@@ -121,7 +125,7 @@ void Enemy::Update(EnemyName name, Mode mode)
 		fireDelay = 0.2f;
 		break;
 	case Despair:
-		fireDelay = 0.4f;
+		fireDelay = 0.1f;
 		break;
 	default:
 		break;
@@ -129,7 +133,7 @@ void Enemy::Update(EnemyName name, Mode mode)
 
 	if (missileMgr)
 	{
-		missileMgr->Update(name, pos, destAngle, fireDelay, mode);
+		missileMgr->Update(name, pos, destAngle, fireDelay, mode, rotatePos1, rotatePos2);
 		missileMgr->SetLife(life);
 		missileMgr->SetBossLife(bossLife);
 	}
@@ -189,6 +193,7 @@ void Enemy::Update(EnemyName name, Mode mode)
 			currFrameX2++;
 			if (name == EnemyName::Despair)
 			{
+				Rotate();
 				Move();
 				if (currFrameX2 >= BossBarrier1->GetMaxFrameX())
 				{
@@ -267,10 +272,14 @@ void Enemy::Render(HDC hdc, EnemyName name, Mode mode)
 	wsprintf(szText, "HP : %d", life);
 	TextOut(hdc, 10, 140, szText, strlen(szText));
 
-	//if (missileMgr)
-	//{
-	//	missileMgr->Render(hdc, name, mode);
-	//}
+	if (name != EnemyName::Despair)
+	{
+		if (missileMgr)
+		{
+			missileMgr->Render(hdc, name, mode);
+		}
+	}
+
 	if (die == false)
 	{
 		if (img)
@@ -295,9 +304,13 @@ void Enemy::Render(HDC hdc, EnemyName name, Mode mode)
 			{
 				if (BossBarrier1)
 				{
-					//BossBarrier1->AlphaFrameRender(hdc, pos.x, pos.y, currFrameX2, 0, 100);
+					//BossBarrier1->AlphaFrameRender(hdc, pos.x, pos.y, currFrameX2, 0, 250);
 					BossBarrier1->FrameRender(hdc, pos.x, pos.y, currFrameX2, 0);
 				}
+			}
+			if (missileMgr)
+			{
+				missileMgr->Render(hdc, name, mode);
 			}
 			if (phase >= Phase::Phase2)
 			{
@@ -324,9 +337,14 @@ void Enemy::Render(HDC hdc, EnemyName name, Mode mode)
 			{
 				if (phase >= Phase::Phase1)
 				{
-					//BossBarrier1->AlphaFrameRender(hdc, pos.x, pos.y, currFrameX2, 0, 100);
+					//BossBarrier1->AlphaFrameRender(hdc, pos.x, pos.y, currFrameX2, 0, 250);
 					BossBarrier1->FrameRender(hdc, pos.x, pos.y, currFrameX2, 0);
 				}
+			}
+
+			if (missileMgr)
+			{
+				missileMgr->Render(hdc, name, mode);
 			}
 
 			if (BossBarrier2)
@@ -339,21 +357,23 @@ void Enemy::Render(HDC hdc, EnemyName name, Mode mode)
 
 			if (Fin_Hard_Boss)
 			{
+				
+
 				if (phase == Phase::Phase1 || phase == Phase::Phase2)
 				{
 					Fin_Hard_Boss->FrameRender(hdc, pos.x, pos.y, currFrameX, 0);
 				}
 				else if (phase == Phase::Phase3)
 				{
+					if (rotateImg)
+					{
+						rotateImg[0]->FrameRender(hdc, rotatePos1.x, rotatePos1.y, name, mode);
+						rotateImg[1]->FrameRender(hdc, rotatePos2.x, rotatePos2.y, name, mode);
+					}
 					Fin_Hard_Boss->FrameRender(hdc, pos.x, pos.y, currFrameX, 1);
 				}
 			}
 		}
-	}
-
-	if (missileMgr)
-	{
-		missileMgr->Render(hdc, name, mode);
 	}
 }
 
@@ -370,7 +390,20 @@ void Enemy::Move()
 	}
 }
 
+
+
 void Enemy::Fire(EnemyName name, Mode mode)
 {
-	missileMgr->Fire(name, pos, destAngle, mode);
+	missileMgr->Fire(name, pos, destAngle, mode, rotatePos1, rotatePos2);
+}
+
+void Enemy::Rotate()
+{
+	rotateAngle += 0.1 / 2.5f;
+
+	rotatePos1.x += (cosf(rotateAngle)) * (float)2.5;
+	rotatePos1.y -= (sinf(rotateAngle)) * (float)2.5;
+
+	rotatePos2.x -= (cosf(rotateAngle)) * (float)2.5;
+	rotatePos2.y += (sinf(rotateAngle)) * (float)2.5;
 }

@@ -38,6 +38,7 @@ private:
 	float randomAngle;
 	float randomSpeed;
 	int  randomPhase;
+	int randomAddAngle;
 
 	int BossLife;
 
@@ -46,10 +47,10 @@ private:
 public:
 	HRESULT Init();
 	void Release();
-	void Update(EnemyName name, FPOINT pos, float destAngle, float fireDelay, Mode mode);
+	void Update(EnemyName name, FPOINT pos, float destAngle, float fireDelay, Mode mode, FPOINT rotatePos1, FPOINT rotatePos2);
 	void Render(HDC hdc, EnemyName name, Mode mode);
 
-	void Fire(EnemyName name, FPOINT pos, float angle, Mode mode);
+	void Fire(EnemyName name, FPOINT pos, float angle, Mode mode, FPOINT rotatePos1, FPOINT rotatePos2);
 	void SetIsPingPong(bool isPingPong) { this->isPingPong = isPingPong; }
 	void SetTargetPos(FPOINT targetPos) { this->targetPos = targetPos; }
 
@@ -63,4 +64,5 @@ public:
 
 	bool GetIsShake() { return isShake; }
 	void SetPhase(Phase phase) { this->phase = phase; }
+
 };
