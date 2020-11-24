@@ -36,6 +36,7 @@ HRESULT EMissile::Init()
 	isReverseAngle2 = false;;
 	dIsReversTime = 0;
 	toIsReversTime = 0;
+	homingAngleTimer = 0;
 	dReversTime = 0;
 	toReversTime = 0;
 	cIsReverse = false;
@@ -55,7 +56,7 @@ void EMissile::Release()
 {
 }
 
-void EMissile::Update()
+void EMissile::Update(FPOINT targetPos)
 {
 	random = rand() % 2;
 	if (isFire)
@@ -65,6 +66,13 @@ void EMissile::Update()
 		SetRevers(dIsReversTime, dReversTime, isReverseAngle2, cIsReverse, dcIsReverseOffTime);
 		pos.x += cosf(angle) * speed * TimerManager::GetSingleton()->GetElapsedTime() / goalTime;
 		pos.y -= sinf(angle) * speed * TimerManager::GetSingleton()->GetElapsedTime() / goalTime;
+
+		homingAngleTimer += TimerManager::GetSingleton()->GetElapsedTime();
+		if (homingAngleTimer >= 2.2)
+		{
+			destAngle = atan2f(-(targetPos.y - pos.y), (targetPos.x - pos.x));
+			homingAngleTimer = 0;
+		}
 
 		if (toPingPongTime >= dPingPongTime)
 		{

@@ -32,6 +32,7 @@ private:
 	float chSpeed;
 	float saveSpeed;
 	float newAngle;
+	float destAngle;
 	bool cAngle;
 	float dATime;
 	float toATime;
@@ -55,11 +56,12 @@ private:
 	bool isLR_PingPong;
 	float dLR_PingPongTimer;
 	float toLR_PingPongTimer;
+	float homingAngleTimer;
 
 public:
 	HRESULT Init();
 	void Release();
-	void Update();
+	void Update(FPOINT targetPos);
 	void Render(HDC hdc, EnemyName name, Mode mode);
 
 	bool GetIsFire() { return isFire; }
@@ -92,5 +94,7 @@ public:
 	void SetToPingPingTime(float toPingPongTime) { this->toPingPongTime = toPingPongTime; }
 	void SetIsLR_PingPong(bool isLR_PingPong) { this->isLR_PingPong = isLR_PingPong; }
 	void SetdLR_PingPong(float dLR_PingPongTimer) { this->dLR_PingPongTimer = dLR_PingPongTimer; }
+
+	float GetDestAngle() { return destAngle; }
 };
 

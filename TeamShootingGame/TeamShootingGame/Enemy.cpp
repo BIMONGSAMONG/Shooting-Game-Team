@@ -121,12 +121,7 @@ void Enemy::Update(EnemyName name, Mode mode)
 		fireDelay = 0.2f;
 		break;
 	case Despair:
-		if (setLife == false)
-		{
-			life = 30;
-			setLife = true;
-		}
-		fireDelay = 0.2f;
+		fireDelay = 0.4f;
 		break;
 	default:
 		break;
@@ -272,10 +267,10 @@ void Enemy::Render(HDC hdc, EnemyName name, Mode mode)
 	wsprintf(szText, "HP : %d", life);
 	TextOut(hdc, 10, 140, szText, strlen(szText));
 
-	if (missileMgr)
-	{
-		missileMgr->Render(hdc, name, mode);
-	}
+	//if (missileMgr)
+	//{
+	//	missileMgr->Render(hdc, name, mode);
+	//}
 	if (die == false)
 	{
 		if (img)
@@ -354,6 +349,11 @@ void Enemy::Render(HDC hdc, EnemyName name, Mode mode)
 				}
 			}
 		}
+	}
+
+	if (missileMgr)
+	{
+		missileMgr->Render(hdc, name, mode);
 	}
 }
 
