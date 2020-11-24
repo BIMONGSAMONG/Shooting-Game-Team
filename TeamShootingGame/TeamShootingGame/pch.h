@@ -34,6 +34,7 @@ using namespace std;
 
 
 #define FULL_LIFE	30
+#define FIN_LIFE	90
 
 
 
@@ -91,6 +92,7 @@ enum Phase
 
 enum LifebarColor { // 라이프 바 색
 	White,
+	WhiteBar,
 	Red,
 	Black
 };

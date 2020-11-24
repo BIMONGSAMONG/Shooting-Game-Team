@@ -85,6 +85,7 @@ HRESULT MainGame::Init()
 	count = 0;
 	shaking = false;
 	isShake = false;
+	clearTimer = 0;
 
 	return S_OK;
 }
@@ -181,6 +182,23 @@ void MainGame::Update()
 					count = 0;
 					battleScene->SetIsShake(false);
 				}
+			}
+		}
+
+		if (battleScene->GetIsClear() == true)
+		{
+			clearTimer += TimerManager::GetSingleton()->GetElapsedTime();
+			if (clearTimer >= 2.0f)
+			{
+				mainScene->SetEnemyChoice(false);
+
+				battleScene->Release();
+				delete battleScene;
+				battleScene = new BattleScene();
+				battleScene->Init();
+
+				sceneNum = Scene::Main;
+				clearTimer = 0;
 			}
 		}
 

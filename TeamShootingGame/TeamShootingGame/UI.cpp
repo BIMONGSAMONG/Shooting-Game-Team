@@ -4,15 +4,18 @@
 HRESULT UI::Init()
 {
 	ImageManager::GetSingleton()->AddImage("»Úªˆ", "Image/lifebar_white.bmp", WINSIZE_X, 8 * 3.20, true, RGB(255, 0, 255));
+	ImageManager::GetSingleton()->AddImage("«œæ·ªˆ", "Image/lifebar_white.bmp", WINSIZE_X, -10, 6 * 3.22, true, RGB(255, 0, 255));
 	ImageManager::GetSingleton()->AddImage("ª°∞≠", "Image/lifebar_red.bmp", WINSIZE_X - 10, 6 * 3.22, true, RGB(255, 0, 255));
 	ImageManager::GetSingleton()->AddImage("∞À¡§", "Image/lifebar_black.bmp", WINSIZE_X - 10, 6 * 3.22, true, RGB(255, 0, 255));
 
 	lifeBar[LifebarColor::White] = ImageManager::GetSingleton()->FindImage("»Úªˆ");
+	lifeBar[LifebarColor::WhiteBar] = ImageManager::GetSingleton()->FindImage("«œæ·ªˆ");
 	lifeBar[LifebarColor::Red] = ImageManager::GetSingleton()->FindImage("ª°∞≠");
 	lifeBar[LifebarColor::Black] = ImageManager::GetSingleton()->FindImage("∞À¡§");
 
 	red = WINSIZE_X - 10;
 	black = WINSIZE_X - 10;
+	whiteBar = WINSIZE_X - 10;
 
 	sec = 0.0f;
 
@@ -23,28 +26,80 @@ void UI::Release()
 {
 }
 
-void UI::Update(int life)
+void UI::Update(int life, EnemyName name, Phase phase)
 {
-	if (life != FULL_LIFE)
+	if (name <= EnemyName::Panic)
 	{
-		black = ((WINSIZE_X - 10) / FULL_LIFE) * life;
+		if (life != FULL_LIFE)
+		{
+			black = ((WINSIZE_X - 10) / FULL_LIFE) * life;
+		}
+
+		sec += TimerManager::GetSingleton()->GetElapsedTime();
+
+		if (sec >= 0.05)
+		{
+			if (red > black)
+			{
+				red -= 8.0f;
+			}
+			sec = 0.0f;
+		}
 	}
 
-	sec += TimerManager::GetSingleton()->GetElapsedTime();
-
-	if (sec >= 0.05)
+	if (name == EnemyName::Despair)
 	{
-		if (red > black)
+		sec += TimerManager::GetSingleton()->GetElapsedTime();
+		if (phase >= Phase::Phase1)
 		{
-			red -= 8.0f;
+			if (life != FIN_LIFE)
+			{
+				black = ((WINSIZE_X - 10) / FIN_LIFE) * life;
+			}
+			if (sec >= 0.05)
+			{
+				if (red > black)
+				{
+					red -= 8.0f;
+				}
+				sec = 0.0f;
+			}
 		}
-		sec = 0.0f;
+		if (phase >= Phase::Phase2)
+		{
+			if (sec >= 0.05)
+			{
+				if (life != FIN_LIFE)
+				{
+					whiteBar = ((WINSIZE_X - 10) / FIN_LIFE) * life;
+				}
+				if (sec >= 0.05)
+				{
+					if (black > whiteBar)
+					{
+						black -= 8.0f;
+					}
+					sec = 0.0f;
+				}
+			}
+		}
+		if (phase >= Phase::Phase3)
+		{
+			if (sec >= 0.05)
+			{
+				if (life != FIN_LIFE)
+				{
+					red = ((WINSIZE_X - 10) / FIN_LIFE) * life;
+				}
+			}
+		}
 	}
 }
 
 void UI::Render(HDC hdc)
 {
 	lifeBar[LifebarColor::White]->Render(hdc, 0, 0, White);
+	lifeBar[LifebarColor::WhiteBar]->Render(hdc, 5, 2.5, WhiteBar, whiteBar);
 	lifeBar[LifebarColor::Red]->Render(hdc, 5, 2.5, Red, red);
 	lifeBar[LifebarColor::Black]->Render(hdc, 5, 2.5, Black, black);
 }

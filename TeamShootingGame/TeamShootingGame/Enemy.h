@@ -15,6 +15,7 @@ private:
 	int secondtBerrierSize;
 	int finBossSize;
 	int life;
+	int finBossLife;
 	int currFrameX, currFrameY;
 	int currFrameX2, currFrameY2;
 	Phase phase;
@@ -60,10 +61,12 @@ public:
 	EMissileManager* GetMissileMgr() { return missileMgr; }
 	Phase GetPhase() { return phase; }
 	int GetLife() { return life; }
+	int GetBossLife() { return finBossLife; }
 
 	void SetEnemyName(EnemyName name) { this->name = name; }
 	void SetMode(Mode mode) { this->mode = mode; }
 	void SetTargetPos(FPOINT targetPos) { this->targetPos = targetPos; }
 	void SetLife(int life) { this->life = life; }
+	void SetBossLife(int finBossLife) { this->finBossLife = finBossLife; }
 	
 };

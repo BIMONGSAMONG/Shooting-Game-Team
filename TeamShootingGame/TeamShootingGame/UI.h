@@ -5,15 +5,16 @@
 class UI : public GameNode
 {
 private:
-	Image* lifeBar[3];
+	Image* lifeBar[4];
 	float red;
 	float black;
+	float whiteBar;
 
 	float sec;
 
 public:
 	HRESULT Init();
 	void Release();
-	void Update(int life);
+	void Update(int life, EnemyName name, Phase phase);
 	void Render(HDC hdc);
 };

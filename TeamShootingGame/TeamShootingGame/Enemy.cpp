@@ -11,6 +11,7 @@ HRESULT Enemy::Init()
 	secondtBerrierSize = 160;
 	finBossSize = 60;
 	life = FULL_LIFE;
+	finBossLife = FIN_LIFE;
 	currFrameX = 0;
 	currFrameY = 0;
 	destAngle = 0;
@@ -232,15 +233,15 @@ void Enemy::Update(EnemyName name, Mode mode)
 	}
 	if (name == EnemyName::Despair)
 	{
-		if (life <= 10)
+		if (finBossLife <= 30)
 		{
 			phase = Phase::Phase3;
 		}
-		if (life <= 20 && life > 10)
+		if (finBossLife <= 60 && finBossLife > 30)
 		{
 			phase = Phase::Phase2;
 		}
-		if (life > 20)
+		if (finBossLife > 60)
 		{
 			phase = Phase::Phase1;
 		}

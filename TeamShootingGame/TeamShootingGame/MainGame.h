@@ -36,6 +36,7 @@ private:
 	int shake;
 	float sec;
 	float patternTimer;
+	float clearTimer;
 	int count;
 	bool shaking;
 	bool isShake;
