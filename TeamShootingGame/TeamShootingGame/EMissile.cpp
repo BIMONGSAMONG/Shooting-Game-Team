@@ -53,11 +53,7 @@ HRESULT EMissile::Init()
 
 	randomM = rand() % 7;
 	randomMissile = EnemyName(randomM);
-	xPlus = false;
-	isRotate = false;
-	dRotateTime = 0;
-	toRotateTime = 0;
-	rotateAngle = 0;
+
 	return S_OK;
 }
 
@@ -70,15 +66,11 @@ void EMissile::Update(FPOINT targetPos)
 	random = rand() % 2;
 	if (isFire)
 	{
-		SetRotate(dRotateTime);
 		SetC_Speed(cSpeed, toTime, chSpeed, saveSpeed);
 		SetC_Angle(cAngle, toATime, newAngle);
 		SetRevers(dIsReversTime, dReversTime, isReverseAngle2, cIsReverse, dcIsReverseOffTime);
-		if (isRotate == false)
-		{
-			pos.x += cosf(angle) * speed * TimerManager::GetSingleton()->GetElapsedTime() / goalTime;
-			pos.y -= sinf(angle) * speed * TimerManager::GetSingleton()->GetElapsedTime() / goalTime;
-		}
+		pos.x += cosf(angle) * speed * TimerManager::GetSingleton()->GetElapsedTime() / goalTime;
+		pos.y -= sinf(angle) * speed * TimerManager::GetSingleton()->GetElapsedTime() / goalTime;
 
 		homingAngleTimer += TimerManager::GetSingleton()->GetElapsedTime();
 		if (homingAngleTimer >= 2.2)
@@ -128,7 +120,7 @@ void EMissile::Update(FPOINT targetPos)
 			}
 		}
 
-		if (isLeftAngle && isRotate == false)
+		if (isLeftAngle)
 		{
 			if (isReverseAngle == false)
 			{
@@ -146,7 +138,7 @@ void EMissile::Update(FPOINT targetPos)
 			}
 
 		}
-		if (isRightAngle && isRotate == false)
+		if (isRightAngle)
 		{
 			if (isReverseAngle == false)
 			{
@@ -163,7 +155,7 @@ void EMissile::Update(FPOINT targetPos)
 				pos.y -= (sinf(angle)) * speed * 0.00341400015 / goalTime;
 			}
 		}
-		if (!isLeftAngle && !isRightAngle && isRotate == false)
+		if (!isLeftAngle && !isRightAngle)
 		{
 			pos.x += cosf(angle) * speed * TimerManager::GetSingleton()->GetElapsedTime() / goalTime;
 			pos.y -= sinf(angle) * speed * TimerManager::GetSingleton()->GetElapsedTime() / goalTime;
@@ -205,9 +197,6 @@ void EMissile::Update(FPOINT targetPos)
 			toPingPongTime = 0;
 			isLR_PingPong = false;
 			toLR_PingPongTimer = 0.0;
-			isRotate = false;
-			toRotateTime = 0.0f;
-			xPlus = false;
 		}
 		if (pos.x <= 150 || pos.x >= WINSIZE_X - 150 || pos.y <= 50 || pos.y >= WINSIZE_Y - 150)
 		{
@@ -220,21 +209,6 @@ void EMissile::Update(FPOINT targetPos)
 				size = 15;
 			}
 		}
-		if (isRotate)
-		{
-			rotateAngle += 0.1 / 2.5f;
-			if (xPlus)
-			{
-				pos.x += (cosf(rotateAngle)) * (float)2.5;
-				pos.y -= (sinf(rotateAngle)) * (float)2.5;
-			}
-			else if(xPlus==false)
-			{
-				pos.x -= (cosf(rotateAngle)) * (float)2.5;
-				pos.y += (sinf(rotateAngle)) * (float)2.5;
-			}
-		}
-
 	}
 	else if(isFire==false)
 	{
@@ -351,21 +325,3 @@ void EMissile::Update(FPOINT targetPos)
 			}
 		}
 	}
-
-	void EMissile::SetRotate(float dRotateTime)
-	{
-		this->dRotateTime = dRotateTime;
-		if (isRotate)
-		{
-			this->toRotateTime += TimerManager::GetSingleton()->GetElapsedTime();
-			if (toRotateTime >= dRotateTime)
-			{
-				this->isRotate = false;
-				toRotateTime = 0.0f;
-			}
-		}
-	}
-
-
-
-

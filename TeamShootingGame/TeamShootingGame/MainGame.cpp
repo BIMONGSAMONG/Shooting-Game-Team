@@ -327,16 +327,36 @@ void MainGame::Update()
 
 	if (mainScene->GetMode() == Mode::Easy)  //이지모드일때만
 	{
-		if (battleScene->GetEnemy()->GetLife() == 0)
+		if (cName != EnemyName::Despair)
 		{
-			mainScene->GetEasyModUI()->SetIsClear(true, cName);
+			if (battleScene->GetEnemy()->GetLife() == 0)
+			{
+				mainScene->GetEasyModUI()->SetIsClear(true, cName);
+			}
+		}
+		else if (cName == EnemyName::Despair)
+		{
+			if (battleScene->GetEnemy()->GetFinBossLife() <= 0)
+			{
+				mainScene->GetEasyModUI()->SetIsClear(true, cName);
+			}
 		}
 	}
 	if (mainScene->GetMode() == Mode::Hard)  //하드모드일때만
 	{
-		if (battleScene->GetEnemy()->GetLife() == 0)
+		if (cName != EnemyName::Despair)
 		{
-			mainScene->GetHardModeUI()->SetIsClear(true, cName);
+			if (battleScene->GetEnemy()->GetLife() == 0)
+			{
+				mainScene->GetHardModeUI()->SetIsClear(true, cName);
+			}
+		}
+		else if (cName == EnemyName::Despair)
+		{
+			if (battleScene->GetEnemy()->GetFinBossLife() <= 0)
+			{
+				mainScene->GetHardModeUI()->SetIsClear(true, cName);
+			}
 		}
 	}
 

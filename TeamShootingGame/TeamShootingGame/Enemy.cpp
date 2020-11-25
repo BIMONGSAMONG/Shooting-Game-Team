@@ -280,6 +280,24 @@ void Enemy::Render(HDC hdc, EnemyName name, Mode mode)
 		}
 	}
 
+	if (die == true)
+	{
+		if (name == EnemyName::Despair && mode == Mode::Easy)
+		{
+			if (missileMgr)
+			{
+				missileMgr->Render(hdc, name, mode);
+			}
+		}
+		if (name == EnemyName::Despair && mode == Mode::Hard)
+		{
+			if (missileMgr)
+			{
+				missileMgr->Render(hdc, name, mode);
+			}
+		}
+	}
+
 	if (die == false)
 	{
 		if (img)
@@ -304,7 +322,6 @@ void Enemy::Render(HDC hdc, EnemyName name, Mode mode)
 			{
 				if (BossBarrier1)
 				{
-					//BossBarrier1->AlphaFrameRender(hdc, pos.x, pos.y, currFrameX2, 0, 250);
 					BossBarrier1->FrameRender(hdc, pos.x, pos.y, currFrameX2, 0);
 				}
 			}
@@ -337,7 +354,6 @@ void Enemy::Render(HDC hdc, EnemyName name, Mode mode)
 			{
 				if (phase >= Phase::Phase1)
 				{
-					//BossBarrier1->AlphaFrameRender(hdc, pos.x, pos.y, currFrameX2, 0, 250);
 					BossBarrier1->FrameRender(hdc, pos.x, pos.y, currFrameX2, 0);
 				}
 			}
@@ -357,8 +373,6 @@ void Enemy::Render(HDC hdc, EnemyName name, Mode mode)
 
 			if (Fin_Hard_Boss)
 			{
-				
-
 				if (phase == Phase::Phase1 || phase == Phase::Phase2)
 				{
 					Fin_Hard_Boss->FrameRender(hdc, pos.x, pos.y, currFrameX, 0);

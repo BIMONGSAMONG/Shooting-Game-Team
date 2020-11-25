@@ -195,7 +195,7 @@ void BattleScene::Update()
 						enemy->SetFinBossLife(enemy->GetFinBossLife() - 1);
 						enemy->SetBossLife(enemy->GetBossLife() - 1);
 						player->GetMissileMgr()->GetVecMissiles()[i]->SetIsFire(false);
-						if (enemy->GetBossLife() <= 0)
+						if (enemy->GetFinBossLife() <= 0)
 						{
 							enemy->GetMissileMgr()->SetIsShoot(false);
 							isShake = true;
