@@ -43,6 +43,9 @@
     <Filter Include="MainGame\Enemy">
       <UniqueIdentifier>{cf8359a3-b698-45fd-be5e-de11f75bc74b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainGame\Raid">
+      <UniqueIdentifier>{b1766b8a-714c-42a0-98d9-d2167b40085e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -104,6 +107,9 @@
     </ClCompile>
     <ClCompile Include="PMissile.cpp">
       <Filter>MainGame\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="RaidManager.cpp">
+      <Filter>MainGame\Raid</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -169,6 +175,9 @@
     </ClInclude>
     <ClInclude Include="PMissile.h">
       <Filter>MainGame\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="RaidManager.h">
+      <Filter>MainGame\Raid</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

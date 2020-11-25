@@ -58,6 +58,9 @@ HRESULT MainGame::Init()
 	///// 보스 배경화면
 	ImageManager::GetSingleton()->AddImage("White", "Image/Background_White.bmp", WINSIZE_X, WINSIZE_Y, true, RGB(255, 0, 255));
 
+	///// 레이드 타일
+	ImageManager::GetSingleton()->AddImage("레이드", "Image/RaidTile.bmp", 194 * 3, 388 * 3, 1, 2, true, RGB(255, 0, 255));
+
 
 	srand(time(NULL));
 
@@ -147,6 +150,16 @@ void MainGame::Update()
 				battleScene->SetEnemyName(mainScene->GetHardTileNum());
 				battleScene->SetMode(Mode::Hard);
 				cName = mainScene->GetHardTileNum();
+			}
+		}
+		else if (mainScene->GetMode() == Mode::Raid)
+		{
+			if (IsInRect(mainScene->GetRaidPos(), mouseData, mainScene->GetRaidSize()))
+			{
+				mainScene->SetEnemyChoice(true);
+				battleScene->SetEnemyName(EnemyName::RaidMob);
+				battleScene->SetMode(Mode::Raid);
+				cName = EnemyName::RaidMob;
 			}
 		}
 
@@ -287,7 +300,7 @@ void MainGame::Update()
 
 	if (mainScene->GetEnemyChoice() == false)
 	{
-		if (IsInRect2(mainScene->GetRightPos(), mouseData, 36, 72))
+		if (IsInRect2(mainScene->GetRightPos(), mouseData, 36, 72)) // 오른쪽 화살표
 		{
 			if (mainScene->GetMode() == Mode::Easy)
 			{
@@ -299,6 +312,12 @@ void MainGame::Update()
 			{
 				mainScene->SetMode(Mode::Easy);
 				mouseData.clickedPosX = NULL; //클릭 좌표가 클릭시 고정되어있으니 초기화해서 다시 안들어오게 해줌
+				mouseData.clickedPosY = NULL;
+			}
+			else if (mainScene->GetMode() == Mode::Hard)
+			{
+				mainScene->SetMode(Mode::Raid);
+				mouseData.clickedPosX = NULL;
 				mouseData.clickedPosY = NULL;
 			}
 
@@ -315,6 +334,12 @@ void MainGame::Update()
 			{
 				mainScene->SetMode(Mode::Secret);
 				mouseData.clickedPosX = NULL; //클릭 좌표가 클릭시 고정되어있으니 초기화해서 다시 안들어오게 해줌
+				mouseData.clickedPosY = NULL;
+			}
+			else if (mainScene->GetMode() == Mode::Raid)
+			{
+				mainScene->SetMode(Mode::Hard);
+				mouseData.clickedPosX = NULL;
 				mouseData.clickedPosY = NULL;
 			}
 
@@ -360,6 +385,10 @@ void MainGame::Update()
 				mainScene->GetHardModeUI()->SetIsClear(true, cName);
 			}
 		}
+	}
+	if (mainScene->GetMode() == Mode::Raid)
+	{
+		// 레이드 깨는 조건
 	}
 
 

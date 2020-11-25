@@ -8,6 +8,7 @@ class EMissileManager;
 class PMissileManager;
 class Image;
 class UI;
+class RaidManager;
 class BattleScene : public GameNode
 {
 private:
@@ -17,6 +18,7 @@ private:
 	EnemyName name;
 	Mode mode;
 	UI* ui;
+	RaidManager* raidMgr;
 
 	bool isShake;
 	bool shaking;

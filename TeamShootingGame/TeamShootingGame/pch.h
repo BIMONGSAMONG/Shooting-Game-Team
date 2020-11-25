@@ -58,7 +58,8 @@ enum Scene {  // 씬 종류
 enum Mode {  // 모드 종류
 	Easy,
 	Hard,
-	Secret
+	Secret,
+	Raid
 };
 
 enum EnemyName { // 적 종류
@@ -80,7 +81,8 @@ enum EnemyName { // 적 종류
 	Sadness,
 	Panic,
 	Despair,
-	END_NUM
+	END_NUM,
+	RaidMob
 };
 
 enum Phase

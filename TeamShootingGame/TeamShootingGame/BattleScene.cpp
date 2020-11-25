@@ -8,6 +8,7 @@
 #include "Image.h"
 #include "UI.h"
 #include "MainScene.h"
+#include "RaidManager.h"
 
 HRESULT BattleScene::Init()
 {
@@ -19,6 +20,9 @@ HRESULT BattleScene::Init()
 
 	ui = new UI();
 	ui->Init();
+
+	raidMgr = new RaidManager();
+	raidMgr->Init();
 
 	img[0] = ImageManager::GetSingleton()->FindImage("일반죽음");
 	img[1] = ImageManager::GetSingleton()->FindImage("보스죽음");
@@ -40,6 +44,9 @@ void BattleScene::Release()
 
 	ui->Release();
 	delete ui;
+
+	raidMgr->Release();
+	delete raidMgr;
 }
 
 void BattleScene::Update()
@@ -53,7 +60,14 @@ void BattleScene::Update()
 		}
 	}
 
-	if (enemy) enemy->Update(name, mode);
+	if (name == EnemyName::RaidMob)
+	{
+		if (raidMgr) raidMgr->Update();
+	}
+	else
+	{
+		if (enemy) enemy->Update(name, mode);
+	}
 
 	if (ui) ui->Update(enemy->GetLife(), enemy->GetBossLife(), enemy->GetFirstBarriarLife(), enemy->GetSecondBarriarLife(), name, enemy->GetPhase());
 
@@ -65,17 +79,32 @@ void BattleScene::Update()
 	{
 		player->Release();
 		delete player;
-		enemy->Release();
-		delete enemy;
+		
+		
 		ui->Release();
 		delete ui;
 
 		player = new Player();
 		player->Init();
-		enemy = new Enemy();
-		enemy->Init();
+		
 		ui = new UI();
 		ui->Init();
+
+		if (name == EnemyName::RaidMob)
+		{
+			raidMgr->Release();
+			delete raidMgr;
+			raidMgr = new RaidManager();
+			raidMgr->Init();
+		}
+		else
+		{
+			enemy->Release();
+			delete enemy;
+			enemy = new Enemy();
+			enemy->Init();
+		}
+
 	}
 
 	//////총알에 맞는다니 제정신이 아니네요.
@@ -291,7 +320,14 @@ void BattleScene::Update()
 void BattleScene::Render(HDC hdc)
 {
 	if (player) player->Render(hdc);
-	if (enemy) enemy->Render(hdc, name, mode);
+	if (name == EnemyName::RaidMob)
+	{
+		if (raidMgr) raidMgr->Render(hdc);
+	}
+	else
+	{
+		if (enemy) enemy->Render(hdc, name, mode);
+	}
 	if (ui) ui->Render(hdc, name, enemy->GetPhase(), mode);
 	if (player->GetDie() == true)
 	{

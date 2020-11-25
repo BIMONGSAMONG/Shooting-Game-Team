@@ -140,6 +140,7 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PMissile.cpp" />
     <ClCompile Include="PMissileManager.cpp" />
+    <ClCompile Include="RaidManager.cpp" />
     <ClCompile Include="Timer.cpp" />
     <ClCompile Include="TimerManager.cpp" />
     <ClCompile Include="TitleScene.cpp" />
@@ -162,6 +163,7 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="PMissile.h" />
     <ClInclude Include="PMissileManager.h" />
+    <ClInclude Include="RaidManager.h" />
     <ClInclude Include="Singleton.h" />
     <ClInclude Include="Timer.h" />
     <ClInclude Include="TimerManager.h" />
