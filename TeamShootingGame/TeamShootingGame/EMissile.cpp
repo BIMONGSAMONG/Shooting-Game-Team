@@ -54,6 +54,13 @@ HRESULT EMissile::Init()
 	randomM = rand() % 7;
 	randomMissile = EnemyName(randomM);
 
+	isRotate = false;
+	xPlus = false;;
+	dRotateTime = 0;
+	toRotateTime = 0;
+	rotateAngle = 0;
+
+
 	return S_OK;
 }
 
@@ -66,12 +73,15 @@ void EMissile::Update(FPOINT targetPos)
 	random = rand() % 2;
 	if (isFire)
 	{
+		SetRotate(dRotateTime);
 		SetC_Speed(cSpeed, toTime, chSpeed, saveSpeed);
 		SetC_Angle(cAngle, toATime, newAngle);
 		SetRevers(dIsReversTime, dReversTime, isReverseAngle2, cIsReverse, dcIsReverseOffTime);
-		pos.x += cosf(angle) * speed * TimerManager::GetSingleton()->GetElapsedTime() / goalTime;
-		pos.y -= sinf(angle) * speed * TimerManager::GetSingleton()->GetElapsedTime() / goalTime;
-
+		if (isRotate == false)
+		{
+			pos.x += cosf(angle) * speed * TimerManager::GetSingleton()->GetElapsedTime() / goalTime;
+			pos.y -= sinf(angle) * speed * TimerManager::GetSingleton()->GetElapsedTime() / goalTime;
+		}
 		homingAngleTimer += TimerManager::GetSingleton()->GetElapsedTime();
 		if (homingAngleTimer >= 2.2)
 		{
@@ -120,47 +130,63 @@ void EMissile::Update(FPOINT targetPos)
 			}
 		}
 
-		if (isLeftAngle)
+		if (isRotate == false)
 		{
-			if (isReverseAngle == false)
+			if (isLeftAngle)
 			{
-				angle += leftAddAngle;
+				if (isReverseAngle == false)
+				{
+					angle += leftAddAngle;
 
-				pos.x += (cosf(angle)) * speed * 0.00341400015 / goalTime;
-				pos.y -= (sinf(angle)) * speed * 0.00341400015 / goalTime;
+					pos.x += (cosf(angle)) * speed * 0.00341400015 / goalTime;
+					pos.y -= (sinf(angle)) * speed * 0.00341400015 / goalTime;
+				}
+				else if (isReverseAngle == true)
+				{
+					angle += (leftAddAngle *-1);
+
+					pos.x += (cosf(angle)) * speed * 0.00341400015 / goalTime;
+					pos.y -= (sinf(angle)) * speed * 0.00341400015 / goalTime;
+				}
+
 			}
-			else if (isReverseAngle == true)
+			if (isRightAngle)
 			{
-				angle += (leftAddAngle *-1);
+				if (isReverseAngle == false)
+				{
+					angle += rightAddAngle;
 
-				pos.x += (cosf(angle)) * speed * 0.00341400015 / goalTime;
-				pos.y -= (sinf(angle)) * speed * 0.00341400015 / goalTime;
+					pos.x += cosf(angle) * speed * 0.00341400015 / goalTime;
+					pos.y -= sinf(angle) * speed * 0.00341400015 / goalTime;
+				}
+				else if (isReverseAngle == true)
+				{
+					angle += (rightAddAngle * -1);
+
+					pos.x += (cosf(angle)) * speed * 0.00341400015 / goalTime;
+					pos.y -= (sinf(angle)) * speed * 0.00341400015 / goalTime;
+				}
 			}
-
+			if (!isLeftAngle && !isRightAngle)
+			{
+				pos.x += cosf(angle) * speed * TimerManager::GetSingleton()->GetElapsedTime() / goalTime;
+				pos.y -= sinf(angle) * speed * TimerManager::GetSingleton()->GetElapsedTime() / goalTime;
+			}
 		}
-		if (isRightAngle)
+		else if(isRotate==true)
 		{
-			if (isReverseAngle == false)
-			{
-				angle += rightAddAngle;
-
-				pos.x += cosf(angle) * speed * 0.00341400015 / goalTime;
-				pos.y -= sinf(angle) * speed * 0.00341400015 / goalTime;
-			}
-			else if (isReverseAngle == true)
-			{
-				angle += (rightAddAngle * -1);
-
-				pos.x += (cosf(angle)) * speed * 0.00341400015 / goalTime;
-				pos.y -= (sinf(angle)) * speed * 0.00341400015 / goalTime;
-			}
+				rotateAngle += 0.1 / 2.5f;
+				if (xPlus == true)
+				{
+					pos.x += (cosf(rotateAngle)) * (float)2.5;
+					pos.y -= (sinf(rotateAngle)) * (float)2.5;
+				}
+				else if (xPlus == false)
+				{
+					pos.x -= (cosf(rotateAngle)) * (float)2.5;
+					pos.y += (sinf(rotateAngle)) * (float)2.5;
+				}
 		}
-		if (!isLeftAngle && !isRightAngle)
-		{
-			pos.x += cosf(angle) * speed * TimerManager::GetSingleton()->GetElapsedTime() / goalTime;
-			pos.y -= sinf(angle) * speed * TimerManager::GetSingleton()->GetElapsedTime() / goalTime;
-		}
-
 		//왼쪽 오른쪽
 		if (isLR_PingPong == true)
 		{
@@ -197,6 +223,11 @@ void EMissile::Update(FPOINT targetPos)
 			toPingPongTime = 0;
 			isLR_PingPong = false;
 			toLR_PingPongTimer = 0.0;
+			isRotate = false;
+			xPlus = false; //회전할때 더해주는거 x축이 +인가  -인가
+			dRotateTime = 0;
+			toRotateTime = 0;
+			rotateAngle = 0;
 		}
 		if (pos.x <= 150 || pos.x >= WINSIZE_X - 150 || pos.y <= 50 || pos.y >= WINSIZE_Y - 150)
 		{
@@ -322,6 +353,21 @@ void EMissile::Update(FPOINT targetPos)
 					this->cIsReverse = false;
 					cIsReverseOffTime = dcIsReverseOffTime;
 				}
+			}
+		}
+	}
+
+
+	void EMissile::SetRotate(float dRotateTime)
+	{
+		this->dRotateTime = dRotateTime;
+		if (isRotate)
+		{
+			this->toRotateTime += TimerManager::GetSingleton()->GetElapsedTime();
+			if (toRotateTime >= this->dRotateTime)
+			{
+				this->isRotate = false;
+				toRotateTime = 0.0f;
 			}
 		}
 	}
