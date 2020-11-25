@@ -49,6 +49,7 @@ HRESULT MainGame::Init()
 
 	////// 타이틀 이미지
 	ImageManager::GetSingleton()->AddImage("Z키를 누르세요", "Image/TitleScene.bmp", WINSIZE_X, WINSIZE_Y);
+	ImageManager::GetSingleton()->AddImage("시작화면", "Image/splash.bmp", WINSIZE_X, WINSIZE_Y);
 
 	///// 시크릿?
 	ImageManager::GetSingleton()->AddImage("시크릿", "Image/SecretBuger.bmp", WINSIZE_X, WINSIZE_Y);
