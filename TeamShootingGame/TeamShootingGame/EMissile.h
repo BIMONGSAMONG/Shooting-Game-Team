@@ -34,6 +34,7 @@ private:
 	float newAngle;
 	float destAngle;
 	bool cAngle;
+	bool cAngle2;
 	float dATime;
 	float toATime;
 
@@ -92,6 +93,7 @@ public:
 
 	void SetC_Speed(bool cSpeed, float toTime, float chSpeed, float saveSpeed);
 	void SetC_Angle(bool cAngle, float dATime, float newAngle);
+	void SetC_Angle2(bool cAngle2, float dATime, float newAngle);
 	void SetIsDestAngle(bool isDestAngle) { this->isDestAngle = isDestAngle; }
 	bool GetIsDestAngle() { return this->isDestAngle; }
 	bool GetIsLeftAngle() { return this->isLeftAngle; }

@@ -30,6 +30,7 @@ HRESULT EMissile::Init()
 	saveSpeed = 0;
 	newAngle = 0;
 	cAngle = false;
+	cAngle2 = false;
 	dATime = 0;
 	toATime = 0;
 	isDestAngle = false;
@@ -76,6 +77,7 @@ void EMissile::Update(FPOINT targetPos)
 		SetRotate(dRotateTime);
 		SetC_Speed(cSpeed, toTime, chSpeed, saveSpeed);
 		SetC_Angle(cAngle, toATime, newAngle);
+		SetC_Angle2(cAngle2, toATime, newAngle);
 		SetRevers(dIsReversTime, dReversTime, isReverseAngle2, cIsReverse, dcIsReverseOffTime);
 		if (isRotate == false)
 		{
@@ -175,7 +177,7 @@ void EMissile::Update(FPOINT targetPos)
 		}
 		else if(isRotate==true)
 		{
-				rotateAngle += 0.1 / 2.5f;
+				rotateAngle += 0.1 / 3.0f;
 				if (xPlus == true)
 				{
 					pos.x += (cosf(rotateAngle)) * (float)2.5;
@@ -186,6 +188,7 @@ void EMissile::Update(FPOINT targetPos)
 					pos.x -= (cosf(rotateAngle)) * (float)2.5;
 					pos.y += (sinf(rotateAngle)) * (float)2.5;
 				}
+
 		}
 		//¿ÞÂÊ ¿À¸¥ÂÊ
 		if (isLR_PingPong == true)
@@ -244,6 +247,7 @@ void EMissile::Update(FPOINT targetPos)
 	else if(isFire==false)
 	{
 		toLR_PingPongTimer = 0.0f;
+		rotateAngle = 0;
 	}
 }
 
@@ -315,6 +319,25 @@ void EMissile::Update(FPOINT targetPos)
 				this->isLeftAngle = false;
 				this->isRightAngle = false;
 				this->cAngle = false;
+				this->dATime = 0.0f;
+			}
+		}
+	}
+
+	void EMissile::SetC_Angle2(bool cAngle2, float toATime, float newAngle)
+	{
+		this->cAngle2 = cAngle2;
+		this->toATime = toATime;
+		this->newAngle = newAngle;
+
+
+		if (this->cAngle2 == true)
+		{
+			this->dATime += TimerManager::GetSingleton()->GetElapsedTime();
+			if (this->dATime >= toATime)
+			{
+				this->angle = this->newAngle;
+				this->cAngle2 = false;
 				this->dATime = 0.0f;
 			}
 		}

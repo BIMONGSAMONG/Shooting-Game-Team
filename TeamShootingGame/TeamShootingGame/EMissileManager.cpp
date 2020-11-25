@@ -24,6 +24,10 @@ HRESULT EMissileManager::Init()
 	randomPos = { 0, 0 };
 	vertexPos1 = { 0, 0 };
 	vertexPos2 = { WINSIZE_X, 0 };
+
+	rotatePos3 = { WINSIZE_X / 2, 250 };
+	rotatePos4 = { WINSIZE_X / 2, 100 };
+
 	random = 0;
 	life = 0;
 	bossLife = 0;
@@ -162,7 +166,6 @@ void EMissileManager::Fire(EnemyName name, FPOINT pos, float destAngle, Mode mod
 		}
 		if (count == 2)
 			count = 0;
-		
 		break;
 	case Pressure:
 		if (mode == Mode::Easy)
@@ -3828,58 +3831,115 @@ void EMissileManager::Fire(EnemyName name, FPOINT pos, float destAngle, Mode mod
 				}
 				if (bulletCount == 0)
 				{
-					for (itMissiles = vecMissiles.begin(); itMissiles != vecMissiles.end(); itMissiles++)
+					for (int i = 0; i < 12; i++)
 					{
-						if ((*itMissiles)->GetIsFire() == false)
+						for (itMissiles = vecMissiles.begin(); itMissiles != vecMissiles.end(); itMissiles++)
 						{
-							(*itMissiles)->SetPos(rotatePos1);
-							(*itMissiles)->SetSpeed(1000.0f);
-							(*itMissiles)->SetIsFire(true);
-							(*itMissiles)->SetIsRotate(true);
-							(*itMissiles)->SetRotate(3.5f);
-							(*itMissiles)->SetXPlus(false);
-							(*itMissiles)->SetC_Angle(true, 3.5f, PI / 2.0f);
-							break;
+							if ((*itMissiles)->GetIsFire() == false)
+							{
+								(*itMissiles)->SetPos(rotatePos3);
+								(*itMissiles)->SetSpeed(1000.0f);
+								(*itMissiles)->SetIsFire(true);
+								(*itMissiles)->SetIsRotate(true);
+								(*itMissiles)->SetRotate(3.5f);
+								(*itMissiles)->SetXPlus(true);
+								(*itMissiles)->SetIsLeftAngle(true);
+								(*itMissiles)->SetIsRightAngle(false);
+								(*itMissiles)->SetLeftAddAngle(DegreeToRadian(100), 7.0f);
+								(*itMissiles)->SetC_Angle2(true, 3.5f, angle +  (i * 0.5233333333333333));
+								break;
+							}
+						}
+						for (itMissiles = vecMissiles.begin(); itMissiles != vecMissiles.end(); itMissiles++)
+						{
+							if ((*itMissiles)->GetIsFire() == false)
+							{
+								(*itMissiles)->SetPos(rotatePos4);
+								(*itMissiles)->SetSpeed(1000.0f);
+								(*itMissiles)->SetIsFire(true);
+								(*itMissiles)->SetIsRotate(true);
+								(*itMissiles)->SetRotate(3.5f);
+								(*itMissiles)->SetXPlus(false);
+								(*itMissiles)->SetIsLeftAngle(true);
+								(*itMissiles)->SetIsRightAngle(false);
+								(*itMissiles)->SetLeftAddAngle(DegreeToRadian(-100), 7.0f);
+								(*itMissiles)->SetC_Angle2(true, 3.5f, angle + (i * 0.5233333333333333));
+								break;
+							}
+						}
+					}
+
+					for (int i = 0; i < 12; i++)
+					{
+						for (itMissiles = vecMissiles.begin(); itMissiles != vecMissiles.end(); itMissiles++)
+						{
+							if ((*itMissiles)->GetIsFire() == false)
+							{
+								(*itMissiles)->SetPos(rotatePos4);
+								(*itMissiles)->SetSpeed(1000.0f);
+								(*itMissiles)->SetIsFire(true);
+								(*itMissiles)->SetIsRotate(true);
+								(*itMissiles)->SetRotate(3.5f);
+								(*itMissiles)->SetXPlus(false);
+								(*itMissiles)->SetIsLeftAngle(true);
+								(*itMissiles)->SetIsRightAngle(false);
+								(*itMissiles)->SetLeftAddAngle(DegreeToRadian(100), 7.0f);
+								(*itMissiles)->SetC_Angle2(true, 3.5f, angle + (i * 0.5233333333333333));
+								break;
+							}
+						}
+						for (itMissiles = vecMissiles.begin(); itMissiles != vecMissiles.end(); itMissiles++)
+						{
+							if ((*itMissiles)->GetIsFire() == false)
+							{
+								(*itMissiles)->SetPos(rotatePos3);
+								(*itMissiles)->SetSpeed(1000.0f);
+								(*itMissiles)->SetIsFire(true);
+								(*itMissiles)->SetIsRotate(true);
+								(*itMissiles)->SetRotate(3.5f);
+								(*itMissiles)->SetXPlus(true);
+								(*itMissiles)->SetIsLeftAngle(true);
+								(*itMissiles)->SetIsRightAngle(false);
+								(*itMissiles)->SetLeftAddAngle(DegreeToRadian(-100), 7.0f);
+								(*itMissiles)->SetC_Angle2(true, 3.5f, angle + (i * 0.5233333333333333));
+								break;
+							}
 						}
 					}
 				}
-				if (bulletCount == 5)
-				{
-					bulletCount = 0;
-				}
 				if (bossLife > 20)
 				{
-					//if (count % 3 == 0)
-					//{
-					//	for (itMissiles = vecMissiles.begin(); itMissiles != vecMissiles.end(); itMissiles++)
-					//	{
-					//		if ((*itMissiles)->GetIsFire() == false)
-					//		{
-					//			(*itMissiles)->SetPos(randomPos);
-					//			(*itMissiles)->SetAngle(-PI / 2.0f);
-					//			(*itMissiles)->SetSpeed(1000.0f);
-					//			(*itMissiles)->SetIsFire(true);
-					//			(*itMissiles)->SetIsRotate(false);
-					//			break;
-					//		}
-					//	}
-					//}
-					//if (count == 9)
-					//{
-					//	randomPos.x = rand() % WINSIZE_X + 1;
-					//	for (itMissiles = vecMissiles.begin(); itMissiles != vecMissiles.end(); itMissiles++)
-					//	{
-					//		if ((*itMissiles)->GetIsFire() == false)
-					//		{
-					//			(*itMissiles)->SetPos(randomPos);
-					//			(*itMissiles)->SetAngle(-PI / 2.0f);
-					//			(*itMissiles)->SetSpeed(1000.0f);
-					//			(*itMissiles)->SetIsFire(true);
-					//			(*itMissiles)->SetIsRotate(false);
-					//			break;
-					//		}
-					//	}
-					//}
+					if (count % 3 == 0)
+					{
+						for (itMissiles = vecMissiles.begin(); itMissiles != vecMissiles.end(); itMissiles++)
+						{
+							if ((*itMissiles)->GetIsFire() == false)
+							{
+								(*itMissiles)->SetPos(randomPos);
+								(*itMissiles)->SetAngle(-PI / 2.0f);
+								(*itMissiles)->SetSpeed(1000.0f);
+								(*itMissiles)->SetIsFire(true);
+								(*itMissiles)->SetIsRotate(false);
+								break;
+							}
+						}
+					}
+					if (count == 9)
+					{
+						randomPos.x = rand() % WINSIZE_X + 1;
+						for (itMissiles = vecMissiles.begin(); itMissiles != vecMissiles.end(); itMissiles++)
+						{
+							if ((*itMissiles)->GetIsFire() == false)
+							{
+								(*itMissiles)->SetPos(randomPos);
+								(*itMissiles)->SetAngle(-PI / 2.0f);
+								(*itMissiles)->SetSpeed(1000.0f);
+								(*itMissiles)->SetIsFire(true);
+								(*itMissiles)->SetIsRotate(false);
+								break;
+							}
+						}
+					}
 				}
 				else if (bossLife <= 20 && bossLife > 10)
 				{
@@ -3889,10 +3949,14 @@ void EMissileManager::Fire(EnemyName name, FPOINT pos, float destAngle, Mode mod
 				{
 
 				}
-				if (count == 10)
+				if (count >= 10)
 				{
 					count = 0;
-					bulletCount++;
+				}
+				bulletCount++;
+				if (bulletCount >= 50)
+				{
+					bulletCount = 0;
 				}
 			}
 		}

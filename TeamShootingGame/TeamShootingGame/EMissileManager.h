@@ -12,6 +12,9 @@ private:
 	FPOINT randomPos;
 	FPOINT vertexPos1;
 	FPOINT vertexPos2;
+
+	FPOINT rotatePos3;
+	FPOINT rotatePos4;
 	
 	int enemyMissileCount;
 	bool isPingPong;
