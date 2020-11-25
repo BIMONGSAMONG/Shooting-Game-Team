@@ -16,7 +16,7 @@ private:
 	float goalTime;
 	bool isPingPong;
 	float timer;
-	Image* img;
+	Image* img[2];
 
 	bool isSizeDown;
 	bool isSizeUp;

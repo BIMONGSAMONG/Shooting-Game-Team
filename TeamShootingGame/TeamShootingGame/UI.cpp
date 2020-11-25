@@ -367,7 +367,7 @@ void UI::Render(HDC hdc, EnemyName name, Phase phase, Mode mode)
 
 
 	SetBkMode(hdc, TRANSPARENT);
-	TextOut(hdc, 5, 8 * 3.20, szText, strlen(szText));
+	TextOut(hdc, 10, 8 * 3.20, szText, strlen(szText));
 
 
 	SelectObject(hdc, oldFont);

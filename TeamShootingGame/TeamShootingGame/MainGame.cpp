@@ -26,6 +26,7 @@ HRESULT MainGame::Init()
 
 	/////// 몬스터 총알 이미지
 	ImageManager::GetSingleton()->AddImage("Boss_Bullet", "Image/Boss/bullet_sheet.bmp", 144 * 2, 16 * 2, 18, 2, true, RGB(255, 0, 255));
+	ImageManager::GetSingleton()->AddImage("Fin_Boss_Bullet", "Image/Boss/Boss_Bullet_sheet.bmp", 56 * 2, 8 * 2, 7, 1, true, RGB(255, 0, 255));
 
 	ImageManager::GetSingleton()->AddImage("Die", "Image/Youdie.bmp", WINSIZE_X, WINSIZE_Y, true, RGB(255, 0, 255));
 

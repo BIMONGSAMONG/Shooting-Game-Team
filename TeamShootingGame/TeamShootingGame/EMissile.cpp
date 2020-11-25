@@ -3,7 +3,8 @@
 
 HRESULT EMissile::Init()
 {
-	img = ImageManager::GetSingleton()->FindImage("Boss_Bullet");
+	img[0] = ImageManager::GetSingleton()->FindImage("Boss_Bullet");
+	img[1] = ImageManager::GetSingleton()->FindImage("Fin_Boss_Bullet");
 	isFire = false;
 	pos = { 0,0 };
 	size = 16;
@@ -50,7 +51,7 @@ HRESULT EMissile::Init()
 	toLR_PingPongTimer = 0;
 
 
-	randomM = rand() % 18;
+	randomM = rand() % 7;
 	randomMissile = EnemyName(randomM);
 
 	return S_OK;
@@ -222,16 +223,16 @@ void EMissile::Update(FPOINT targetPos)
 	{
 		if (isFire)
 		{
-			if (name != EnemyName::Despair)
+			if (img)
 			{
-				if (img)
+				if (name == EnemyName::Despair && mode == Mode::Hard)
 				{
-					img->FrameRender(hdc, pos.x, pos.y, name, mode);
+					img[1]->FrameRender(hdc, pos.x, pos.y, randomMissile, 0);
 				}
-			}
-			else 
-			{
-				img->FrameRender(hdc, pos.x, pos.y, randomMissile, mode);
+				else
+				{
+					img[0]->FrameRender(hdc, pos.x, pos.y, name, mode);
+				}
 			}
 
 		}
