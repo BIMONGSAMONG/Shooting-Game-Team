@@ -61,6 +61,11 @@ private:
 	EnemyName randomMissile;
 	int randomM;
 
+	bool isRotate;
+	bool xPlus;
+	float dRotateTime;
+	float toRotateTime;
+	float rotateAngle;
 public:
 	HRESULT Init();
 	void Release();
@@ -99,5 +104,10 @@ public:
 	void SetdLR_PingPong(float dLR_PingPongTimer) { this->dLR_PingPongTimer = dLR_PingPongTimer; }
 
 	float GetDestAngle() { return destAngle; }
+
+	void SetRotate(float dRotateTime);
+	void SetXPlus(bool xPlus) { this->xPlus = xPlus; }
+	void SetIsRotate(bool isRotate) { this->isRotate = isRotate; }
+	bool GetIsRotate() { return this->isRotate; }
 };
 
