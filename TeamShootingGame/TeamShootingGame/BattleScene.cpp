@@ -20,7 +20,8 @@ HRESULT BattleScene::Init()
 	ui = new UI();
 	ui->Init();
 
-	img = ImageManager::GetSingleton()->FindImage("Die");
+	img[0] = ImageManager::GetSingleton()->FindImage("ÀÏ¹ÝÁ×À½");
+	img[1] = ImageManager::GetSingleton()->FindImage("º¸½ºÁ×À½");
 
 	isShake = false;
 	shaking = false;
@@ -296,7 +297,14 @@ void BattleScene::Render(HDC hdc)
 	{
 		if (img)
 		{
-			img->Render(hdc, WINSIZE_X / 2, WINSIZE_Y / 2);
+			if (name <= EnemyName::Panic)
+			{
+				img[0]->Render(hdc, WINSIZE_X / 2, WINSIZE_Y / 2);
+			}
+			else if (name == EnemyName::Despair)
+			{
+				img[1]->Render(hdc, WINSIZE_X / 2, WINSIZE_Y / 2);
+			}
 		}
 	}
 }

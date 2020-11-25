@@ -13,7 +13,7 @@ class BattleScene : public GameNode
 private:
 	Player* player;
 	Enemy* enemy;
-	Image* img;
+	Image* img[2];
 	EnemyName name;
 	Mode mode;
 	UI* ui;

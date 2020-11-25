@@ -28,7 +28,8 @@ HRESULT MainGame::Init()
 	ImageManager::GetSingleton()->AddImage("Boss_Bullet", "Image/Boss/bullet_sheet.bmp", 144 * 2, 16 * 2, 18, 2, true, RGB(255, 0, 255));
 	ImageManager::GetSingleton()->AddImage("Fin_Boss_Bullet", "Image/Boss/Boss_Bullet_sheet.bmp", 56 * 2, 8 * 2, 7, 1, true, RGB(255, 0, 255));
 
-	ImageManager::GetSingleton()->AddImage("Die", "Image/Youdie.bmp", WINSIZE_X, WINSIZE_Y, true, RGB(255, 0, 255));
+	ImageManager::GetSingleton()->AddImage("보스죽음", "Image/Youdied_B.bmp", WINSIZE_X, WINSIZE_Y, true, RGB(255, 0, 255));
+	ImageManager::GetSingleton()->AddImage("일반죽음", "Image/Youdied_N.bmp", WINSIZE_X, WINSIZE_Y, true, RGB(255, 0, 255));
 
 	/////// 타일 이미지
 	ImageManager::GetSingleton()->AddImage("Easy_Tile", "Image/EasyMode/Tile_sheet.bmp", 576 * 3, 64 * 3, 18, 2, true, RGB(255, 0, 255));
