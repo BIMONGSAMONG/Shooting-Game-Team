@@ -92,7 +92,6 @@ enum Phase
 
 enum LifebarColor { // 라이프 바 색
 	White,
-	WhiteBar,
 	Red,
 	Black
 };

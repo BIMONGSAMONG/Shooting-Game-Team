@@ -291,7 +291,7 @@ void BattleScene::Render(HDC hdc)
 {
 	if (player) player->Render(hdc);
 	if (enemy) enemy->Render(hdc, name, mode);
-	if (ui) ui->Render(hdc);
+	if (ui) ui->Render(hdc, name, enemy->GetPhase(), mode);
 	if (player->GetDie() == true)
 	{
 		if (img)
