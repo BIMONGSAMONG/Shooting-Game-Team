@@ -160,7 +160,7 @@ void MainGame::Update()
 				battleScene->SetEnemyName(EnemyName::RaidMob);
 				battleScene->SetMode(Mode::Raid);
 				cName = EnemyName::RaidMob;
-				battleScene->SetIsRaid(true);
+				//battleScene->SetIsRaid(true);
 			}
 		}
 

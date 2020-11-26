@@ -59,6 +59,7 @@ public:
 
 	vector<EMissile*> GetVecMissiles() { return vecMissiles; }
 	int GetMissileCount() { return enemyMissileCount; }
+	void SetMissileCount(int enemyMissileCount) { this->enemyMissileCount = enemyMissileCount; }
 	void SetIsShoot(bool isShoot) { this->isShoot = isShoot; }
 	void SetLife(int life) { this->life = life; }
 

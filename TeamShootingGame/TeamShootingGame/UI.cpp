@@ -27,7 +27,7 @@ void UI::Release()
 {
 }
 
-void UI::Update(int life, int bossLife, int firstBarrierLife, int secondBarrierLife, EnemyName name, Phase phase)
+void UI::Update(int life, int bossLife, int firstBarrierLife, int secondBarrierLife, int raidLife, EnemyName name, Phase phase, Mode mode)
 {
 	if (name <= EnemyName::Panic)
 	{
@@ -43,6 +43,25 @@ void UI::Update(int life, int bossLife, int firstBarrierLife, int secondBarrierL
 			if (red > black)
 			{
 				red -= 8.0f;
+			}
+			sec = 0.0f;
+		}
+	}
+
+	if (mode == Mode::Raid)
+	{
+		if (raidLife != RAID_LIFE)
+		{
+			black = ((WINSIZE_X - 10) / RAID_LIFE) * raidLife;
+		}
+
+		sec += TimerManager::GetSingleton()->GetElapsedTime();
+
+		if (sec >= 0.05)
+		{
+			if (red > black)
+			{
+				red -= 4.0f;
 			}
 			sec = 0.0f;
 		}
@@ -105,31 +124,41 @@ void UI::Update(int life, int bossLife, int firstBarrierLife, int secondBarrierL
 
 void UI::Render(HDC hdc, EnemyName name, Phase phase, Mode mode)
 {
-	if (name <= EnemyName::Panic)
+	if (mode != Mode::Raid)
 	{
-		lifeBar[LifebarColor::White]->Render(hdc, 0, 0, White);
-		lifeBar[LifebarColor::Red]->Render(hdc, 5, 2.5, Red, red);
-		lifeBar[LifebarColor::Black]->Render(hdc, 5, 2.5, Black, black);
-	}
-	if (name == EnemyName::Despair)
-	{
-		if (phase == Phase::Phase1)
+		if (name <= EnemyName::Panic)
 		{
 			lifeBar[LifebarColor::White]->Render(hdc, 0, 0, White);
 			lifeBar[LifebarColor::Red]->Render(hdc, 5, 2.5, Red, red);
 			lifeBar[LifebarColor::Black]->Render(hdc, 5, 2.5, Black, black);
 		}
-		if (phase == Phase::Phase2)
+		if (name == EnemyName::Despair)
 		{
-			lifeBar[LifebarColor::White]->Render(hdc, 0, 0, White);
-			lifeBar[LifebarColor::Black]->Render(hdc, fBlack, 2.5, Black, black);
-			lifeBar[LifebarColor::Red]->Render(hdc, fRed, 2.5, Red, red);
+			if (phase == Phase::Phase1)
+			{
+				lifeBar[LifebarColor::White]->Render(hdc, 0, 0, White);
+				lifeBar[LifebarColor::Red]->Render(hdc, 5, 2.5, Red, red);
+				lifeBar[LifebarColor::Black]->Render(hdc, 5, 2.5, Black, black);
+			}
+			if (phase == Phase::Phase2)
+			{
+				lifeBar[LifebarColor::White]->Render(hdc, 0, 0, White);
+				lifeBar[LifebarColor::Black]->Render(hdc, fBlack, 2.5, Black, black);
+				lifeBar[LifebarColor::Red]->Render(hdc, fRed, 2.5, Red, red);
+			}
+			if (phase == Phase::Phase3)
+			{
+				lifeBar[LifebarColor::White]->Render(hdc, 0, 0, White);
+				lifeBar[LifebarColor::Red]->Render(hdc, 5, 2.5, Red, red);
+			}
 		}
-		if (phase == Phase::Phase3)
-		{
-			lifeBar[LifebarColor::White]->Render(hdc, 0, 0, White);
-			lifeBar[LifebarColor::Red]->Render(hdc, 5, 2.5, Red, red);
-		}
+	}
+	
+	if (mode == Mode::Raid)
+	{
+		lifeBar[LifebarColor::White]->Render(hdc, 0, 0, White);
+		lifeBar[LifebarColor::Red]->Render(hdc, 5, 2.5, Red, red);
+		lifeBar[LifebarColor::Black]->Render(hdc, 5, 2.5, Black, black);
 	}
 
 	AddFontResource("Font/Piacevoli.ttf");

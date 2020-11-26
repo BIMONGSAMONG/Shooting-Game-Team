@@ -43,6 +43,6 @@ public:
 	bool GetIsShaking() { return shaking; }
 	void SetIsShaking(bool shaking) { this->shaking = shaking; }
 	bool GetIsClear() { return isClear; }
-	void SetIsRaid(bool raid);
+	//void SetIsRaid(bool raid);
 };
 

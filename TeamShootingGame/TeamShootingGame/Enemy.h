@@ -81,6 +81,7 @@ public:
 	void SetBossLife(int bossLife) { this->bossLife = bossLife; }
 	void SetFirstBarriarLife(int firstBarriarLife) { this->firstBarriarLife = firstBarriarLife; }
 	void SetSecondBarriarLife(int secondBarriarLife) { this->secondBarriarLife = secondBarriarLife; }
+	void SetEnemyPos(FPOINT pos) { this->pos = pos; }
 
 	void Rotate();
 };

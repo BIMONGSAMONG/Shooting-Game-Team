@@ -69,20 +69,20 @@ void BattleScene::Update()
 	{
 		if (enemy) enemy->Update(name, mode);
 	}
-	if (raidMgr->GetIsRaid() == false)
+	if (mode != Mode::Raid)
 	{
 
-		if (ui) ui->Update(enemy->GetLife(), enemy->GetBossLife(), enemy->GetFirstBarriarLife(), enemy->GetSecondBarriarLife(), name, enemy->GetPhase());
+		if (ui) ui->Update(enemy->GetLife(), enemy->GetBossLife(), enemy->GetFirstBarriarLife(), raidMgr->GetRaidLife(), enemy->GetSecondBarriarLife(), name, enemy->GetPhase(), mode);
 
 		enemy->SetEnemyName(name);
 		enemy->SetMode(mode);
 		enemy->SetTargetPos(player->GetPos());
 	}
-	else if(raidMgr->GetIsRaid() == true)
+	if(mode == Mode::Raid)
 	{	
 	 if (ui) ui->Update(raidMgr->GetVecEnemy()[0]->GetLife(), raidMgr->GetVecEnemy()[0]->GetBossLife(),
-		 raidMgr->GetVecEnemy()[0]->GetFirstBarriarLife(), raidMgr->GetVecEnemy()[0]->GetSecondBarriarLife(), raidMgr->GetName(),
-		 raidMgr->GetVecEnemy()[0]->GetPhase());
+		 raidMgr->GetVecEnemy()[0]->GetFirstBarriarLife(), raidMgr->GetVecEnemy()[0]->GetSecondBarriarLife(), raidMgr->GetRaidLife(), raidMgr->GetName(),
+		 raidMgr->GetVecEnemy()[0]->GetPhase(), mode);
 	}
 	if (KeyManager::GetSingleton()->IsOnceKeyDown('R'))
 	{
@@ -105,7 +105,7 @@ void BattleScene::Update()
 			delete raidMgr;
 			raidMgr = new RaidManager();
 			raidMgr->Init();
-			raidMgr->SetIsRaid(true);
+			//raidMgr->SetIsRaid(true);
 		}
 		else
 		{
@@ -117,7 +117,7 @@ void BattleScene::Update()
 
 	}
 
-	if (raidMgr->GetIsRaid() == false)
+	if (mode != Mode::Raid)
 	{
 		//////총알에 맞는다니 제정신이 아니네요.
 		for (int i = 0; i < enemy->GetMissileMgr()->GetMissileCount(); i++)
@@ -317,12 +317,14 @@ void BattleScene::Update()
 			}
 		}
 	}
-	else if (raidMgr->GetIsRaid() == true)
+	
+	if (mode == Mode::Raid)
 	{
+		
 		for (int i = 0; i < raidMgr->GetEnemyMaxNum(); i++)
 		{
 			//적 공격 플레이어에게 적중
-			for (int j = 0; j < enemy->GetMissileMgr()->GetMissileCount(); j++)
+			for (int j = 0; j < raidMgr->GetVecEnemy()[i]->GetMissileMgr()->GetMissileCount(); j++)
 			{
 				if (raidMgr->GetVecEnemy()[i]->GetMissileMgr()->GetVecMissiles()[j]->GetIsFire() == true)
 				{
@@ -341,20 +343,20 @@ void BattleScene::Update()
 			}
 		}
 		// 플레이어 공격 적에게 적중
-		if (raidMgr->GetVecEnemy()[0]->GetLife() > 0)
+		if (raidMgr->GetRaidLife() > 0)
 		{
 			for (int i = 0; i < player->GetMissileMgr()->GetMissileCount(); i++)
 			{
-				for (int j = 0; j < 1 ; j++)
+				for (int j = 0; j < raidMgr->GetEnemyMaxNum(); j++)
 				{
 					if (player->GetMissileMgr()->GetVecMissiles()[i]->GetIsFire() == true)
 					{
 						if (CheckCollision(raidMgr->GetVecEnemy()[j]->GetSize(), player->GetMissileMgr()->GetVecMissiles()[i]->GetSize(),
-							raidMgr->GetVecEnemy()[j]->GetEnemyPos(), player->GetMissileMgr()->GetVecMissiles()[i]->GetPos()) && raidMgr->GetVecEnemy()[j]->GetLife() >= 1)
+							raidMgr->GetVecEnemy()[j]->GetEnemyPos(), player->GetMissileMgr()->GetVecMissiles()[i]->GetPos()) && raidMgr->GetRaidLife() >= 1)
 						{
-							raidMgr->GetVecEnemy()[j]->SetLife(raidMgr->GetVecEnemy()[j]->GetLife() - 1);
+							raidMgr->SetRaidLife(raidMgr->GetRaidLife() - 1);
 							player->GetMissileMgr()->GetVecMissiles()[i]->SetIsFire(false);
-							if (raidMgr->GetVecEnemy()[j]->GetLife() <= 0)
+							if (raidMgr->GetRaidLife() <= 0)
 							{
 								raidMgr->GetVecEnemy()[j]->GetMissileMgr()->SetIsShoot(false);
 								isShake = true;
@@ -365,10 +367,10 @@ void BattleScene::Update()
 				}
 			}
 		}
-				for (int i = 0; i < raidMgr->GetEnemyMaxNum(); i++)
-				{
-					raidMgr->GetVecEnemy()[i]->SetTargetPos(player->GetPos());
-				}
+		for (int i = 0; i < raidMgr->GetEnemyMaxNum(); i++)
+		{
+			raidMgr->GetVecEnemy()[i]->SetTargetPos(player->GetPos());
+		}
 	}
 
 
@@ -390,17 +392,20 @@ void BattleScene::Render(HDC hdc)
 
 	if (name == EnemyName::RaidMob)
 	{
-		if (raidMgr) raidMgr->Render(hdc);
+		if (raidMgr->GetRaidLife() > 0)
+		{
+			if (raidMgr) raidMgr->Render(hdc);
+		}
 	}
 	else
 	{
 		if (enemy) enemy->Render(hdc, name, mode);
 	}
-	if (raidMgr->GetIsRaid() == false)
+	if (mode != Mode::Raid)
 	{
 		if (ui) ui->Render(hdc, name, enemy->GetPhase(), mode);
 	}
-	else if (raidMgr->GetIsRaid() == true)
+	else if (mode == Mode::Raid)
 	{
 		if (ui) ui->Render(hdc, raidMgr->GetName(), raidMgr->GetVecEnemy()[0]->GetPhase(), raidMgr->GetMode());
 	}
@@ -442,7 +447,7 @@ float BattleScene::GetDistance(FPOINT pos1, FPOINT pos2)
 	return dist;
 }
 
-void BattleScene::SetIsRaid(bool raid)
-{
-	this->raidMgr->SetIsRaid(raid);
-}
+//void BattleScene::SetIsRaid(bool raid)
+//{
+//	this->raidMgr->SetIsRaid(raid);
+//}
