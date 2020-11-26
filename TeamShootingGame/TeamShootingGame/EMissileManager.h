@@ -68,5 +68,6 @@ public:
 	bool GetIsShake() { return isShake; }
 	void SetPhase(Phase phase) { this->phase = phase; }
 	void SetMissileCount(int enemyMissileCount) { this->enemyMissileCount = enemyMissileCount; }
+	void SetCounter(int count) { this->count = count; }
 
 };

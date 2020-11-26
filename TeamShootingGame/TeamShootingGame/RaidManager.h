@@ -10,7 +10,7 @@ class RaidManager : public GameNode
 private:
 	vector <Enemy*> vecEnemy;
 	vector <Enemy*>::iterator itEnemy;
-
+	FPOINT pos1;
 	EnemyName name;
 	EnemyName name2;
 	Mode mode;
@@ -18,6 +18,12 @@ private:
 	int enemyMaxNum;
 	int raidLife;
 	bool isRaid;
+	float timer;
+	int counter;
+	int bossCounter;
+	float movePosX;
+	float movePosY;
+	float delayTIme;
 
 public:
 	HRESULT Init();
@@ -31,8 +37,6 @@ public:
 	Mode GetMode() { return this->mode; }
 	int GetEnemyMaxNum() { return this->enemyMaxNum; }
 	void move();
-	void move2();
 	int GetRaidLife() { return this->raidLife; }
 	void SetRaidLife(int life) { this->raidLife = life; }
-	
 };

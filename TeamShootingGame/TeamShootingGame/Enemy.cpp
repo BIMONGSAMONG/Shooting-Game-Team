@@ -260,17 +260,17 @@ void Enemy::Update(EnemyName name, Mode mode)
 
 void Enemy::Render(HDC hdc, EnemyName name, Mode mode)
 {
-	char szText[128] = "";
-	wsprintf(szText, "HP : %d", finBossLife);
-	TextOut(hdc, 10, 80, szText, strlen(szText));
-	wsprintf(szText, "HP : %d", bossLife);
-	TextOut(hdc, 10, 95, szText, strlen(szText));
-	wsprintf(szText, "HP : %d", secondBarriarLife);
-	TextOut(hdc, 10, 110, szText, strlen(szText));
-	wsprintf(szText, "HP : %d", firstBarriarLife);
-	TextOut(hdc, 10, 125, szText, strlen(szText));
-	wsprintf(szText, "HP : %d", life);
-	TextOut(hdc, 10, 140, szText, strlen(szText));
+	//char szText[128] = "";
+	//wsprintf(szText, "HP : %d", finBossLife);
+	//TextOut(hdc, 10, 80, szText, strlen(szText));
+	//wsprintf(szText, "HP : %d", bossLife);
+	//TextOut(hdc, 10, 95, szText, strlen(szText));
+	//wsprintf(szText, "HP : %d", secondBarriarLife);
+	//TextOut(hdc, 10, 110, szText, strlen(szText));
+	//wsprintf(szText, "HP : %d", firstBarriarLife);
+	//TextOut(hdc, 10, 125, szText, strlen(szText));
+	//wsprintf(szText, "HP : %d", life);
+	//TextOut(hdc, 10, 140, szText, strlen(szText));
 
 	if (name != EnemyName::Despair)
 	{
