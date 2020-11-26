@@ -78,7 +78,7 @@ void BattleScene::Update()
 		enemy->SetMode(mode);
 		enemy->SetTargetPos(player->GetPos());
 	}
-	if(mode == Mode::Raid)
+	else if(mode == Mode::Raid)
 	{	
 	 if (ui) ui->Update(raidMgr->GetVecEnemy()[0]->GetLife(), raidMgr->GetVecEnemy()[0]->GetBossLife(),
 		 raidMgr->GetVecEnemy()[0]->GetFirstBarriarLife(), raidMgr->GetVecEnemy()[0]->GetSecondBarriarLife(), raidMgr->GetRaidLife(), raidMgr->GetName(),
@@ -335,7 +335,9 @@ void BattleScene::Update()
 						{
 							player->SetDie(true);
 							isShake = true;
-							raidMgr->GetVecEnemy()[i]->GetMissileMgr()->SetIsShoot(false);
+							///////////////ÃÑ¾Ë ¾È½î°Ô   /ÃÑ¾Ë ¾È½î°Ô   /ÃÑ¾Ë ¾È½î°Ô   /ÃÑ¾Ë ¾È½î°Ô  
+							raidMgr->GetVecEnemy()[0]->GetMissileMgr()->SetIsShoot(false);
+							raidMgr->GetVecEnemy()[1]->GetMissileMgr()->SetIsShoot(false);
 						}
 						raidMgr->GetVecEnemy()[i]->GetMissileMgr()->GetVecMissiles()[j]->SetIsFire(false);
 					}
@@ -367,21 +369,25 @@ void BattleScene::Update()
 				}
 			}
 		}
+
+		//Å¸°Ù Æ÷½º Àü´Þ
 		for (int i = 0; i < raidMgr->GetEnemyMaxNum(); i++)
 		{
 			raidMgr->GetVecEnemy()[i]->SetTargetPos(player->GetPos());
 		}
-	}
 
-
-	//////º®¿¡ ´Ù°¡¼­Áö¸¶¼¼¿ä Á×°í½Í½À´Ï±î?
-	if (player->GetPos().x - (player->GetSize() / 2.0f) < 0 || player->GetPos().x + (player->GetSize() / 2.0f) > WINSIZE_X ||
-		player->GetPos().y - (player->GetSize() / 2.0f) < 0 || player->GetPos().y + (player->GetSize() / 2.0f) > WINSIZE_Y)
-	{
-		player->SetDie(true);
-		enemy->GetMissileMgr()->SetIsShoot(false);
-		isShake = true;
-		shaking = false;
+		//////º®¿¡ ´Ù°¡¼­Áö¸¶¼¼¿ä Á×°í½Í½À´Ï±î?
+		if (player->GetPos().x - (player->GetSize() / 2.0f) < 0 || player->GetPos().x + (player->GetSize() / 2.0f) > WINSIZE_X ||
+			player->GetPos().y - (player->GetSize() / 2.0f) < 0 || player->GetPos().y + (player->GetSize() / 2.0f) > WINSIZE_Y)
+		{
+			player->SetDie(true);
+			for (int i = 0; i < raidMgr->GetEnemyMaxNum(); i++)
+			{
+				raidMgr->GetVecEnemy()[i]->GetMissileMgr()->SetIsShoot(false);
+			}
+			isShake = true;
+			shaking = false;
+		}
 	}
 }
 

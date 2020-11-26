@@ -29,7 +29,7 @@ void UI::Release()
 
 void UI::Update(int life, int bossLife, int firstBarrierLife, int secondBarrierLife, int raidLife, EnemyName name, Phase phase, Mode mode)
 {
-	if (name <= EnemyName::Panic)
+	if (name <= EnemyName::Panic && mode != Mode::Raid)
 	{
 		if (life != FULL_LIFE)
 		{
@@ -48,7 +48,7 @@ void UI::Update(int life, int bossLife, int firstBarrierLife, int secondBarrierL
 		}
 	}
 
-	if (mode == Mode::Raid)
+	else if (mode == Mode::Raid)
 	{
 		if (raidLife != RAID_LIFE)
 		{
@@ -67,7 +67,7 @@ void UI::Update(int life, int bossLife, int firstBarrierLife, int secondBarrierL
 		}
 	}
 
-	if (name == EnemyName::Despair)
+	else if (name == EnemyName::Despair && mode != Mode::Raid)
 	{
 		sec += TimerManager::GetSingleton()->GetElapsedTime();
 		if (phase == Phase::Phase1)
@@ -154,251 +154,254 @@ void UI::Render(HDC hdc, EnemyName name, Phase phase, Mode mode)
 		}
 	}
 	
-	if (mode == Mode::Raid)
+	else if (mode == Mode::Raid)
 	{
 		lifeBar[LifebarColor::White]->Render(hdc, 0, 0, White);
 		lifeBar[LifebarColor::Red]->Render(hdc, 5, 2.5, Red, red);
 		lifeBar[LifebarColor::Black]->Render(hdc, 5, 2.5, Black, black);
 	}
 
-	AddFontResource("Font/Piacevoli.ttf");
-
-	HFONT hFont = CreateFont(45, 0, 0, 0, 0, 0, 0, 0, ANSI_CHARSET, 0, 0, 0,
-		VARIABLE_PITCH | FF_ROMAN, TEXT("Piacevoli"));
-	HFONT oldFont = (HFONT)SelectObject(hdc, hFont);
-
-	if (name == EnemyName::Irritation)
+	if (mode != Mode::Raid)
 	{
-		wsprintf(szText, "Irritation");
-		if (mode == Mode::Easy)
+		AddFontResource("Font/Piacevoli.ttf");
+
+		HFONT hFont = CreateFont(45, 0, 0, 0, 0, 0, 0, 0, ANSI_CHARSET, 0, 0, 0,
+			VARIABLE_PITCH | FF_ROMAN, TEXT("Piacevoli"));
+		HFONT oldFont = (HFONT)SelectObject(hdc, hFont);
+
+		if (name == EnemyName::Irritation)
 		{
-			SetTextColor(hdc, RGB(200, 231, 0));
+			wsprintf(szText, "Irritation");
+			if (mode == Mode::Easy)
+			{
+				SetTextColor(hdc, RGB(200, 231, 0));
+			}
+			else
+			{
+				SetTextColor(hdc, RGB(31, 0, 231));
+			}
+
 		}
-		else
+		if (name == EnemyName::Pressure)
 		{
-			SetTextColor(hdc, RGB(31, 0, 231));
+			wsprintf(szText, "Pressure");
+			if (mode == Mode::Easy)
+			{
+				SetTextColor(hdc, RGB(216, 63, 0));
+			}
+			else
+			{
+				SetTextColor(hdc, RGB(0, 153, 216));
+			}
+
+		}
+		if (name == EnemyName::Loneliness)
+		{
+			wsprintf(szText, "Loneliness");
+			if (mode == Mode::Easy)
+			{
+				SetTextColor(hdc, RGB(122, 113, 234));
+			}
+			else
+			{
+				SetTextColor(hdc, RGB(225, 234, 113));
+			}
+
+		}
+		if (name == EnemyName::Distress)
+		{
+			wsprintf(szText, "Distress");
+			if (mode == Mode::Easy)
+			{
+				SetTextColor(hdc, RGB(255, 213, 1));
+			}
+			else
+			{
+				SetTextColor(hdc, RGB(1, 43, 255));
+			}
+
+		}
+		if (name == EnemyName::Fear)
+		{
+			wsprintf(szText, "Fear");
+			if (mode == Mode::Easy)
+			{
+				SetTextColor(hdc, RGB(132, 132, 132));
+			}
+			else
+			{
+				SetTextColor(hdc, RGB(51, 51, 51));
+			}
+
+		}
+		if (name == EnemyName::Hatred)
+		{
+			wsprintf(szText, "Hatred");
+			if (mode == Mode::Easy)
+			{
+				SetTextColor(hdc, RGB(141, 0, 0));
+			}
+			else
+			{
+				SetTextColor(hdc, RGB(0, 141, 141));
+			}
+
+		}
+		if (name == EnemyName::Guilt)
+		{
+			wsprintf(szText, "Guilt");
+			if (mode == Mode::Easy)
+			{
+				SetTextColor(hdc, RGB(126, 83, 210));
+			}
+			else
+			{
+				SetTextColor(hdc, RGB(167, 210, 83));
+			}
+
+		}
+		if (name == EnemyName::Confusion)
+		{
+			wsprintf(szText, "Confusion");
+			if (mode == Mode::Easy)
+			{
+				SetTextColor(hdc, RGB(204, 121, 29));
+			}
+			else
+			{
+				SetTextColor(hdc, RGB(29, 112, 204));
+			}
+
+		}
+		if (name == EnemyName::Emptiness)
+		{
+			wsprintf(szText, "Emptiness");
+			if (mode == Mode::Easy)
+			{
+				SetTextColor(hdc, RGB(51, 51, 51));
+			}
+			else
+			{
+				SetTextColor(hdc, RGB(69, 69, 69));
+			}
+
+		}
+		if (name == EnemyName::Shame)
+		{
+			wsprintf(szText, "Shame");
+			if (mode == Mode::Easy)
+			{
+				SetTextColor(hdc, RGB(222, 50, 98));
+			}
+			else
+			{
+				SetTextColor(hdc, RGB(50, 222, 174));
+			}
+
+		}
+		if (name == EnemyName::Frustration)
+		{
+			wsprintf(szText, "Frustration");
+			if (mode == Mode::Easy)
+			{
+				SetTextColor(hdc, RGB(54, 65, 138));
+			}
+			else
+			{
+				SetTextColor(hdc, RGB(138, 127, 54));
+			}
+
+		}
+		if (name == EnemyName::Jealousy)
+		{
+			wsprintf(szText, "Jealousy");
+			if (mode == Mode::Easy)
+			{
+				SetTextColor(hdc, RGB(236, 240, 81));
+			}
+			else
+			{
+				SetTextColor(hdc, RGB(85, 81, 240));
+			}
+
+		}
+		if (name == EnemyName::Hoplessness)
+		{
+			wsprintf(szText, "Hoplessness");
+			if (mode == Mode::Easy)
+			{
+				SetTextColor(hdc, RGB(78, 64, 96));
+			}
+			else
+			{
+				SetTextColor(hdc, RGB(82, 96, 64));
+			}
+
+		}
+		if (name == EnemyName::Anger)
+		{
+			wsprintf(szText, "Anger");
+			if (mode == Mode::Easy)
+			{
+				SetTextColor(hdc, RGB(234, 26, 0));
+			}
+			else
+			{
+				SetTextColor(hdc, RGB(0, 208, 234));
+			}
+
+		}
+		if (name == EnemyName::Anxiety)
+		{
+			wsprintf(szText, "Anxiety");
+			if (mode == Mode::Easy)
+			{
+				SetTextColor(hdc, RGB(234, 26, 0));
+			}
+			else
+			{
+				SetTextColor(hdc, RGB(0, 208, 234));
+			}
+
+		}
+		if (name == EnemyName::Sadness)
+		{
+			wsprintf(szText, "Sadness");
+			if (mode == Mode::Easy)
+			{
+				SetTextColor(hdc, RGB(42, 48, 60));
+			}
+			else
+			{
+				SetTextColor(hdc, RGB(60, 54, 42));
+			}
+
+		}
+		if (name == EnemyName::Panic)
+		{
+			wsprintf(szText, "Panic");
+			if (mode == Mode::Easy)
+			{
+				SetTextColor(hdc, RGB(42, 48, 60));
+			}
+			else
+			{
+				SetTextColor(hdc, RGB(60, 54, 42));
+			}
+
+		}
+		if (name == EnemyName::Despair)
+		{
+			wsprintf(szText, "Despair");
+			SetTextColor(hdc, RGB(0, 0, 0));
 		}
 
+
+		SetBkMode(hdc, TRANSPARENT);
+		TextOut(hdc, 10, 8 * 3.20, szText, strlen(szText));
+
+
+		SelectObject(hdc, oldFont);
+		DeleteObject(hFont);
 	}
-	if (name == EnemyName::Pressure)
-	{
-		wsprintf(szText, "Pressure");
-		if (mode == Mode::Easy)
-		{
-			SetTextColor(hdc, RGB(216, 63, 0));
-		}
-		else
-		{
-			SetTextColor(hdc, RGB(0, 153, 216));
-		}
-
-	}
-	if (name == EnemyName::Loneliness)
-	{
-		wsprintf(szText, "Loneliness");
-		if (mode == Mode::Easy)
-		{
-			SetTextColor(hdc, RGB(122, 113, 234));
-		}
-		else
-		{
-			SetTextColor(hdc, RGB(225, 234, 113));
-		}
-
-	}
-	if (name == EnemyName::Distress)
-	{
-		wsprintf(szText, "Distress");
-		if (mode == Mode::Easy)
-		{
-			SetTextColor(hdc, RGB(255, 213, 1));
-		}
-		else
-		{
-			SetTextColor(hdc, RGB(1, 43, 255));
-		}
-
-	}
-	if (name == EnemyName::Fear)
-	{
-		wsprintf(szText, "Fear");
-		if (mode == Mode::Easy)
-		{
-			SetTextColor(hdc, RGB(132, 132, 132));
-		}
-		else
-		{
-			SetTextColor(hdc, RGB(51, 51, 51));
-		}
-
-	}
-	if (name == EnemyName::Hatred)
-	{
-		wsprintf(szText, "Hatred");
-		if (mode == Mode::Easy)
-		{
-			SetTextColor(hdc, RGB(141, 0, 0));
-		}
-		else
-		{
-			SetTextColor(hdc, RGB(0, 141, 141));
-		}
-
-	}
-	if (name == EnemyName::Guilt)
-	{
-		wsprintf(szText, "Guilt");
-		if (mode == Mode::Easy)
-		{
-			SetTextColor(hdc, RGB(126, 83, 210));
-		}
-		else
-		{
-			SetTextColor(hdc, RGB(167, 210, 83));
-		}
-
-	}
-	if (name == EnemyName::Confusion)
-	{
-		wsprintf(szText, "Confusion");
-		if (mode == Mode::Easy)
-		{
-			SetTextColor(hdc, RGB(204, 121, 29));
-		}
-		else
-		{
-			SetTextColor(hdc, RGB(29, 112, 204));
-		}
-
-	}
-	if (name == EnemyName::Emptiness)
-	{
-		wsprintf(szText, "Emptiness");
-		if (mode == Mode::Easy)
-		{
-			SetTextColor(hdc, RGB(51, 51, 51));
-		}
-		else
-		{
-			SetTextColor(hdc, RGB(69, 69, 69));
-		}
-
-	}
-	if (name == EnemyName::Shame)
-	{
-		wsprintf(szText, "Shame");
-		if (mode == Mode::Easy)
-		{
-			SetTextColor(hdc, RGB(222, 50, 98));
-		}
-		else
-		{
-			SetTextColor(hdc, RGB(50, 222, 174));
-		}
-
-	}
-	if (name == EnemyName::Frustration)
-	{
-		wsprintf(szText, "Frustration");
-		if (mode == Mode::Easy)
-		{
-			SetTextColor(hdc, RGB(54, 65, 138));
-		}
-		else
-		{
-			SetTextColor(hdc, RGB(138, 127, 54));
-		}
-
-	}
-	if (name == EnemyName::Jealousy)
-	{
-		wsprintf(szText, "Jealousy");
-		if (mode == Mode::Easy)
-		{
-			SetTextColor(hdc, RGB(236, 240, 81));
-		}
-		else
-		{
-			SetTextColor(hdc, RGB(85, 81, 240));
-		}
-
-	}
-	if (name == EnemyName::Hoplessness)
-	{
-		wsprintf(szText, "Hoplessness");
-		if (mode == Mode::Easy)
-		{
-			SetTextColor(hdc, RGB(78, 64, 96));
-		}
-		else
-		{
-			SetTextColor(hdc, RGB(82, 96, 64));
-		}
-
-	}
-	if (name == EnemyName::Anger)
-	{
-		wsprintf(szText, "Anger");
-		if (mode == Mode::Easy)
-		{
-			SetTextColor(hdc, RGB(234, 26, 0));
-		}
-		else
-		{
-			SetTextColor(hdc, RGB(0, 208, 234));
-		}
-
-	}
-	if (name == EnemyName::Anxiety)
-	{
-		wsprintf(szText, "Anxiety");
-		if (mode == Mode::Easy)
-		{
-			SetTextColor(hdc, RGB(234, 26, 0));
-		}
-		else
-		{
-			SetTextColor(hdc, RGB(0, 208, 234));
-		}
-
-	}
-	if (name == EnemyName::Sadness)
-	{
-		wsprintf(szText, "Sadness");
-		if (mode == Mode::Easy)
-		{
-			SetTextColor(hdc, RGB(42, 48, 60));
-		}
-		else
-		{
-			SetTextColor(hdc, RGB(60, 54, 42));
-		}
-
-	}
-	if (name == EnemyName::Panic)
-	{
-		wsprintf(szText, "Panic");
-		if (mode == Mode::Easy)
-		{
-			SetTextColor(hdc, RGB(42, 48, 60));
-		}
-		else
-		{
-			SetTextColor(hdc, RGB(60, 54, 42));
-		}
-
-	}
-	if (name == EnemyName::Despair)
-	{
-		wsprintf(szText, "Despair");
-		SetTextColor(hdc, RGB(0, 0, 0));
-	}
-
-
-	SetBkMode(hdc, TRANSPARENT);
-	TextOut(hdc, 10, 8 * 3.20, szText, strlen(szText));
-
-
-	SelectObject(hdc, oldFont);
-	DeleteObject(hFont);
 }
