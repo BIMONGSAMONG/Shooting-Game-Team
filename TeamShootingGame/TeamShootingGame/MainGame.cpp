@@ -160,6 +160,7 @@ void MainGame::Update()
 				battleScene->SetEnemyName(EnemyName::RaidMob);
 				battleScene->SetMode(Mode::Raid);
 				cName = EnemyName::RaidMob;
+				battleScene->SetIsRaid(true);
 			}
 		}
 
@@ -226,7 +227,7 @@ void MainGame::Update()
 			delete battleScene;
 			battleScene = new BattleScene();
 			battleScene->Init();
-
+			
 			sceneNum = Scene::Main;
 		}
 		
