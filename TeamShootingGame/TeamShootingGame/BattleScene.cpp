@@ -78,7 +78,7 @@ void BattleScene::Update()
 		enemy->SetMode(mode);
 		enemy->SetTargetPos(player->GetPos());
 	}
-	else if(mode == Mode::Raid)
+	if(mode == Mode::Raid)
 	{	
 	 if (ui) ui->Update(raidMgr->GetVecEnemy()[0]->GetLife(), raidMgr->GetVecEnemy()[0]->GetBossLife(),
 		 raidMgr->GetVecEnemy()[0]->GetFirstBarriarLife(), raidMgr->GetVecEnemy()[0]->GetSecondBarriarLife(), raidMgr->GetRaidLife(), raidMgr->GetName(),
@@ -335,9 +335,7 @@ void BattleScene::Update()
 						{
 							player->SetDie(true);
 							isShake = true;
-							///////////////총알 안쏘게   /총알 안쏘게   /총알 안쏘게   /총알 안쏘게  
-							raidMgr->GetVecEnemy()[0]->GetMissileMgr()->SetIsShoot(false);
-							raidMgr->GetVecEnemy()[1]->GetMissileMgr()->SetIsShoot(false);
+							raidMgr->GetVecEnemy()[i]->GetMissileMgr()->SetIsShoot(false);
 						}
 						raidMgr->GetVecEnemy()[i]->GetMissileMgr()->GetVecMissiles()[j]->SetIsFire(false);
 					}
@@ -369,25 +367,21 @@ void BattleScene::Update()
 				}
 			}
 		}
-
-		//타겟 포스 전달
 		for (int i = 0; i < raidMgr->GetEnemyMaxNum(); i++)
 		{
 			raidMgr->GetVecEnemy()[i]->SetTargetPos(player->GetPos());
 		}
+	}
 
-		//////벽에 다가서지마세요 죽고싶습니까?
-		if (player->GetPos().x - (player->GetSize() / 2.0f) < 0 || player->GetPos().x + (player->GetSize() / 2.0f) > WINSIZE_X ||
-			player->GetPos().y - (player->GetSize() / 2.0f) < 0 || player->GetPos().y + (player->GetSize() / 2.0f) > WINSIZE_Y)
-		{
-			player->SetDie(true);
-			for (int i = 0; i < raidMgr->GetEnemyMaxNum(); i++)
-			{
-				raidMgr->GetVecEnemy()[i]->GetMissileMgr()->SetIsShoot(false);
-			}
-			isShake = true;
-			shaking = false;
-		}
+
+	//////벽에 다가서지마세요 죽고싶습니까?
+	if (player->GetPos().x - (player->GetSize() / 2.0f) < 0 || player->GetPos().x + (player->GetSize() / 2.0f) > WINSIZE_X ||
+		player->GetPos().y - (player->GetSize() / 2.0f) < 0 || player->GetPos().y + (player->GetSize() / 2.0f) > WINSIZE_Y)
+	{
+		player->SetDie(true);
+		enemy->GetMissileMgr()->SetIsShoot(false);
+		isShake = true;
+		shaking = false;
 	}
 }
 

@@ -1,7 +1,2 @@
-﻿  MainGame.cpp
-c:\users\hanbi\onedrive\바탕 화면\삭제금지\shooting-game-team\teamshootinggame\teamshootinggame\maingame.cpp(23): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-c:\users\hanbi\onedrive\바탕 화면\삭제금지\shooting-game-team\teamshootinggame\teamshootinggame\maingame.cpp(24): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-c:\users\hanbi\onedrive\바탕 화면\삭제금지\shooting-game-team\teamshootinggame\teamshootinggame\maingame.cpp(25): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-c:\users\hanbi\onedrive\바탕 화면\삭제금지\shooting-game-team\teamshootinggame\teamshootinggame\maingame.cpp(26): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-c:\users\hanbi\onedrive\바탕 화면\삭제금지\shooting-game-team\teamshootinggame\teamshootinggame\maingame.cpp(66): warning C4244: '인수': 'time_t'에서 'unsigned int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  TeamShootingGame.vcxproj -> C:\Users\hanbi\OneDrive\바탕 화면\삭제금지\Shooting-Game-Team\TeamShootingGame\Debug\TeamShootingGame.exe
+﻿  RaidManager.cpp
+  TeamShootingGame.vcxproj -> C:\Users\KGA_4\Documents\GitHub\Shooting-Game-Team\TeamShootingGame\Debug\TeamShootingGame.exe

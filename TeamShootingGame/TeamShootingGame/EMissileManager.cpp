@@ -164,7 +164,7 @@ void EMissileManager::Fire(EnemyName name, FPOINT pos, float destAngle, Mode mod
 				}
 			}
 		}
-		if (count >= 2)
+		if (count == 2)
 			count = 0;
 		break;
 	case Pressure:
@@ -225,7 +225,7 @@ void EMissileManager::Fire(EnemyName name, FPOINT pos, float destAngle, Mode mod
 				}
 			}
 			 //break로 나오면 ++
-			if (count >= 10) // 6가 될때까지는 쏘지말아라
+			if (count == 10) // 6가 될때까지는 쏘지말아라
 			{
 				count = 0;
 			}
@@ -246,7 +246,7 @@ void EMissileManager::Fire(EnemyName name, FPOINT pos, float destAngle, Mode mod
 					}
 				}
 			}
-			if (count >= 15) // 10 될때까지는 쏘지말아라
+			if (count == 15) // 10 될때까지는 쏘지말아라
 			{
 				count = 0;
 			}
@@ -604,7 +604,7 @@ void EMissileManager::Fire(EnemyName name, FPOINT pos, float destAngle, Mode mod
 					}
 				}
 			}
-			if (count >= 6)
+			if (count == 6)
 			{
 				count = 0;
 			}
@@ -695,7 +695,7 @@ void EMissileManager::Fire(EnemyName name, FPOINT pos, float destAngle, Mode mod
 					}
 				}
 			}
-			if (count >= 6)
+			if (count == 6)
 			{
 				count = 0;
 			}
@@ -860,7 +860,7 @@ void EMissileManager::Fire(EnemyName name, FPOINT pos, float destAngle, Mode mod
 					}
 				}
 			}
-			if (count >= 39)
+			if (count == 39)
 			{
 				count = 0;
 			}
@@ -944,7 +944,7 @@ void EMissileManager::Fire(EnemyName name, FPOINT pos, float destAngle, Mode mod
 					}
 				}
 			}
-			if (count >= 15)
+			if (count == 15)
 			{
 				count = 0;
 			}
@@ -1269,7 +1269,7 @@ void EMissileManager::Fire(EnemyName name, FPOINT pos, float destAngle, Mode mod
 					}
 				}
 			}
-			if (count >= 70)
+			if (count == 70)
 			{
 				count = 0;
 			}
@@ -1363,7 +1363,7 @@ void EMissileManager::Fire(EnemyName name, FPOINT pos, float destAngle, Mode mod
 				}
 
 			}
-			if (count >= 50)
+			if (count == 50)
 			{
 				count = 0;
 			}
@@ -1651,7 +1651,7 @@ void EMissileManager::Fire(EnemyName name, FPOINT pos, float destAngle, Mode mod
 					}
 				}
 			}
-			if (count >= 18)
+			if (count == 18)
 			{
 				count = 0;
 			}
@@ -1713,7 +1713,7 @@ void EMissileManager::Fire(EnemyName name, FPOINT pos, float destAngle, Mode mod
 					}
 				}
 			}
-			if (count >= 18)
+			if (count == 18)
 			{
 				count = 0;
 			}
@@ -2454,7 +2454,7 @@ void EMissileManager::Fire(EnemyName name, FPOINT pos, float destAngle, Mode mod
 				}
 			}
 
-			if (count >= 30)
+			if (count == 30)
 			{
 				count = 0;
 			}
@@ -2501,7 +2501,7 @@ void EMissileManager::Fire(EnemyName name, FPOINT pos, float destAngle, Mode mod
 				}
 			}
 
-			if (count >= 5)
+			if (count == 5)
 			{
 				count = 0;
 			}
@@ -2550,7 +2550,7 @@ void EMissileManager::Fire(EnemyName name, FPOINT pos, float destAngle, Mode mod
 					}
 				}
 			}
-			if (count >= 10)
+			if (count == 10)
 			{
 				count = 0;
 				angle -= DegreeToRadian(35);
@@ -2635,7 +2635,7 @@ void EMissileManager::Fire(EnemyName name, FPOINT pos, float destAngle, Mode mod
 					}
 				}
 			}
-			if (count >= 20)
+			if (count == 20)
 			{
 				count = 0;
 				angle -= DegreeToRadian(60);
@@ -3335,7 +3335,7 @@ void EMissileManager::Fire(EnemyName name, FPOINT pos, float destAngle, Mode mod
 						}
 					}
 				}
-				if (count >= 15)
+				if (count == 15)
 				{
 					count = 0;
 				}
@@ -3380,7 +3380,7 @@ void EMissileManager::Fire(EnemyName name, FPOINT pos, float destAngle, Mode mod
 						}
 					}
 				}
-				if (count >= 2)
+				if (count == 2)
 				{
 					count = 0;
 					randomAngle = rand() % 4;
@@ -3523,7 +3523,7 @@ void EMissileManager::Fire(EnemyName name, FPOINT pos, float destAngle, Mode mod
 					}
 				}
 
-				if (count >= 15)
+				if (count == 15)
 				{
 					count = 0;
 				}
@@ -3683,7 +3683,7 @@ void EMissileManager::Fire(EnemyName name, FPOINT pos, float destAngle, Mode mod
 						}
 					}
 				}
-				if (count >= 4)
+				if (count == 4)
 				{
 					count = 0;
 					angle += DegreeToRadian(3.75);
@@ -3782,7 +3782,7 @@ void EMissileManager::Fire(EnemyName name, FPOINT pos, float destAngle, Mode mod
 						randomAngle = rand() % 300;
 					}
 				}
-				if (count >= 8)
+				if (count == 8)
 				{
 					count = 0;
 				}

@@ -44,21 +44,23 @@ void RaidManager::Update()
 {
 	//randomName = rand()%18;
 	//mode = Mode(rand() % 2);
-	//name = EnemyName(17);
+	//name1 = EnemyName(randomName);
 	vecEnemy[0]->Update(name, mode);
 	vecEnemy[1]->Update(name2, mode);
-		
-	Move(); 
-	Move2();
+	if (name)
+	{
+		Move();
+	}
+	if (name2)
+	{
+		Move2();
+	}
 }
 
 void RaidManager::Render(HDC hdc)
 {
 	vecEnemy[0]->Render(hdc, name, mode);
 	vecEnemy[1]->Render(hdc, name2, mode);
-	char szText[128] = "";
-	wsprintf(szText, "Raid HP : %d", raidLife);
-	TextOut(hdc, 10, 175, szText, strlen(szText));
 }
 
 void RaidManager::Move()
@@ -66,9 +68,9 @@ void RaidManager::Move()
 	switch (name)
 	{
 	case Irritation:
-		vecEnemy[0]->GetMissileMgr()->SetMissileCount(10);
+		vecEnemy[0]->GetMissileMgr()->SetMissileCount(20);
 		pos.x += i;
-		t =5.0f;
+		t = 1.0f;
 		if (pos.y <= WINSIZE_Y / 2 + 100)
 		{
 			pos.y += j;
@@ -99,7 +101,8 @@ void RaidManager::Move()
 			j = 0;
 			
 		}
-
+		if (pos.x <= 0)
+		{
 			moveTimer += TimerManager::GetSingleton()->GetElapsedTime();
 			if (moveTimer >= t)
 			{
@@ -109,6 +112,7 @@ void RaidManager::Move()
 				name = EnemyName::Pressure;
 				moveTimer = 0;
 			}
+		}
 		break;
 	case Pressure:
 		vecEnemy[0]->GetMissileMgr()->SetMissileCount(30);

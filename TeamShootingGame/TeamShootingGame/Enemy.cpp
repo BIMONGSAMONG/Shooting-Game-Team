@@ -272,7 +272,6 @@ void Enemy::Render(HDC hdc, EnemyName name, Mode mode)
 	wsprintf(szText, "HP : %d", life);
 	TextOut(hdc, 10, 140, szText, strlen(szText));
 
-
 	if (name != EnemyName::Despair)
 	{
 		if (missileMgr)

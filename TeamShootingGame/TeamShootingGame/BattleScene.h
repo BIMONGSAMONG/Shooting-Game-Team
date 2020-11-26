@@ -32,12 +32,12 @@ public:
 
 	void SetEnemyName(EnemyName name) { this->name = name; }
 	void SetMode(Mode mode) { this->mode = mode; }
-	Mode GetMode() { return mode; }
+
 	bool CheckCollision(int size_1, int size_2, FPOINT pos_1, FPOINT pos_2);
 	float GetDistance(FPOINT pos1, FPOINT pos2);
 
 	Enemy* GetEnemy() { return enemy; }
-	RaidManager* GetRaidManager() { return raidMgr; }
+
 	bool GetIsShake() { return isShake; }
 	void SetIsShake(bool isShake) { this->isShake = isShake; }
 	bool GetIsShaking() { return shaking; }
