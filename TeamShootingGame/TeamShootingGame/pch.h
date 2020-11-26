@@ -34,7 +34,6 @@ using namespace std;
 
 
 #define FULL_LIFE	30
-#define RAID_LIFE	60
 #define FIN_LIFE	90
 
 
