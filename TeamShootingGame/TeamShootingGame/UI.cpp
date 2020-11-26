@@ -4,8 +4,8 @@
 HRESULT UI::Init()
 {
 	ImageManager::GetSingleton()->AddImage("Èò»ö", "Image/lifebar_white.bmp", WINSIZE_X, 8 * 3.20, true, RGB(255, 0, 255));
-	ImageManager::GetSingleton()->AddImage("»¡°­", "Image/lifebar_red.bmp", WINSIZE_X - 10, 6 * 3.22, true, RGB(255, 0, 255));
-	ImageManager::GetSingleton()->AddImage("°ËÁ¤", "Image/lifebar_black.bmp", WINSIZE_X - 10, 6 * 3.22, true, RGB(255, 0, 255));
+	ImageManager::GetSingleton()->AddImage("»¡°­", "Image/lifebar_red.bmp", WINSIZE_X, 6 * 3.22, true, RGB(255, 0, 255));
+	ImageManager::GetSingleton()->AddImage("°ËÁ¤", "Image/lifebar_black.bmp", WINSIZE_X, 6 * 3.22, true, RGB(255, 0, 255));
 
 	lifeBar[LifebarColor::White] = ImageManager::GetSingleton()->FindImage("Èò»ö");
 	lifeBar[LifebarColor::Red] = ImageManager::GetSingleton()->FindImage("»¡°­");
@@ -37,7 +37,7 @@ void UI::Update(int life, int bossLife, int firstBarrierLife, int secondBarrierL
 		{
 			if (life != FULL_LIFE)
 			{
-				black = ((WINSIZE_X - 10) / FULL_LIFE) * life;
+				black = ((WINSIZE_X - 5) / FULL_LIFE) * life;
 			}
 
 			sec += TimerManager::GetSingleton()->GetElapsedTime();
@@ -59,7 +59,7 @@ void UI::Update(int life, int bossLife, int firstBarrierLife, int secondBarrierL
 			{
 				if (firstBarrierLife != FULL_LIFE)
 				{
-					black = ((WINSIZE_X - 10) / FULL_LIFE) * firstBarrierLife;
+					black = ((WINSIZE_X - 5) / FULL_LIFE) * firstBarrierLife;
 				}
 				if (sec >= 0.05)
 				{
@@ -86,8 +86,8 @@ void UI::Update(int life, int bossLife, int firstBarrierLife, int secondBarrierL
 				{
 					if (fRed > fBlack)
 					{
-						fRed -= 10.0f;
-						red += 10.0f;
+						fRed -= 8.0f;
+						red += 8.0f;
 					}
 					sec = 0.0f;
 				}
@@ -96,7 +96,7 @@ void UI::Update(int life, int bossLife, int firstBarrierLife, int secondBarrierL
 			{
 				if (bossLife == FULL_LIFE)
 				{
-					red = WINSIZE_X - 10;
+					red = WINSIZE_X - 5;
 
 				}
 				else
@@ -111,7 +111,7 @@ void UI::Update(int life, int bossLife, int firstBarrierLife, int secondBarrierL
 
 		if (raidLife != RAID_MAX_LIFE)
 		{
-			black = ((WINSIZE_X - 10) / RAID_MAX_LIFE) * raidLife;
+			black = ((WINSIZE_X - 5) / RAID_MAX_LIFE) * raidLife;
 		}
 		sec += TimerManager::GetSingleton()->GetElapsedTime();
 

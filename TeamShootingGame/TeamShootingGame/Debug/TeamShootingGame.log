@@ -1,2 +1,222 @@
-﻿  RaidManager.cpp
-  TeamShootingGame.vcxproj -> C:\Users\KGA_4\Documents\GitHub\Shooting-Game-Team\TeamShootingGame\Debug\TeamShootingGame.exe
+﻿  BattleScene.cpp
+  EasyModeUI.cpp
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\easymodeui.cpp(59): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  EMissile.cpp
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissile.cpp(143): warning C4244: '+=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissile.cpp(144): warning C4244: '-=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissile.cpp(150): warning C4244: '+=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissile.cpp(151): warning C4244: '-=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissile.cpp(161): warning C4244: '+=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissile.cpp(162): warning C4244: '-=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissile.cpp(168): warning C4244: '+=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissile.cpp(169): warning C4244: '-=': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissile.cpp(180): warning C4305: '+=': 'double'에서 'float'(으)로 잘립니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissile.cpp(265): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissile.cpp(269): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  EMissileManager.cpp
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(70): warning C4244: '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(71): warning C4244: '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(72): warning C4244: '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(143): warning C4305: '인수': 'double'에서 'float'(으)로 잘립니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(147): warning C4305: '인수': 'double'에서 'float'(으)로 잘립니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(155): warning C4305: '인수': 'double'에서 'float'(으)로 잘립니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(159): warning C4305: '인수': 'double'에서 'float'(으)로 잘립니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(625): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(646): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(666): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(687): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(1245): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(1266): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(1295): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(1296): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(1358): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(1359): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(1629): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(1634): warning C4244: '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(1648): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(1671): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(1691): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(1696): warning C4244: '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(1710): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(2330): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(2345): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(2364): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(2379): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(2389): warning C4805: '==': 연산에 'float' 형식과 'bool' 형식을 함께 사용하는 것은 안전하지 않습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(2426): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(2431): warning C4244: '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(2449): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(2475): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(2492): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(2525): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(2530): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(2542): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(2547): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(2576): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(2581): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(2593): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(2598): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(2610): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(2615): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(2627): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(2632): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(3236): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(3242): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(3254): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(3260): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(3275): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(3281): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(3293): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(3299): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(3314): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(3317): warning C4305: '인수': 'double'에서 'float'(으)로 잘립니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(3329): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(3332): warning C4305: '인수': 'double'에서 'float'(으)로 잘립니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(3363): warning C4244: '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(3386): warning C4244: '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(3404): warning C4244: '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(3423): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(3429): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(3441): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(3447): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(3462): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(3468): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(3480): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(3486): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(3504): warning C4305: '인수': 'double'에서 'float'(으)로 잘립니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(3519): warning C4305: '인수': 'double'에서 'float'(으)로 잘립니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(3561): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(3575): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(3595): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(3609): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(3629): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(3643): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(3663): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(3677): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(3699): warning C4244: '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(3709): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(3718): warning C4244: '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(3730): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(3739): warning C4244: '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(3751): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(3760): warning C4244: '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(3773): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(3782): warning C4244: '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(3798): warning C4244: '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(3799): warning C4244: '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(3849): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(3866): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(3887): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(3904): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(3929): warning C4244: '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(4066): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(4086): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(4106): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(4126): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(4146): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(4166): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(4194): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(4214): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(4234): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(4254): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(4287): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(4301): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(4321): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(4335): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(4357): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(4377): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(4397): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(4417): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(4474): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\emissilemanager.cpp(4494): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Enemy.cpp
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\enemy.cpp(69): warning C4305: '=': 'double'에서 'float'(으)로 잘립니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\enemy.cpp(307): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\enemy.cpp(315): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\enemy.cpp(325): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\enemy.cpp(336): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\enemy.cpp(343): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\enemy.cpp(347): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\enemy.cpp(357): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\enemy.cpp(370): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\enemy.cpp(378): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\enemy.cpp(384): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\enemy.cpp(385): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\enemy.cpp(387): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\enemy.cpp(416): warning C4305: '+=': 'double'에서 'float'(으)로 잘립니다.
+  GameNode.cpp
+  HardModeUi.cpp
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\hardmodeui.cpp(60): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Image.cpp
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\image.cpp(174): warning C4244: '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\image.cpp(175): warning C4244: '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\image.cpp(181): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\image.cpp(194): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\image.cpp(239): warning C4244: '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\image.cpp(240): warning C4244: '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\image.cpp(247): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\image.cpp(259): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\image.cpp(258): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\image.cpp(257): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\image.cpp(255): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\image.cpp(267): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\image.cpp(264): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\image.cpp(276): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\image.cpp(273): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\image.cpp(301): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\image.cpp(313): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  ImageManager.cpp
+  KeyManager.cpp
+  main.cpp
+  MainGame.cpp
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\maingame.cpp(23): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\maingame.cpp(24): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\maingame.cpp(25): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\maingame.cpp(26): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\maingame.cpp(66): warning C4244: '인수': 'time_t'에서 'unsigned int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  MainScene.cpp
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\mainscene.cpp(53): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\mainscene.cpp(54): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\mainscene.cpp(60): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\mainscene.cpp(61): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\mainscene.cpp(67): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\mainscene.cpp(71): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\mainscene.cpp(72): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Player.cpp
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\player.cpp(50): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\player.cpp(54): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\player.cpp(98): warning C4305: '=': 'double'에서 'float'(으)로 잘립니다.
+  PMissile.cpp
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\pmissile.cpp(43): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\pmissile.cpp(47): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  PMissileManager.cpp
+  RaidManager.cpp
+  Timer.cpp
+  TimerManager.cpp
+  TitleScene.cpp
+  코드를 생성하고 있습니다...
+  컴파일하고 있습니다...
+  UI.cpp
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\ui.cpp(6): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\ui.cpp(7): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\ui.cpp(8): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\ui.cpp(40): warning C4244: '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\ui.cpp(62): warning C4244: '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\ui.cpp(82): warning C4244: '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\ui.cpp(83): warning C4244: '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\ui.cpp(104): warning C4244: '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\ui.cpp(114): warning C4244: '=': 'int'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\ui.cpp(136): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\ui.cpp(137): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\ui.cpp(144): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\ui.cpp(145): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\ui.cpp(150): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\ui.cpp(150): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\ui.cpp(151): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\ui.cpp(151): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\ui.cpp(156): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\ui.cpp(395): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\ui.cpp(404): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+d:\team\shooting-game-team\teamshootinggame\teamshootinggame\ui.cpp(405): warning C4244: '인수': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  코드를 생성하고 있습니다...
+  TeamShootingGame.vcxproj -> D:\team\Shooting-Game-Team\TeamShootingGame\Debug\TeamShootingGame.exe
