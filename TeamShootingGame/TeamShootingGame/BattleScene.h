@@ -37,7 +37,7 @@ public:
 	float GetDistance(FPOINT pos1, FPOINT pos2);
 
 	Enemy* GetEnemy() { return enemy; }
-
+	RaidManager* GetRaidManager() { return raidMgr; }
 	bool GetIsShake() { return isShake; }
 	void SetIsShake(bool isShake) { this->isShake = isShake; }
 	bool GetIsShaking() { return shaking; }

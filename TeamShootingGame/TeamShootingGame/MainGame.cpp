@@ -4,6 +4,7 @@
 #include "BattleScene.h"
 #include "TitleScene.h"
 #include "Enemy.h"
+#include "RaidManager.h"
 HRESULT MainGame::Init()
 {
 	KeyManager::GetSingleton()->Init();
@@ -389,7 +390,10 @@ void MainGame::Update()
 	}
 	if (mainScene->GetMode() == Mode::Raid)
 	{
-		// 레이드 깨는 조건
+		if (battleScene->GetRaidManager()->GetRaidLife() <= 0)
+		{
+			mainScene->SetRaidC(true);
+		}
 	}
 
 

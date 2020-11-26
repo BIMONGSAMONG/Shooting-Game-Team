@@ -12,10 +12,11 @@ private:
 	vector <Enemy*>::iterator itEnemy;
 
 	EnemyName name;
+	EnemyName name2;
 	Mode mode;
 	int randomName;
 	int enemyMaxNum;
-
+	int raidLife;
 	bool isRaid;
 
 public:
@@ -29,6 +30,9 @@ public:
 	EnemyName GetName() { return this->name; }
 	Mode GetMode() { return this->mode; }
 	int GetEnemyMaxNum() { return this->enemyMaxNum; }
-
+	void move();
+	void move2();
+	int GetRaidLife() { return this->raidLife; }
+	void SetRaidLife(int life) { this->raidLife = life; }
 	
 };

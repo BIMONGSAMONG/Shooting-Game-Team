@@ -54,5 +54,6 @@ public:
 	Mode GetMode() { return  this->mode; }
 	EasyModeUI* GetEasyModUI() { return this->easy; }
 	HardModeUi* GetHardModeUI() { return this->hard; }
+	void SetRaidC(bool c) { this->raidTile.isClear = c; }
 };
 

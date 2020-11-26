@@ -72,7 +72,8 @@ void BattleScene::Update()
 	if (raidMgr->GetIsRaid() == false)
 	{
 
-		if (ui) ui->Update(enemy->GetLife(), enemy->GetBossLife(), enemy->GetFirstBarriarLife(), enemy->GetSecondBarriarLife(), name, enemy->GetPhase());
+		if (ui) ui->Update(enemy->GetLife(), enemy->GetBossLife(), enemy->GetFirstBarriarLife(), enemy->GetSecondBarriarLife(), name, enemy->GetPhase(), 
+			raidMgr->GetRaidLife(), raidMgr->GetIsRaid());
 
 		enemy->SetEnemyName(name);
 		enemy->SetMode(mode);
@@ -82,7 +83,7 @@ void BattleScene::Update()
 	{	
 	 if (ui) ui->Update(raidMgr->GetVecEnemy()[0]->GetLife(), raidMgr->GetVecEnemy()[0]->GetBossLife(),
 		 raidMgr->GetVecEnemy()[0]->GetFirstBarriarLife(), raidMgr->GetVecEnemy()[0]->GetSecondBarriarLife(), raidMgr->GetName(),
-		 raidMgr->GetVecEnemy()[0]->GetPhase());
+		 raidMgr->GetVecEnemy()[0]->GetPhase(), raidMgr->GetRaidLife(), raidMgr->GetIsRaid());
 	}
 	if (KeyManager::GetSingleton()->IsOnceKeyDown('R'))
 	{
@@ -319,56 +320,73 @@ void BattleScene::Update()
 	}
 	else if (raidMgr->GetIsRaid() == true)
 	{
+	for (int i = 0; i < raidMgr->GetEnemyMaxNum(); i++)
+	{
+		//적 공격 플레이어에게 적중
+		for (int j = 0; j < raidMgr->GetVecEnemy()[i]->GetMissileMgr()->GetMissileCount(); j++)
+		{
+			if (raidMgr->GetVecEnemy()[i]->GetMissileMgr()->GetVecMissiles()[j]->GetIsFire() == true)
+			{
+				if (CheckCollision(player->GetSize(), raidMgr->GetVecEnemy()[i]->GetMissileMgr()->GetVecMissiles()[j]->GetSize(),
+					player->GetPos(), raidMgr->GetVecEnemy()[i]->GetMissileMgr()->GetVecMissiles()[j]->GetPos()) && player->GetDie() == false)
+				{
+					if (!KeyManager::GetSingleton()->IsStayKeyDown(VK_SHIFT))
+					{
+						player->SetDie(true);
+						isShake = true;
+						///////////////총알 안쏘게   /총알 안쏘게   /총알 안쏘게   /총알 안쏘게  
+						raidMgr->GetVecEnemy()[0]->GetMissileMgr()->SetIsShoot(false);
+						raidMgr->GetVecEnemy()[1]->GetMissileMgr()->SetIsShoot(false);
+					}
+					raidMgr->GetVecEnemy()[i]->GetMissileMgr()->GetVecMissiles()[j]->SetIsFire(false);
+				}
+			}
+		}
+	}
+	// 플레이어 공격 적에게 적중
+	if (raidMgr->GetRaidLife() > 0)
+	{
+		for (int i = 0; i < player->GetMissileMgr()->GetMissileCount(); i++)
+		{
+			for (int j = 0; j < raidMgr->GetEnemyMaxNum(); j++)
+			{
+				if (player->GetMissileMgr()->GetVecMissiles()[i]->GetIsFire() == true)
+				{
+					if (CheckCollision(raidMgr->GetVecEnemy()[j]->GetSize(), player->GetMissileMgr()->GetVecMissiles()[i]->GetSize(),
+						raidMgr->GetVecEnemy()[j]->GetEnemyPos(), player->GetMissileMgr()->GetVecMissiles()[i]->GetPos()) && raidMgr->GetRaidLife() >= 1)
+					{
+						raidMgr->SetRaidLife(raidMgr->GetRaidLife() - 1);
+						player->GetMissileMgr()->GetVecMissiles()[i]->SetIsFire(false);
+						if (raidMgr->GetRaidLife() <= 0)
+						{
+							raidMgr->GetVecEnemy()[j]->GetMissileMgr()->SetIsShoot(false);
+							isShake = true;
+							isClear = true;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	//타겟 포스 전달
+	for (int i = 0; i < raidMgr->GetEnemyMaxNum(); i++)
+	{
+		raidMgr->GetVecEnemy()[i]->SetTargetPos(player->GetPos());
+	}
+
+	//////벽에 다가서지마세요 죽고싶습니까?
+	if (player->GetPos().x - (player->GetSize() / 2.0f) < 0 || player->GetPos().x + (player->GetSize() / 2.0f) > WINSIZE_X ||
+		player->GetPos().y - (player->GetSize() / 2.0f) < 0 || player->GetPos().y + (player->GetSize() / 2.0f) > WINSIZE_Y)
+	{
+		player->SetDie(true);
 		for (int i = 0; i < raidMgr->GetEnemyMaxNum(); i++)
 		{
-			//적 공격 플레이어에게 적중
-			for (int j = 0; j < enemy->GetMissileMgr()->GetMissileCount(); j++)
-			{
-				if (raidMgr->GetVecEnemy()[i]->GetMissileMgr()->GetVecMissiles()[j]->GetIsFire() == true)
-				{
-					if (CheckCollision(player->GetSize(), raidMgr->GetVecEnemy()[i]->GetMissileMgr()->GetVecMissiles()[j]->GetSize(),
-						player->GetPos(), raidMgr->GetVecEnemy()[i]->GetMissileMgr()->GetVecMissiles()[j]->GetPos()) && player->GetDie() == false)
-					{
-						if (!KeyManager::GetSingleton()->IsStayKeyDown(VK_SHIFT))
-						{
-							player->SetDie(true);
-							isShake = true;
-							raidMgr->GetVecEnemy()[i]->GetMissileMgr()->SetIsShoot(false);
-						}
-						raidMgr->GetVecEnemy()[i]->GetMissileMgr()->GetVecMissiles()[j]->SetIsFire(false);
-					}
-				}
-			}
+			raidMgr->GetVecEnemy()[i]->GetMissileMgr()->SetIsShoot(false);
 		}
-		// 플레이어 공격 적에게 적중
-		if (raidMgr->GetVecEnemy()[0]->GetLife() > 0)
-		{
-			for (int i = 0; i < player->GetMissileMgr()->GetMissileCount(); i++)
-			{
-				for (int j = 0; j < 1 ; j++)
-				{
-					if (player->GetMissileMgr()->GetVecMissiles()[i]->GetIsFire() == true)
-					{
-						if (CheckCollision(raidMgr->GetVecEnemy()[j]->GetSize(), player->GetMissileMgr()->GetVecMissiles()[i]->GetSize(),
-							raidMgr->GetVecEnemy()[j]->GetEnemyPos(), player->GetMissileMgr()->GetVecMissiles()[i]->GetPos()) && raidMgr->GetVecEnemy()[j]->GetLife() >= 1)
-						{
-							raidMgr->GetVecEnemy()[j]->SetLife(raidMgr->GetVecEnemy()[j]->GetLife() - 1);
-							player->GetMissileMgr()->GetVecMissiles()[i]->SetIsFire(false);
-							if (raidMgr->GetVecEnemy()[j]->GetLife() <= 0)
-							{
-								raidMgr->GetVecEnemy()[j]->GetMissileMgr()->SetIsShoot(false);
-								isShake = true;
-								isClear = true;
-							}
-						}
-					}
-				}
-			}
-		}
-				for (int i = 0; i < raidMgr->GetEnemyMaxNum(); i++)
-				{
-					raidMgr->GetVecEnemy()[i]->SetTargetPos(player->GetPos());
-				}
+		isShake = true;
+		shaking = false;
+	}
 	}
 
 
@@ -398,11 +416,11 @@ void BattleScene::Render(HDC hdc)
 	}
 	if (raidMgr->GetIsRaid() == false)
 	{
-		if (ui) ui->Render(hdc, name, enemy->GetPhase(), mode);
+		if (ui) ui->Render(hdc, name, enemy->GetPhase(), mode, raidMgr->GetIsRaid());
 	}
 	else if (raidMgr->GetIsRaid() == true)
 	{
-		if (ui) ui->Render(hdc, raidMgr->GetName(), raidMgr->GetVecEnemy()[0]->GetPhase(), raidMgr->GetMode());
+		if (ui) ui->Render(hdc, raidMgr->GetName(), raidMgr->GetVecEnemy()[0]->GetPhase(), raidMgr->GetMode(), raidMgr->GetIsRaid());
 	}
 	if (player->GetDie() == true)
 	{
